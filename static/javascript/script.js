@@ -51,4 +51,11 @@ $(document).ready(function () {
     }
     setInterval(timeUpdate, 1000);
 
+    // Initialize sign in input
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.autocomplete');
+        var instances = M.Autocomplete.init(elems, options);
+    });
+
 });

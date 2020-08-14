@@ -1,6 +1,8 @@
 body {
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     display: flex;
     font-family: 'Lato', sans-serif;
 }
@@ -13,11 +15,24 @@ body {
     line-height: 2;
 }
 
+a {
+    text-decoration: none;
+
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
 /* Smartphones (portrait) ----------- */
 @media only screen and (min-width : 320px) {
 
     body {
-        height: 100%;
+        height: 100vh;
         width: 100%;
         display: flex;
     }
@@ -27,6 +42,7 @@ body {
         width: 100%;
         top: 25px;
 
+
     }
 
     .title {
@@ -34,7 +50,7 @@ body {
         color: #fff;
         font-weight: 200;
         font-family: 'Oswald', sans-serif;
-        font-size: 22px;
+        font-size: 25px;
         text-align: center;
 
     }
@@ -46,24 +62,16 @@ body {
 
     }
 
-    .main_bg_img {
-        position: absolute;
-        height: 100vh;
-        width: 100vw;
-        filter: brightness(60%);
-    }
 
     /*---ANALOG CLOCK---*/
 
     .analog_clock {
-        height: 80vh;
+        height: 85vh;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-flow: column;
-
-        border: 1px solid red;
 
     }
 
@@ -206,19 +214,33 @@ body {
     .signin {
         width: 100%;
 
-        border: 1px solid red;
     }
 
     /*---SIGN IN FORM---*/
+
+
+
+    #siginBody {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title_blurb {
+        color: #fff;
+        font-weight: 300;
+        text-align: center;
+    }
 
     .signinform {
         position: absolute;
         z-index: 22;
     }
 
-    #username {
-        width: 100%;
+    .input-field {
+        width: 290px;
     }
+
 
     .signin_bg {
         position: relative;
@@ -230,19 +252,60 @@ body {
 
     }
 
-
     .bg_image {
         position: absolute;
         height: 100%;
+        width: 100%;
         filter: brightness(60%);
     }
-    #signin_form {
-        position: absolute;
-        width: 80%;
-        top: 30%;
 
-        border: 1px solid white;
-        z-index: 10;
+    .signin_form {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 50%;
     }
+
+    #username,
+    #password {
+        color: #fff;
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        z-index: 5;
+        border-bottom: 1px solid #9C9C84;
+        width: 100%;
+    }
+
+
+    #sign_in_btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 290px;
+        height: 50px;
+        margin: 200px auto 0px;
+        background-color: transparent;
+        border: none;
+        border: 2px solid #9C9C84;
+        color: #fff;
+        font-weight: 300;
+        font-size: 20px;
+        font-family: 'Lato', sans-serif;
+
+    }
+
+    .link_to_register {
+        color: #fff;
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+    .reg_link_text {
+        color: #9C9C84;
+
+    }
+
 
 }
