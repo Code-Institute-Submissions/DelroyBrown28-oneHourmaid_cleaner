@@ -82,6 +82,11 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/signin")
+def signin():
+    return render_template("signin.html")
+
+
 @ app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":

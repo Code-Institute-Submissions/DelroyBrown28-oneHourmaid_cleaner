@@ -203,5 +203,46 @@ body {
 
     }
 
+    .signin {
+        width: 100%;
+
+        border: 1px solid red;
+    }
+
+    /*---SIGN IN FORM---*/
+
+    .signinform {
+        position: absolute;
+        z-index: 22;
+    }
+
+    #username {
+        width: 100%;
+    }
+
+    .signin_bg {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+
+    .bg_image {
+        position: absolute;
+        height: 100%;
+        filter: brightness(60%);
+    }
+    #signin_form {
+        position: absolute;
+        width: 80%;
+        top: 30%;
+
+        border: 1px solid white;
+        z-index: 10;
+    }
 
 }
