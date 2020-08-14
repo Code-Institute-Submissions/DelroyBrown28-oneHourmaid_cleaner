@@ -34,22 +34,6 @@ $(document).ready(function () {
     }, 1000);
 
 
-    // Digital time display
-    function addZero(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-
-    function timeUpdate() {
-        var grabDate = new Date();
-        var theTime = document.getElementById("the_time");
-        var hours = addZero(grabDate.getHours());
-        var minutes = addZero(grabDate.getMinutes());
-        theTime.innerHTML = hours + ":" + minutes;
-    }
-    setInterval(timeUpdate, 1000);
 
     // Initialize sign in input
 
