@@ -16,9 +16,41 @@
 
 </head>
 
-<body>
+<body id="accountBody" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
-PROFILE PAGE
+
+
+    <div class="top_contents_account">
+        <h3 class="account_title">OneHourmaid</h3>
+        <span class="cleaner_acc_tag">Cleaner Account</span>
+    </div>
+
+    <!--User's avatar-->
+    <div class="avatar_wrap">
+        <div class="avatar_border">
+            <img src="/static/images/fake_avatar.png" alt="" class="avatar">
+        </div>
+        <span id="username_display">Sambrown555</span>
+
+    </div>
+
+    <!--Pending Jobs-->
+    <p class="pending_jobs_blurb">Below are your pending jobs.<br>Tap on a task to view more details and respond<br>to
+        a request.</p>
+
+    <p class="pending_jobs_text">Pending jobs<br>
+        <span id="amount_pend_jobs">4</span>
+    </p>
+
+    <ul class="pending_jobs">
+        <li class="z-depth-2 request_items" id="request_item1">Rafael Carr</li>
+        <li class="z-depth-2 request_items" id="request_item2">Elizabeth Russell</li>
+        <li class="z-depth-2 request_items" id="request_item3">Brandon Barnes</li>
+        <li class="z-depth-2 request_items" id="request_item4">June Graham</li>
+    </ul>
+
+
 
 
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"

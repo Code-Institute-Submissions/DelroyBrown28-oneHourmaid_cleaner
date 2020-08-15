@@ -367,6 +367,11 @@ a:focus {
         background-color: #9C9C84;
     }
 
+    #username_reg,
+    #password_reg {
+        color: #fff;
+    }
+
     /*---PROVIDED CLEANING SERVICE---*/
 
     .type_of_service {
@@ -426,6 +431,122 @@ a:focus {
         font-size: 20px;
         font-family: 'Lato', sans-serif;
     }
+
+    /*-------CLEANER ACCOUNT PAGE-------*/
+
+    #accountBody {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+
+    .top_contents_account {
+        width: 100%;
+        display: flex;
+        align-self: flex-start;
+        align-items: center;
+        flex-flow: column;
+        margin-top: 25px;
+
+    }
+
+    .account_title {
+        color: #fff;
+        margin: 0;
+        font-weight: 400;
+        font-family: 'Oswald', sans-serif;
+        font-size: 25px;
+        text-align: center;
+
+    }
+
+    .cleaner_acc_tag {
+        text-align: center;
+        width: 98px;
+        color: #fff;
+        font-size: 12px;
+        padding: 3px;
+        margin-top: 10px;
+        background-color: #b45f1993;
+    }
+
+    .avatar_wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        width: 100%;
+
+    }
+
+    .avatar_border {
+        height: 80px;
+        width: 80px;
+        display: flex;
+        margin-top: 25px;
+
+        border: 2px solid #b45f19;
+    }
+
+    .avatar {
+        height: 70px;
+        width: 70px;
+        margin: auto;
+    }
+
+    #username_display {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    /*---PENDING JOBS---*/
+
+    .pending_jobs_blurb {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .pending_jobs_text {
+        color: #fff;
+        margin: 0;
+        opacity: 0.7;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+    }
+
+    #amount_pend_jobs {
+        font-size: 30px;
+    }
+
+    .pending_jobs {
+        height: 230px;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+
+    }
+
+    .request_items {
+        width: 290px;
+        height: 45px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+
 
 }
 

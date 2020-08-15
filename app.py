@@ -103,14 +103,19 @@ def add_task():
     return render_template("add_task.html", categories=categories)
 
 
-@ app.route("/profile/<username_reg>", methods=["GET", "POST"])
-def profile(username_reg):
-    # Grabs the sessions user's username from DB
-    username_reg = mongo.db.username_reg.find_one(
-        {"username_reg": session["username_reg"]})["username_reg"]
-    if session["username_reg"]:
-        return render_template("profile.html", username_reg=username_reg)
-    return redirect(url_for("signin"))
+@app.route("/profile")
+def profile_page():
+    return render_template("profile.html")
+
+
+# @ app.route("/profile/<username_reg>", methods=["GET", "POST"])
+# def profile(username_reg):
+#     # Grabs the sessions user's username from DB
+#     username_reg = mongo.db.username_reg.find_one(
+#         {"username_reg": session["username_reg"]})["username_reg"]
+#     if session["username_reg"]:
+#         return render_template("profile.html", username_reg=username_reg)
+#     return redirect(url_for("signin"))
 
 
 if __name__ == "__main__":
