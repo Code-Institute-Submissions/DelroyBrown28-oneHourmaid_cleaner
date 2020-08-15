@@ -11,6 +11,10 @@ body {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+.light_text {
+    font-weight: 300;
+}
+
 .flashes h4 {
     line-height: 2;
 }
@@ -527,25 +531,42 @@ a:focus {
     }
 
     .pending_jobs {
+        width: 290px;
         height: 230px;
         display: flex;
         flex-flow: column;
         justify-content: space-evenly;
+        border: none;
 
     }
 
-    .request_items {
-        width: 290px;
-        height: 45px;
+    .request_item_header {
         color: #fff;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 300;
+        background-color: #9c9c84a2;
+        border: none;
+    }
+
+    .request_info {
+        color: #fff;
+    }
+
+    .sign_out_btn {
+        width: 290px;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        border: 2px solid #9C9C84;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: #fff;
+        font-weight: 300;
+        font-size: 20px;
+        font-family: 'Lato', sans-serif;
 
     }
-
 
 
 }
