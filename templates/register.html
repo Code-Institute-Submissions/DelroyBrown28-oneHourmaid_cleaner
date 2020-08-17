@@ -35,12 +35,12 @@
                 <form id="registration_form" method="POST" action="{{ url_for('register') }}">
 
                     <div class="input-field col s12">
-                        <input type="text" id="username_reg" name="username_reg" class="autocomplete">
+                        <input type="text" id="username_reg" name="username_reg" class="autocomplete validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$">
                         <label for="username_reg">Username</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input type="password" id="password_reg" name="password_reg" class="autocomplete">
+                        <input type="password" id="password_reg" name="password_reg" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="autocomplete validate">
                         <label for="password_reg">Password</label>
                     </div>
 
@@ -58,7 +58,7 @@
                         <div class="row cards_wrap">
 
                             <!--Basic clean service-->
-                            <div class="col s4 m5">
+                            <div class="col s4 m4">
                                 <div class="card-panel service_cards">
                                     <img src="/static/images/basic_clean.png" alt="" class="ser_card_img">
                                     <p class="basic_clean_tag">Basic Clean</p>
@@ -66,7 +66,7 @@
                             </div>
 
                             <!--Deep clean service-->
-                            <div class="col s4 m5">
+                            <div class="col s4 m4">
                                 <div class="card-panel service_cards">
                                     <img src="/static/images/deep_clean.png" alt="" class="ser_card_img">
                                     <p class="basic_clean_tag">Deep Clean</p>
@@ -75,7 +75,7 @@
                             </div>
 
                             <!--I help move service-->
-                            <div class="col s4 m5">
+                            <div class="col s4 m4">
                                 <div class="card-panel service_cards">
                                     <img src="/static/images/help_move.png" alt="" class="ser_card_img">
                                     <p class="basic_clean_tag">I help move</p>
@@ -93,6 +93,19 @@
             </div>
         </div>
     </div>
+
+    <section>
+        <!--Flash messages-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for messages in messages %}
+        <div class="row flashes flash_messages z-depth-2">
+            <h4 class="center-align flash_text">{{ messages }}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
 
 
 

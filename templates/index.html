@@ -25,13 +25,15 @@
 
     <div class="main_title">
         <h3 class="title">oneHourmaid</h3>
+        <span class="cleaner_acc_tag">Cleaner Account</span>
+
     </div>
 
 
 
     <!--Sign in/Register buttons-->
     <div class="btn_wrap">
-        <a href="{{ url_for('signin') }}"> <button id="signin_btn">Sign in</button></a>
+        <a href="#"> <button id="signin_btn">Sign in</button></a>
         <a href="{{ url_for('register') }}"> <button id="register_btn">Register</button></a>
     </div>
     <!--Analog Clock-->
@@ -59,6 +61,8 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
     <script type="text/javascript">
         // Digital time display
         function addZero(i) {
@@ -96,8 +100,6 @@
             sec.style.transform = `rotateZ(${ss}deg)`;
         }, 1000);
     </script>
-    {% block scripts %}
-    {% endblock %}
 
 </body>
 
