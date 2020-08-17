@@ -46,10 +46,35 @@ def register():
         mongo.db.registration_details.insert_one(register)
 
         # put new user in to session cookie
-
         session["user"] = request.form.get("username_reg").lower()
         flash("Registration successful")
     return render_template("register.html")
+
+
+@app.route("/signin", methods=["GET", "POST"])
+def signin():
+    if request.method == "POST":
+        # check if username exists in DB
+        existing_user = mongo.db.registration_details.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("signin"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("signin"))
+
+    return render_template("profile.html")
 
 
 if __name__ == "__main__":
