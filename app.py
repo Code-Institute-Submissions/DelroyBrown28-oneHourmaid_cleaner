@@ -80,7 +80,7 @@ def signin():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
 
-    return render_template("profile.html")
+    return render_template("signin.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -88,7 +88,17 @@ def profile(username):
     # Grab the session user's username from DB
     username = mongo.db.registration_details.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+    return redirect(url_for("signin"))
+
+@app.route("/signout")
+def signout():
+    # remove user from session cookies
+    flash("You have been logged out")
+    session.pop("user", ["default"])
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
