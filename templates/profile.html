@@ -19,11 +19,7 @@
 <body id="accountBody" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
-    {% for user_details in user_details %}
-    {{ user_details.user_name }}<br>
-    {{ user_details.user_contact }}<br>
-    {{ user_details.user_postcode }}<br>
-    {% endfor %}
+    
 
     <div class="top_contents_account">
         <h3 class="account_title">OneHourmaid</h3>
@@ -47,97 +43,31 @@
         <span id="amount_pend_jobs">4</span>
     </p>
 
-    <!-- <ul class="pending_jobs">
-        <li class="z-depth-2 request_items" id="request_item1">Rafael Carr</li>
-        <li class="z-depth-2 request_items" id="request_item2">Elizabeth Russell</li>
-        <li class="z-depth-2 request_items" id="request_item3">Brandon Barnes</li>
-        <li class="z-depth-2 request_items" id="request_item4">June Graham</li>
-    </ul> -->
+  
 
     <ul class="collapsible popout pending_jobs">
+        {% for user_details in user_details %}
         <li>
-            <!-- {% for name in categories %} -->
             <div class="collapsible-header request_item_header">
                 <i class="fas fa-comment-dots"></i>
-                Rafael Carr
-                <!-- <span class="badge"></span> -->
+                {{ user_details.user_name }}
             </div>
-            <!-- {% endfor %} -->
 
             <div class="collapsible-body request_info">
                 <span>Address:<br>
-                    <!-- {% for user_details in user_details %} -->
                     <span class="light_text" id="customer_address">
-                        <!--{{ category.category_title }}-->9957 Oak Lawn Ave</span>
-                    <!-- {% endfor %} -->
+                        {{ user_details.user_street }}</span>
                 </span><br>
                 <span>Contact number:<br>
-                    <!-- {% for contact in categories %} -->
-                    <span class="light_text" id="customer_contact">(513)-636-3643</span>
-                    <!-- {% endfor %} -->
+                    <span class="light_text" id="customer_contact">{{ user_details.user_contact }}</span>
                 </span><br>
                 <span>Customer request:<br>
-                    <!-- {% for customer_request in categories %} -->
-                    <span class="light_text italic_text" id="customer_request">Please come and clean my kitchen!</span>
-                    <!-- {% endfor %} -->
+                    <span class="light_text italic_text" id="customer_request">{{ user_details.user_message }}</span>
                 </span><br>
 
             </div>
         </li>
-        <li>
-            <div class="collapsible-header request_item_header">
-                <i class="fas fa-comment-dots"></i>
-                Elizabeth Russell
-                <span class="badge"></span></div>
-            <div class="collapsible-body request_info">
-                <span>Address:<br>
-                    <span class="light_text" id="customer_address">4061 Country Club Rd</span>
-                </span><br>
-                <span>Contact number:<br>
-                    <span class="light_text" id="customer_contact">(494)-325-3626</span>
-                </span><br>
-                <span>Customer request:<br>
-                    <span class="light_text italic_text" id="customer_request">Can i get my carpets steamed
-                        please!?</span>
-                </span><br>
-            </div>
-        </li>
-        <li>
-            <div class="collapsible-header request_item_header">
-                <i class="fas fa-comment-dots"></i>
-                Brandon Barnes
-                <span class="badge"></span></div>
-            <div class="collapsible-body request_info">
-                <span>Address:<br>
-                    <span class="light_text" id="customer_address">7471 Robinson Rd</span>
-                </span><br>
-                <span>Contact number:<br>
-                    <span class="light_text" id="customer_contact">(015)-527-7516</span>
-                </span><br>
-                <span>Customer request:<br>
-                    <span class="light_text italic_text" id="customer_request">I need a deep clean in my
-                        bathroom.</span>
-                </span><br>
-            </div>
-        </li>
-        <li>
-            <div class="collapsible-header request_item_header">
-                <i class="fas fa-comment-dots"></i>
-                June Graham
-                <span class="badge"></span></div>
-            <div class="collapsible-body request_info">
-                <span>Address:<br>
-                    <span class="light_text" id="customer_address">9580 Mockingbird Hill</span>
-                </span><br>
-                <span>Contact number:<br>
-                    <span class="light_text" id="customer_contact">(512)-616-2574</span>
-                </span><br>
-                <span>Customer request:<br>
-                    <span class="light_text italic_text" id="customer_request">I need a basic clean throughout please,
-                        thanks!</span>
-                </span><br>
-            </div>
-        </li>
+        {% endfor %}
     </ul>
 
     <a href="{{ url_for('signout') }}"><button class="sign_out_btn">Sign out</button></a>

@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    $('.sidenav').sidenav({
-        edge: "right"
-    });
     $('.collapsible').collapsible();
     $('.tooltipped').tooltip();
     $('select').formSelect();
@@ -21,5 +18,23 @@ $(document).ready(function () {
         var elems = document.querySelectorAll('.autocomplete');
         var instances = M.Autocomplete.init(elems, options);
     });
+
+    function onLoadAnimations() {
+        $('.account_title').animate({
+            opacity: '1'
+        }, function () {
+            $('.cleaner_acc_tag').animate({
+                opacity: '1'
+            }, function () {
+                $('#username_display').animate({
+                    width: '100%'
+                })
+            })
+        })
+
+    }
+    window.onload = onLoadAnimations;
+
+
 
 });

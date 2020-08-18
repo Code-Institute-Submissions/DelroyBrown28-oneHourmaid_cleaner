@@ -18,13 +18,9 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def index():
-    return render_template("index.html")
-
-
 @app.route("/get_details")
 def get_details():
-    user_details = mongo.db.user_details.find()
+    user_details = list(mongo.db.user_details.find())
     return render_template("profile.html", user_details=user_details)
 
 
@@ -65,8 +61,7 @@ def signin():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("username")))
+                
                 return redirect(url_for(
                     "profile", username=session["user"]))
 
@@ -98,7 +93,7 @@ def signout():
     # remove user from session cookies
     flash("You have been logged out")
     session.pop("user", ["default"])
-    return redirect(url_for("index"))
+    return redirect(url_for("signin"))
 
 
 if __name__ == "__main__":

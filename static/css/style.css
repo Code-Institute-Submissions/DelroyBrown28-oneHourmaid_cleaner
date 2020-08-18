@@ -494,6 +494,8 @@ a:focus {
         font-size: 25px;
         text-align: center;
 
+        opacity: 0;
+
     }
 
     .cleaner_acc_tag {
@@ -504,6 +506,8 @@ a:focus {
         padding: 3px;
         margin-top: 10px;
         background-color: #b45f1993;
+
+        opacity: 0;
     }
 
     .avatar_wrap {
@@ -532,8 +536,16 @@ a:focus {
 
     #username_display {
         color: #fff;
+        width: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        background-color: #b45f1993;
+        text-transform: capitalize;
+        text-align: center;
         font-size: 18px;
-        font-weight: 300;
+        font-weight: 600;
     }
 
     /*---PENDING JOBS---*/
@@ -543,6 +555,7 @@ a:focus {
         text-align: center;
         font-size: 16px;
         font-weight: 400;
+    
     }
 
     .pending_jobs_text {
@@ -567,6 +580,9 @@ a:focus {
         flex-flow: column;
         justify-content: space-evenly;
         border: none;
+
+        border: 1px solid red !important;
+
 
     }
 
