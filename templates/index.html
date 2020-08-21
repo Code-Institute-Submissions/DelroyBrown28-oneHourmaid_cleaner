@@ -26,7 +26,6 @@
     <div class="main_title">
         <h3 class="title">oneHourmaid</h3>
         <span class="cleaner_acc_tag">Cleaner Account</span>
-
     </div>
 
 
@@ -54,6 +53,20 @@
             <span id="the_time"></span>
         </div>
     </div>
+
+    <section>
+        <!--Flash messages-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for messages in messages %}
+        <div class="row flashes flash_messages z-depth-2">
+            <h4 class="center-align flash_text">{{ messages }}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+
 
 
 

@@ -456,6 +456,10 @@ a:focus {
         left: 0;
         background-color: #b45f19;
 
+        animation-name: flash_messages;
+        animation-duration: 2s;
+        animation-iteration-count: 1;
+
     }
 
     .flash_text {
@@ -580,13 +584,33 @@ a:focus {
         flex-flow: column;
         justify-content: space-evenly;
         border: none;
-
-        border: 1px solid red !important;
-
+        z-index: 5;
 
     }
 
+    .info_headers {
+        font-weight: 600;
+        /* text-decoration: underline; */
+    }
+
+    .respond_to_user {
+        width: 100%;
+        height: 45px;
+        color: #fff;
+        background-color: #9C9C84;
+        border: none;
+        margin-top: 15px;
+        color: #fff;
+        font-weight: 300;
+        font-size: 20px;
+        font-family: 'Lato', sans-serif;
+
+
+        
+    }
+
     .request_item_header {
+        display: flex;
         color: #fff;
         font-size: 16px;
         font-weight: 300;
@@ -597,7 +621,9 @@ a:focus {
     .request_info {
         color: #fff;
         background-color: #161D1C;
+        text-align: center;
     }
+
 
     .sign_out_btn {
         width: 290px;

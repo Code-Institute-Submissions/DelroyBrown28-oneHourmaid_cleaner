@@ -50,27 +50,33 @@
         <li>
             <div class="collapsible-header request_item_header">
                 <i class="fas fa-comment-dots"></i>
-                {{ user_details.user_name }}
+                {{ user_details.user_name }} {{ user_details.user_lname }}
+
             </div>
 
             <div class="collapsible-body request_info">
-                <span>Address:<br>
+                <span class="info_headers">Address:<br>
                     <span class="light_text" id="customer_address">
                         {{ user_details.user_street }}</span>
                 </span><br>
-                <span>Contact number:<br>
+                <span class="info_headers">Contact Number:<br>
                     <span class="light_text" id="customer_contact">{{ user_details.user_contact }}</span>
                 </span><br>
-                <span>Customer request:<br>
+                <span class="info_headers customer_request_style">Customer Request:<br>
                     <span class="light_text italic_text" id="customer_request">{{ user_details.user_message }}</span>
                 </span><br>
+                <span class="info_headers">Cleaning Date:<br>
+                    <span class="light_text italic_text" id="customer_request">{{ user_details.user_date }}</span>
+                </span><br>
+                <a href="{{ url_for('send_message') }}"><button class="respond_to_user">Respond to {{ user_details.user_name }}?</button></a>
+
 
             </div>
         </li>
         {% endfor %}
     </ul>
 
-    <a href="{{ url_for('signout') }}"><button class="sign_out_btn">Sign out</button></a>
+    <a href="{{ url_for('index') }}"><button class="sign_out_btn">Sign out</button></a>
 
 
 

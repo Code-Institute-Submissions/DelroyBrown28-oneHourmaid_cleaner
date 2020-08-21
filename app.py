@@ -4,6 +4,7 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from twilio.rest import Client
 if os.path.exists("env.py"):
     import env
 
@@ -17,8 +18,26 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route("/index.html")
+def index():
+    flash("You have been logged out")
+    session.pop("user", ["default"])
+
+    return render_template("index.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # Grab the session user's username from DB
+    username = mongo.db.registration_details.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+    return redirect(url_for("signin"))
+
+
 @app.route("/")
-@app.route("/get_details")
 def get_details():
     user_details = list(mongo.db.user_details.find())
     return render_template("profile.html", user_details=user_details)
@@ -61,7 +80,7 @@ def signin():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                
+
                 return redirect(url_for(
                     "profile", username=session["user"]))
 
@@ -78,22 +97,28 @@ def signin():
     return render_template("signin.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
-    # Grab the session user's username from DB
-    username = mongo.db.registration_details.find_one(
-        {"username": session["user"]})["username"]
+@app.route("/send_message")
+def send_message():
+    account_sid = os.environ["TWILIO_ACCOUNT_SID"]
+    auth_token = os.environ["TWILIO_AUTH_TOKEN"]
 
-    if session["user"]:
-        return render_template("profile.html", username=username)
-    return redirect(url_for("signin"))
+    client = Client(account_sid, auth_token)
 
-@app.route("/signout")
-def signout():
-    # remove user from session cookies
-    flash("You have been logged out")
-    session.pop("user", ["default"])
-    return redirect(url_for("signin"))
+    client.messages.create(
+        to=os.environ["MY_PHONE_NUMBER"],
+        from_="+447576111597",
+        body="Hello there my friend!"
+    )
+
+    return render_template("profile.html")
+
+
+# @app.route("/signout")
+# def signout():
+#     # remove user from session cookies
+#     flash("You have been logged out")
+#     session.pop("user", ["default"])
+#     return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
