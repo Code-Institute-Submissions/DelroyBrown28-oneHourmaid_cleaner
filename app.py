@@ -4,7 +4,9 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from twilio.rest import Client
+from flask_socketio import SocketIO, emit
+# from twilio.rest import Client
+# from twilio.twiml.messaging_response import Body, Media, Message, MessagingResponse
 if os.path.exists("env.py"):
     import env
 
@@ -96,21 +98,21 @@ def signin():
 
     return render_template("signin.html")
 
+# @app.route("/send_message")
+# def send_message():
+#     render_template("chat_page.html")
+#     account_sid = os.environ["TWILIO_ACCOUNT_SID"]
+#     auth_token = os.environ["TWILIO_AUTH_TOKEN"]
 
-@app.route("/send_message")
-def send_message():
-    account_sid = os.environ["TWILIO_ACCOUNT_SID"]
-    auth_token = os.environ["TWILIO_AUTH_TOKEN"]
+#     client = Client(account_sid, auth_token)
 
-    client = Client(account_sid, auth_token)
+#     client.messages.create(
+#         to=os.environ["MY_PHONE_NUMBER"],
+#         from_="+447576111597",
+#         body="Hi!"
+#     )
 
-    client.messages.create(
-        to=os.environ["MY_PHONE_NUMBER"],
-        from_="+447576111597",
-        body="Hello there my friend!"
-    )
-
-    return render_template("profile.html")
+#     return render_template("chat_page.html")
 
 
 # @app.route("/signout")
@@ -125,3 +127,6 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)
+
+
+            

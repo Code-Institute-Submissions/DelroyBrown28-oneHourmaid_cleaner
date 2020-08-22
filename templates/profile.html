@@ -19,7 +19,7 @@
 <body id="accountBody" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
-    
+
 
     <div class="top_contents_account">
         <h3 class="account_title">OneHourmaid</h3>
@@ -43,7 +43,7 @@
         <span id="amount_pend_jobs">4</span>
     </p>
 
-  
+
 
     <ul class="collapsible popout pending_jobs">
         {% for user_details in user_details %}
@@ -55,21 +55,25 @@
             </div>
 
             <div class="collapsible-body request_info">
-                <span class="info_headers">Address:<br>
-                    <span class="light_text" id="customer_address">
-                        {{ user_details.user_street }}</span>
-                </span><br>
-                <span class="info_headers">Contact Number:<br>
-                    <span class="light_text" id="customer_contact">{{ user_details.user_contact }}</span>
-                </span><br>
-                <span class="info_headers customer_request_style">Customer Request:<br>
+                <div class="row">
+                    <span class="row info_headers">Address:<br>
+                        <span class="light_text info_text" id="customer_address">
+                            {{ user_details.user_street }}</span>
+                    </span><br>
+                    <span class="info_headers">Contact Number:<br>
+                        <span class="light_text info_text" id="customer_contact">{{ user_details.user_contact }}</span>
+                    </span><br>
+                </div>
+                <span class="info_headers row customer_request_style">Customer Request:<br>
                     <span class="light_text italic_text" id="customer_request">{{ user_details.user_message }}</span>
                 </span><br>
                 <span class="info_headers">Cleaning Date:<br>
                     <span class="light_text italic_text" id="customer_request">{{ user_details.user_date }}</span>
                 </span><br>
-                <a href="{{ url_for('send_message') }}"><button class="respond_to_user">Respond to {{ user_details.user_name }}?</button></a>
+                <a href="{{ url_for('chat_page') }}"><button class="respond_to_user">Respond to
+                        {{ user_details.user_name }}?</button></a>
 
+                     
 
             </div>
         </li>
