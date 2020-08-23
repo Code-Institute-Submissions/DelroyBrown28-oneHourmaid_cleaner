@@ -4,12 +4,10 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_socketio import SocketIO, emit
 # from twilio.rest import Client
 # from twilio.twiml.messaging_response import Body, Media, Message, MessagingResponse
 if os.path.exists("env.py"):
     import env
-
 
 app = Flask(__name__)
 
@@ -20,12 +18,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/index.html")
+@app.route("/index")
 def index():
-    flash("You have been logged out")
-    session.pop("user", ["default"])
-
     return render_template("index.html")
+
+
+@app.route("/cleaner_chat")
+def cleaner_chat():
+    return render_template("chat_page.html")
+
+
+@app.route("/")
+def get_details():
+    user_details = list(mongo.db.user_details.find())
+    return render_template("index.html", user_details=user_details)
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -37,12 +43,6 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
     return redirect(url_for("signin"))
-
-
-@app.route("/")
-def get_details():
-    user_details = list(mongo.db.user_details.find())
-    return render_template("profile.html", user_details=user_details)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -68,6 +68,11 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
+
+
+@app.route("/signin_page")
+def signin_page():
+    return render_template("signin.html")
 
 
 @app.route("/signin", methods=["GET", "POST"])
@@ -96,7 +101,8 @@ def signin():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
 
-    return render_template("signin.html")
+    return render_template("profile.html")
+
 
 # @app.route("/send_message")
 # def send_message():
@@ -115,18 +121,15 @@ def signin():
 #     return render_template("chat_page.html")
 
 
-# @app.route("/signout")
-# def signout():
-#     # remove user from session cookies
-#     flash("You have been logged out")
-#     session.pop("user", ["default"])
-#     return redirect(url_for("index"))
+@app.route("/signout")
+def signout():
+    # remove user from session cookies
+    flash("You have been logged out")
+    session.pop("user", ["default"])
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)
-
-
-            

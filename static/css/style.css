@@ -676,7 +676,6 @@ a:focus {
         padding: 3px;
         background-color: #9C9C84;
         color: #fff;
-        text-align: right;
     }
 
 
@@ -688,6 +687,11 @@ a:focus {
         border: 1px solid #9C9C84;
         color: #fff;
         font-size: 16px;
+    }
+
+    .bottom_btns {
+        display: flex;
+        justify-content: space-evenly;
     }
 
 
