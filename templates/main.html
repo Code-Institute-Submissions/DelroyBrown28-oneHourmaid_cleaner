@@ -31,15 +31,15 @@
 
     <!--Sign in/Register buttons-->
     <div class="btn_wrap">
-        <a href="{{ url_for('signin_page') }}"> <button id="signin_btn" class="z-depth-2">
+        <a href="{{ url_for('signin_page') }}"> <button id="signin_btn" class="service_btns z-depth-4">
                 <img src="/static/images/iamcleaner_icon.png" alt="" class="service_icons">
                 Cleaner Account
             </button></a>
-        <a href="{{ url_for('user_main') }}"> <button id="request_btn" class="z-depth-2">
-            <img src="/static/images/requestcleaner_icon.png" alt="" class="service_icons">
-            Request Cleaner
-        </button></a>
-        <a href="{{ url_for('register') }}"> <button id="register_btn">Register</button></a>
+        <a href="{{ url_for('register') }}"> <button id="register_btn" class="service_btns z-depth-2">Register</button></a>
+        <a href="{{ url_for('user_main') }}"> <button id="request_btn" class="service_btns z-depth-4">
+                <img src="/static/images/requestcleaner_icon.png" alt="" class="service_icons">
+                Request Cleaner
+            </button></a>
     </div>
     <!--Analog Clock-->
     <div class="analog_clock">

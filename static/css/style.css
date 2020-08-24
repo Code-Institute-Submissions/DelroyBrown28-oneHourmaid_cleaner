@@ -239,15 +239,21 @@ a:focus {
 
     .service_use_text {
         position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #fff;
-        bottom: 27%;
+        bottom: 26%;
         width: 100%;
+        height: 35px;
         text-align: center;
+        background-color: #37454a9c;
     }
 
     .service_icons {
         height: 50px;
     }
+
 
     /*------MAIN USERSIDE PAGE------*/
 
