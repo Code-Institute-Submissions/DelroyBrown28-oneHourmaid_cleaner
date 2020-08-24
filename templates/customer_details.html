@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oneHourmaid - Customer Details</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body id="contact_details_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+    <!--TOP CONTENTS-->
+    <div class="top_contents_wrapper__form">
+        <img src="{{ url_for('static', filename='images/arrowleft.png') }}" alt="" class="back_button"
+            onClick="location.href = 'index.html'">
+        <h1 class="customer_details_title">Customer Request Details</h1>
+    </div>
+
+    <p class="customer_details_blurb">We'll need a few details before we can send a cleaner to your house. Please
+        fill out the form below and give a short description of your cleaning needs.</p>
+
+
+    <span id="text_tag">Basic Clean</span>
+
+
+    <!--CUSTOMER DETAILS AND REQUEST FORM-->
+
+    <div class="row form_wrap">
+        <form class="col s12" id="user_details_form" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user_name" name="user_name" type="text" class="all_inputs validate">
+                    <label for="user_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user_lname" name="user_lname" type="text" class="all_inputs validate">
+                    <label for="user_lname">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user_street" name="user_street" type="text" class="all_inputs validate">
+                    <label for="user_street">Street Name/Number</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user_postcode" name="user_postcode" type="text" class="all_inputs validate">
+                    <label for="user_postcode">Postcode</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user_contact" name="user_contact" type="number" class="all_inputs validate">
+                    <label for="user_contact">Contact Number</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user_date" name="user_date" minlength="5" maxlength="50" type="text"
+                        class="datepicker validate">
+                    <label for="user_date">Choose a date</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="user_message" name="user_message"
+                                class="all_inputs materialize-textarea"></textarea>
+                            <label for="user_message">Cleaning Request</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" id="submit_user_form" class="z-depth-3">Request Cleaner</button>
+        </form>
+    </div>
+
+    <section>
+        <!--Flash messages-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for messages in messages %}
+        <div class="row flashes request_flash_messagess z-depth-2">
+            <h1 class="center-align flash_text">{{ messages }}</h1>
+            <div class="menu_wrap">
+                <ul class="request_sent_menu">
+                    <li class="req_menu_item">Chat with cleaner<br>
+                        <img src="{{ url_for('static', filename='images/chat_icon.png') }}" alt="" class="chat_icon">
+                    </li>
+                    <li class="req_menu_item">Edit Request<br>
+                        <img src="{{ url_for('static', filename='images/makeedit_icon.png') }}" alt="" class="chat_icon">
+                    </li>
+                    <li class="req_menu_item">Delete Request<br>
+                        <img src="{{ url_for('static', filename='images/delete_icon.png') }}" alt="" class="chat_icon">
+                    </li>
+                </ul>
+                <a href="#"><button class="home_btn">Home</button></a>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+
+
+
+
+
+
+
+
+    <!--SCRIPTS-->
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script>
+        $('#user_message').on('blur', function () {
+            $('#submit_user_form').animate({
+                opacity: '1'
+            })
+        })
+
+        // INITIALIZE DATEPICKER
+
+        $('.datepicker').datepicker({
+            format: "dd mmmm, yyyy",
+            yearRange: 3,
+            showClearBtn: true,
+            i18n: {
+                done: "select"
+            }
+        });
+    </script>
+</body>
+
+</html>

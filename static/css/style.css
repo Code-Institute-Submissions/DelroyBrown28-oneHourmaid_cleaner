@@ -41,6 +41,8 @@ a:focus {
         display: flex;
     }
 
+    /*------ MAIN PAGE ------*/
+
     .main_title {
         display: flex;
         flex-flow: column;
@@ -59,6 +61,7 @@ a:focus {
         font-weight: 400;
         font-family: 'Oswald', sans-serif;
         font-size: 25px;
+        z-index: 2000;
         text-align: center;
 
     }
@@ -74,7 +77,7 @@ a:focus {
     /*---ANALOG CLOCK---*/
 
     .analog_clock {
-        height: 85vh;
+        height: 100vh;
         width: 100%;
         display: flex;
         align-items: center;
@@ -84,14 +87,12 @@ a:focus {
     }
 
     .clock {
-        width: 250px;
-        height: 250px;
+        width: 100%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 50%;
-
-        background: #b45f194d;
+        background: #b45f1931;
         z-index: 3;
 
     }
@@ -116,6 +117,7 @@ a:focus {
     .hr {
         width: 160px;
         height: 160px;
+
     }
 
     .clock_minute,
@@ -144,7 +146,7 @@ a:focus {
         position: absolute;
         width: 8px;
         height: 80px;
-        background: #b45f19;
+        background: #544F43;
         z-index: 10;
         border-radius: 6px 6px 0 0;
     }
@@ -154,7 +156,7 @@ a:focus {
         position: absolute;
         width: 4px;
         height: 90px;
-        background: #b45f19;
+        background: #fff;
         z-index: 11;
         border-radius: 6px 6px 0 0;
     }
@@ -170,10 +172,12 @@ a:focus {
     }
 
     .digital_clock {
+        position: absolute;
+        top: 25%;
         height: 50px;
         width: 100vw;
         font-size: 16px;
-        z-index: 2;
+        z-index: 20;
         text-align: center;
 
 
@@ -215,7 +219,7 @@ a:focus {
         flex-flow: column;
         background-color: transparent;
         border: none;
-        border: 1px solid #b45f1970;
+        border: 1px solid #9c9c845d;
         color: #fff;
         font-weight: 300;
         font-size: 13px;
@@ -244,6 +248,433 @@ a:focus {
     .service_icons {
         height: 50px;
     }
+
+    /*------MAIN USERSIDE PAGE------*/
+
+    .button_wrap__ipad,
+    .services_wrap__desktop,
+    .bottom_wrap__desktop {
+        /*--hides elements from mobile view--*/
+        display: none;
+    }
+
+    #user_body {
+        overflow: hidden;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        flex-flow: column;
+
+    }
+
+
+    .userside_title {
+        color: #fff;
+        font-weight: 400;
+        font-family: 'Oswald', sans-serif;
+        font-size: 25px;
+        text-align: center;
+
+    }
+
+    .service_blurb {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+
+    /*---SERVICE CAROUSEL---*/
+
+    .slick_wrap {
+        width: 100%;
+        height: 60%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+
+
+    }
+
+    .basic_clean_wrap,
+    .deep_clean_wrap,
+    .moving_in_out_wrap {
+        width: 100%;
+        height: 100%;
+        margin-top: 11px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+        flex-flow: column;
+        -webkit-transition: 0.1s;
+        -o-transition: 0.1s;
+        transition: 0.1s;
+
+    }
+
+    .basic_clean_image,
+    .deep_clean_image,
+    .moving_in_out_image {
+        position: relative;
+        margin: auto;
+        height: 120px;
+    }
+
+    .basic_clean_title,
+    .deep_clean_title,
+    .moving_in_out_title {
+        position: relative;
+        color: #fff;
+        text-align: center;
+        font-weight: 400;
+        margin: 13px 0px;
+    }
+
+    .basic_clean_blurb,
+    .deep_clean_blurb,
+    .moving_in_out_blurb {
+        position: relative;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 200;
+        text-align: center;
+        margin: 0;
+
+    }
+
+
+    .button_wrap {
+        position: relative;
+        width: 100%;
+        height: 15%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+    }
+
+    .next_button,
+    .previous_button {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        border: none;
+
+
+    }
+
+    .next_button {
+        margin-right: 20px;
+    }
+
+    .previous_button {
+        margin-left: 20px;
+        background-color: transparent;
+
+    }
+
+    .next_arrow_icon,
+    .previous_arrow_icon {
+        height: 27px;
+        opacity: 0.3;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    .to_select_service_text {
+        color: #EDC681;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    #choice_button {
+        position: absolute;
+        width: 0px;
+        height: 75px;
+        align-self: center;
+        bottom: 19%;
+        border: none;
+        border: 2px solid #EDC681;
+        background-color: #edc58144;
+        color: #fff;
+        font-weight: 300;
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        left: 35px;
+
+        display: none;
+
+    }
+
+    .select_text {
+        display: none;
+    }
+
+    /*-------CUSTOMER DETAILS PAGE-------*/
+
+    #contact_details_body {
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        overflow: hidden;
+
+    }
+
+    /*-----TOP CONTENTS-----*/
+    .top_contents_wrapper__form {
+        position: relative;
+        width: 100%;
+        height: 10%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        align-self: flex-end;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+
+    }
+
+    .customer_details_title {
+        color: #EDC681;
+        margin: 0;
+        font-size: 22px;
+        font-weight: 200;
+
+    }
+
+    .back_button {
+        position: absolute;
+        left: 20px;
+        height: 30px;
+    }
+
+    #text_tag {
+        text-align: center;
+        width: 98px;
+        color: #fff;
+        font-size: 12px;
+        padding: 3px;
+        margin-top: 10px;
+        background-color: #b45f1993;
+    }
+
+    /*-----//  TOP CONTENTS-----*/
+
+    /*-------CUSTOMER DETAILS FORM-------*/
+
+    .form_wrap {
+        height: 90%;
+        display: flex;
+
+    }
+
+    #user_details_form {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-flow: column;
+        margin-bottom: 35px;
+    }
+
+    .customer_details_blurb {
+        color: #fff;
+        width: 85%;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    input {
+        margin-bottom: -20px !important;
+    }
+
+    .all_inputs {
+        color: #fff;
+    }
+
+    .choice_buttons {
+        display: flex;
+        margin-bottom: 15px;
+        flex-flow: row;
+        justify-content: space-evenly;
+
+
+    }
+
+    .service_choice_buttons {
+        width: 95px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        align-self: center;
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-weight: 300;
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+
+    }
+
+    #deep_clean_choice {
+        margin: 15px 0px;
+    }
+
+    .datepicker {
+        color: #EDC681;
+    }
+
+    .message_box {
+        margin: 0 auto;
+        width: 85%;
+        height: 150px;
+        margin-bottom: 25px;
+        display: flex;
+        background-color: #3b494c4d;
+        color: #fff;
+        text-align: center;
+        overflow: auto;
+
+        border: 1px solid #3B494C;
+    }
+
+    #submit_user_form {
+        position: relative;
+        width: 290px;
+        height: 45px;
+        bottom: 40px;
+        align-self: center;
+        background-color: #3B494C;
+        border: none;
+        border: 1px solid #3B494C;
+        color: #fff;
+        font-weight: 300;
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        opacity: 0.3;
+
+    }
+
+    .request_flash_messagess {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        background-color: #fff;
+    }
+
+    .flash_text {
+        color: #000;
+        font-size: 22px;
+        font-weight: 500;
+        margin: 10px;
+    }
+
+    .menu_wrap {
+        width: 85%;
+        height: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+    }
+
+    .request_sent_menu {
+        height: 85%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-flow: column;
+
+
+    }
+
+    .req_menu_item {
+        width: 100%;
+        font-weight: 300;
+        font-size: 20px;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+    }
+
+    .chat_icon {
+        height: 80px;
+        margin-top: 10px;
+    }
+
+    .home_btn {
+        width: 290px;
+        height: 45px;
+        color: #fff;
+        font-weight: 300;
+        font-size: 20px;
+        font-family: 'Lato', sans-serif;
+
+        background-color: #3b494c60;
+        border: 1px solid #3B494C;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*-------SIGN IN PAGE-------*/
@@ -720,5 +1151,10 @@ a:focus {
 }
 
 .service_cards:active {
+    box-shadow: none;
+}
+
+#signin_btn:active,
+#request_btn:active {
     box-shadow: none;
 }

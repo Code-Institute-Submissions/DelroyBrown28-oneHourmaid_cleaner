@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oneHourmaid</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick-theme.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body id="user_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+
+
+    <!--TOP CONTENTS-->
+    <div class="top_contents_wrapper">
+        <h3 class="userside_title">oneHourmaid</h3>
+    </div>
+    <!--TOP CONTENTS //-->
+
+    <p class="service_blurb">Select the service that best suits<br>your cleaning needs</p>
+
+
+    <!--CENTER CONTENTS (mobile and ipad)-->
+    <div class="slick_wrap">
+        <div class="basic_clean_wrap" data-value="Basic Clean">
+            <img class="basic_clean_image" src="{{ url_for('static', filename='images/basiclean_mop.png') }}" alt="">
+            <h1 class="basic_clean_title">OneHourmaid's<br>Basic Clean</h1>
+            <p class="basic_clean_blurb">
+                Our Basic Clean consists of your general in<br>
+                home clean, including washing
+                dishes,<br>vacuuming throughout<br>
+                (or specific rooms) mopping of kitchen,<br>
+                wooden or ceramic floors.
+            </p>
+        </div>
+
+        <div class="deep_clean_wrap" data-value="Deep Clean">
+            <img class="deep_clean_image" src="{{ url_for('static', filename='images/deepclean_image.png') }}" alt="">
+            <h1 class="deep_clean_title">OneHourmaid's<br>Deep Clean</h1>
+            <p class="deep_clean_blurb">
+                Our Deep Clean consists of pulling out and<br>
+                cleaning behind “white goods” i.e
+                Washing<br>Maschines, Regridgerators, Cookers or any<br>heavy goods with in the house. We
+                also<br>provide the
+                choice of
+                deep
+                carpet and oven<br>cleans.
+            </p>
+        </div>
+
+        <div class="moving_in_out_wrap" data-value="Moving In/Out">
+            <img class="moving_in_out_image" src="/static/images/movinginout.png" alt="">
+            <h1 class="moving_in_out_title">Property<br>Moving In/Out</h1>
+            <p class="moving_in_out_blurb">
+                If you’re moving in to a new house<br>
+                and would like to ensure the property is<br>
+                clean tidy and ready for your arrival,<br>
+                OneHourmaid provide
+                moving
+                in service to<br>
+                make sure your new home is beautifully<br>
+                clean and ready for you.
+            </p>
+        </div>
+    </div>
+
+
+    <a href="{{ url_for('send_info') }}">
+        <button id="choice_button">
+            <span class="select_text">Tap to select</span>
+        </button>
+    </a>
+    <!--CENTER CONTENTS (mobile and ipad) //-->
+
+    <!--CENTER CONTENTS (desktop)-->
+    <div class="services_wrap__desktop">
+
+        <div class="basic_clean_wrap__desktop" data-value="Basic Clean">
+            <img src="/static/images/basiclean_mop.png" alt="" class="basic_clean_image__desktop">
+            <h1 class="basic_clean_title__desktop">OneHourmaid's<br>Basic Clean</h1>
+            <p class="basic_clean_blurb__desktop">
+                Our Basic Clean consists of your general in<br>
+                home clean, including washing
+                dishes,<br>vacuuming throughout<br>
+                (or specific rooms) mopping of kitchen,<br>
+                wooden or ceramic floors.
+            </p>
+        </div>
+
+        <div class="deep_clean_wrap__desktop" data-value="Deep Clean">
+            <img src="/static/images/deepclean_image.png" alt="" class="deep_clean_image__desktop">
+            <h1 class="deep_clean_title__desktop">OneHourmaid's<br>Deep Clean</h1>
+            <p class="deep_clean_blurb__desktop">
+                A Deep Clean includes cleaning behind<br>“white goods”<br>i.e
+                Washing Machines, Refrigerators,<br>Ovens or any heavy goods in the home. We
+                also provide<br>the choice of deep carpet and oven cleans.
+            </p>
+        </div>
+
+        <div class="moving_in_out_wrap__desktop" data-value="Moving In/Out">
+            <img class="moving_in_out_image__desktop" src="/static/images/movinginout.png" alt="">
+            <h1 class="moving_in_out_title__desktop">Property<br>Moving In/Out</h1>
+            <p class="moving_in_out_blurb__desktop">
+                If you’re moving in to a new house<br>
+                and would like to ensure the property is<br>
+                clean tidy and ready for your arrival,<br>
+                OneHourmaid provide
+                moving
+                in service to<br>
+                make sure your new home is beautifully<br>
+                clean and ready for you on your move in date.
+            </p>
+        </div>
+    </div>
+
+    <!--PICK OPTION BUTTON-->
+
+
+
+    <!--NEXT/PREV BUTTONS-->
+    <div class="button_wrap">
+        <div class="previous_button">
+            <img src="/static/images/previous_arrow.png" alt="" class="previous_arrow_icon">
+        </div>
+        <p class="to_select_service_text">Tap arrow or swipe for services</p>
+        <div class="next_button">
+            <img src="/static/images/next_arrow.png" alt="" class="next_arrow_icon">
+        </div>
+    </div>
+
+
+    <!--NEXT/PREV BUTTONS (IPAD)-->
+    <div class="button_wrap__ipad">
+        <div class="previous_button">
+            <img src="/static/images/previous_arrow.png" alt="" class="previous_arrow_icon">
+        </div>
+        <p class="to_select_service_text__ipad">Tap arrow or swipe for services</p>
+        <div class="next_button">
+            <img src="/static/images/next_arrow.png" alt="" class="next_arrow_icon">
+        </div>
+    </div>
+    <!--// NEXT/PREV BUTTONS (IPAD)-->
+
+    <!--BOTTOM CONTENTS (desktop)-->
+    <div class="bottom_wrap__desktop">Choose a service by clicking the desired card.</div>
+    <!--// BOTTOM CONTENTS (desktop)-->
+
+    <!--SCRIPTS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="{{ url_for('static', filename='javascripts/slick.js') }}"></script>
+    <!--// SCRIPTS-->
+
+    <script>
+        // GRABS CHOSEN SERVICE AND STORES IN LOCALSTORAGE
+
+        $('.basic_clean_wrap, .basic_clean_wrap__desktop, .deep_clean_wrap, .deep_clean_wrap__desktop, .moving_in_out_wrap, .moving_in_out_wrap__desktop')
+            .on('click', function () {
+                var BasicCleanValue = $(this).attr('data-value');
+                localStorage.setItem("basicClean", BasicCleanValue);
+            });
+
+        // SLICK CAROUSEL FOR SWIPING THROUGH SERVICES...INDEX.HTML
+        $(".slick_wrap").slick({
+            infinite: false,
+            dots: false,
+            nextArrow: $('.next_button'),
+            prevArrow: $('.previous_button'),
+        });
+
+        // TAP TO SELECT BUTTON ANIMATION
+        $('.basic_clean_wrap, .deep_clean_wrap, .moving_in_out_wrap').click(function () {
+            $('#choice_button').fadeIn('fast', function () {
+                $('#choice_button').animate({
+                    width: '290px'
+                }, function () {
+                    $('.select_text').fadeIn('fast')
+                })
+            })
+        })
+    </script>
+
+</body>
+
+</html>

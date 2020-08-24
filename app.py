@@ -18,6 +18,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route("/user_main")
+def user_main():
+    return render_template("user_main.html")
+
+
 @app.route("/index")
 def index():
     return render_template("main.html")
@@ -102,6 +107,25 @@ def signin():
             return redirect(url_for("signin"))
 
     return render_template("profile.html")
+
+
+@app.route("/send_info", methods=["GET", "POST"])
+def send_info():
+    if request.method == "POST":
+        user_details = {
+            "user_name": request.form.get("user_name"),
+            "user_lname": request.form.get("user_lname"),
+            "user_contact": request.form.get("user_contact"),
+            "user_street": request.form.get("user_street"),
+            "user_postcode": request.form.get("user_postcode"),
+            "user_message": request.form.get("user_message"),
+            "user_date": request.form.get("user_date"),
+        }
+        mongo.db.user_details.insert_one(user_details)
+        flash("Request sent to cleaner")
+        return redirect(url_for("send_info"))
+    details = mongo.db.user_details.find().sort("category_name", 1)
+    return render_template("customer_details.html", user_details=details)
 
 
 # @app.route("/send_message")
