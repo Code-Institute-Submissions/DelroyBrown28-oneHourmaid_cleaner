@@ -18,6 +18,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route("/")
+def get_details():
+    user_details = list(mongo.db.user_details.find())
+    return render_template("main.html", user_details=user_details)
+
+
 @app.route("/user_main")
 def user_main():
     return render_template("user_main.html")
@@ -33,21 +39,31 @@ def cleaner_chat():
     return render_template("chat_page.html")
 
 
-@app.route("/")
-def get_details():
+@app.route("/signin_page")
+def signin_page():
+    return render_template("signin.html")
+
+
+@app.route("/profile_page/<username>", methods=["GET", "POST"])
+def profile_page(username):
     user_details = list(mongo.db.user_details.find())
-    return render_template("main.html", user_details=user_details)
-
-
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
     # Grab the session user's username from DB
     username = mongo.db.registration_details.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
-    return redirect(url_for("signin"))
+        return render_template("profile.html", user_details=user_details, username=username)
+
+
+# @app.route("/profile/<username>", methods=["GET", "POST"])
+# def profile(username):
+#     # Grab the session user's username from DB
+#     username = mongo.db.registration_details.find_one(
+#         {"username": session["user"]})["username"]
+
+#     if session["user"]:
+#         return render_template("profile.html", username=username)
+#     return redirect(url_for("signin"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -75,11 +91,6 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/signin_page")
-def signin_page():
-    return render_template("signin.html")
-
-
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
@@ -94,7 +105,7 @@ def signin():
                 session["user"] = request.form.get("username").lower()
 
                 return redirect(url_for(
-                    "profile", username=session["user"]))
+                    "profile_page", username=session["user"]))
 
             else:
                 # invalid password match
