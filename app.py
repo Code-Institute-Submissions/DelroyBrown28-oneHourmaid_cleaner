@@ -68,17 +68,6 @@ def profile_page(username):
         return render_template("profile.html", user_details=user_details, username=username)
 
 
-# @app.route("/profile/<username>", methods=["GET", "POST"])
-# def profile(username):
-#     # Grab the session user's username from DB
-#     username = mongo.db.registration_details.find_one(
-#         {"username": session["user"]})["username"]
-
-#     if session["user"]:
-#         return render_template("profile.html", username=username)
-#     return redirect(url_for("signin"))
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
