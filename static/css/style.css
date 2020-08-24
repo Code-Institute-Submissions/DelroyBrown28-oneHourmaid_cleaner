@@ -19,6 +19,11 @@ body {
     line-height: 2;
 }
 
+.no_shadow {
+    box-shadow: none !important;
+}
+
+
 a {
     text-decoration: none;
 
@@ -180,9 +185,7 @@ a:focus {
         z-index: 20;
         text-align: center;
 
-
     }
-
 
     #the_time {
         margin: 0;
@@ -237,17 +240,30 @@ a:focus {
 
     }
 
+    .serviceUseText_wrap {
+        position: absolute;
+        width: 0%;
+        height: 35px;
+        bottom: 29%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        background-color: #37454a9c;
+
+    }
+
     .service_use_text {
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #fff;
-        bottom: 26%;
         width: 100%;
         height: 35px;
         text-align: center;
-        background-color: #37454a9c;
+
+        opacity: 0;
     }
 
     .service_icons {
@@ -751,7 +767,9 @@ a:focus {
     }
 
 
-    #sign_in_btn {
+
+    #sign_in_btn,
+    #register_cleaner_btn {
         position: relative;
         display: flex;
         align-items: center;
@@ -759,27 +777,25 @@ a:focus {
         width: 290px;
         height: 50px;
         margin: 200px auto 0px;
-        background-color: transparent;
+        background-color: #3b494c3b;
         border: none;
-        border: 2px solid #9C9C84;
+        border-top: 2px solid #9c9c8463;
+        border-bottom: 2px solid #9c9c8463;
         color: #fff;
         font-weight: 300;
         font-size: 20px;
         font-family: 'Lato', sans-serif;
+        
+        
 
     }
 
-    .link_to_register {
-        color: #fff;
-        font-weight: 300;
-        font-size: 15px;
+    #register_cleaner_btn {
+        margin: 15px auto 0px;
+        background-color: #3b494c3b;
+        
+        
     }
-
-    .reg_link_text {
-        color: #9C9C84;
-
-    }
-
 
     /*-------REGISTER PAGE-------*/
 
@@ -877,6 +893,7 @@ a:focus {
         width: 100px;
         background-color: transparent;
         border: none;
+
     }
 
     .basic_clean_tag {
@@ -1153,9 +1170,9 @@ a:focus {
 
 }
 
-.service_cards:active {
+/* .service_cards:active {
     box-shadow: none;
-}
+} */
 
 #signin_btn:active,
 #request_btn:active {

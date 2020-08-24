@@ -42,13 +42,11 @@
                 <label for="password">Password</label>
             </div>
 
-            <a href="{{ url_for('signin') }}"><button type="submit" id="sign_in_btn">Sign in</button></a>
+            <div class="signin_page_btns">
+                <a href="{{ url_for('signin') }}"><button type="submit" id="sign_in_btn" class="z-depth-1">Sign in</button></a>
 
-            <div class="row">
-                <p class="center-align link_to_register">
-                    Wait! I haven't <a href="{{ url_for('register') }}"><span
-                            class="reg_link_text">registered!</span></a>
-                </p>
+                <a href="{{ url_for('register') }}"><button type="submit" id="register_cleaner_btn">Register</button></a>
+
             </div>
         </div>
     </form>

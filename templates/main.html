@@ -21,8 +21,9 @@
 <body background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
-    <p class="service_use_text">Please select your use for the service.</p>
-
+    <div class="serviceUseText_wrap">
+        <p class="service_use_text">Please select your use for the service.</p>
+    </div>
 
     <div class="main_title">
         <h3 class="title">oneHourmaid</h3>
@@ -35,7 +36,8 @@
                 <img src="/static/images/iamcleaner_icon.png" alt="" class="service_icons">
                 Cleaner Account
             </button></a>
-        <a href="{{ url_for('register') }}"> <button id="register_btn" class="service_btns z-depth-2">Register</button></a>
+        <a href="{{ url_for('register') }}"> <button id="register_btn"
+                class="service_btns z-depth-2">Register</button></a>
         <a href="{{ url_for('user_main') }}"> <button id="request_btn" class="service_btns z-depth-4">
                 <img src="/static/images/requestcleaner_icon.png" alt="" class="service_icons">
                 Request Cleaner
@@ -117,6 +119,8 @@
             mn.style.transform = `rotateZ(${mm}deg)`;
             sec.style.transform = `rotateZ(${ss}deg)`;
         }, 1000);
+
+        
     </script>
 
 </body>
