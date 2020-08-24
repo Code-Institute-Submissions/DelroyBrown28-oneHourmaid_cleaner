@@ -92,11 +92,15 @@
             <h1 class="center-align flash_text">{{ messages }}</h1>
             <div class="menu_wrap">
                 <ul class="request_sent_menu">
-                    <li class="req_menu_item">Chat with cleaner<br>
-                        <img src="{{ url_for('static', filename='images/chat_icon.png') }}" alt="" class="chat_icon">
-                    </li>
+                    <a href="{{ url_for('user_chat_page') }}">
+                        <li class="chat_with_cleaner req_menu_item">Chat with cleaner<br>
+                            <img src="{{ url_for('static', filename='images/chat_icon.png') }}" alt=""
+                                class="chat_icon">
+                        </li>
+                    </a>
                     <li class="req_menu_item">Edit Request<br>
-                        <img src="{{ url_for('static', filename='images/makeedit_icon.png') }}" alt="" class="chat_icon">
+                        <img src="{{ url_for('static', filename='images/makeedit_icon.png') }}" alt=""
+                            class="chat_icon">
                     </li>
                     <li class="req_menu_item">Delete Request<br>
                         <img src="{{ url_for('static', filename='images/delete_icon.png') }}" alt="" class="chat_icon">
@@ -119,7 +123,9 @@
 
 
     <!--SCRIPTS-->
-    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 

@@ -4,6 +4,7 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_socketio import SocketIO, emit
 # from twilio.rest import Client
 # from twilio.twiml.messaging_response import Body, Media, Message, MessagingResponse
 if os.path.exists("env.py"):
@@ -16,6 +17,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+socketio = SocketIO(app)
 
 
 @app.route("/")
@@ -39,9 +41,20 @@ def cleaner_chat():
     return render_template("chat_page.html")
 
 
+@socketio.on("my event")
+def handle_my_custom_event(json):
+    print("received something: " + str(json))
+    socketio.emit("my response", json)
+
+
 @app.route("/signin_page")
 def signin_page():
     return render_template("signin.html")
+
+
+@app.route("/user_chat_page")
+def user_chat_page():
+    return render_template("user_chat.html")
 
 
 @app.route("/profile_page/<username>", methods=["GET", "POST"])
@@ -86,7 +99,7 @@ def register():
         # put new user in to session cookie
         session["user"] = request.form.get("username_reg").lower()
         flash("Registration successful")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("signin_page", username=session["user"]))
 
     return render_template("register.html")
 
@@ -117,7 +130,7 @@ def signin():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
 
-    return render_template("profile.html")
+    return redirect(url_for("profile_page"))
 
 
 @app.route("/send_info", methods=["GET", "POST"])
@@ -165,6 +178,7 @@ def signout():
 
 
 if __name__ == "__main__":
+    socketio.run(app, debug=True)
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)
