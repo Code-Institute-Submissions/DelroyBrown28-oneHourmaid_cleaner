@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("main.html")
 
 
 @app.route("/cleaner_chat")
@@ -31,7 +31,7 @@ def cleaner_chat():
 @app.route("/")
 def get_details():
     user_details = list(mongo.db.user_details.find())
-    return render_template("index.html", user_details=user_details)
+    return render_template("main.html", user_details=user_details)
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])

@@ -21,6 +21,7 @@
 <body background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
+    <p class="service_use_text">Please select your use for the service.</p>
 
 
     <div class="main_title">
@@ -28,11 +29,16 @@
         <span class="cleaner_acc_tag">Cleaner Account</span>
     </div>
 
-
-
     <!--Sign in/Register buttons-->
     <div class="btn_wrap">
-        <a href="{{ url_for('signin_page') }}"> <button id="signin_btn">Sign in</button></a>
+        <a href="{{ url_for('signin_page') }}"> <button id="signin_btn" class="z-depth-2">
+                <img src="/static/images/iamcleaner_icon.png" alt="" class="service_icons">
+                Cleaner Account
+            </button></a>
+        <a href="#"> <button id="request_btn" class="z-depth-2">
+            <img src="/static/images/requestcleaner_icon.png" alt="" class="service_icons">
+            Request Cleaner
+        </button></a>
         <a href="{{ url_for('register') }}"> <button id="register_btn">Register</button></a>
     </div>
     <!--Analog Clock-->
@@ -54,6 +60,7 @@
         </div>
     </div>
 
+
     <section>
         <!--Flash messages-->
         {% with messages = get_flashed_messages() %}
@@ -66,8 +73,6 @@
         {% endif %}
         {% endwith %}
     </section>
-
-
 
 
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"

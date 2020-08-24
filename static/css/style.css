@@ -185,6 +185,7 @@ a:focus {
         color: #fff;
         font-size: 45px;
         font-weight: 300;
+
     }
 
 
@@ -197,31 +198,51 @@ a:focus {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        flex-flow: column;
+        flex-flow: row;
         bottom: 8%;
-
 
     }
 
     #signin_btn,
-    #register_btn {
+    #register_btn,
+    #request_btn {
         position: relative;
-        width: 290px;
-        height: 50px;
-        background: transparent;
+        width: calc(290px / 3);
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-flow: column;
+        background-color: transparent;
         border: none;
-        border: 2px solid #9C9C84;
+        border: 1px solid #b45f1970;
         color: #fff;
         font-weight: 300;
-        font-size: 20px;
+        font-size: 13px;
         font-family: 'Lato', sans-serif;
         z-index: 100;
 
     }
 
+    #register_btn {
+        font-size: 20px;
+    }
+
     .signin {
         width: 100%;
 
+    }
+
+    .service_use_text {
+        position: absolute;
+        color: #fff;
+        bottom: 27%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .service_icons {
+        height: 50px;
     }
 
 
@@ -660,8 +681,9 @@ a:focus {
     .message_wrapper {
         height: 60%;
         padding: 5px;
+        overflow: auto;
 
-        border: 1px solid white;
+
     }
 
     .user_bbl {
