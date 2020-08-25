@@ -935,7 +935,7 @@ a:focus {
     }
 
     .flash_text {
-        color: #fff;
+        color: #000;
         font-size: 22px;
         font-weight: 300;
         line-height: 2 !important;
