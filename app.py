@@ -5,8 +5,6 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_socketio import SocketIO, emit
-# from twilio.rest import Client
-# from twilio.twiml.messaging_response import Body, Media, Message, MessagingResponse
 if os.path.exists("env.py"):
     import env
 
@@ -140,22 +138,6 @@ def send_info():
     details = mongo.db.user_details.find().sort("category_name", 1)
     return render_template("customer_details.html", user_details=details)
 
-
-# @app.route("/send_message")
-# def send_message():
-#     render_template("chat_page.html")
-#     account_sid = os.environ["TWILIO_ACCOUNT_SID"]
-#     auth_token = os.environ["TWILIO_AUTH_TOKEN"]
-
-#     client = Client(account_sid, auth_token)
-
-#     client.messages.create(
-#         to=os.environ["MY_PHONE_NUMBER"],
-#         from_="+447576111597",
-#         body="Hi!"
-#     )
-
-#     return render_template("chat_page.html")
 
 
 @app.route("/signout")
