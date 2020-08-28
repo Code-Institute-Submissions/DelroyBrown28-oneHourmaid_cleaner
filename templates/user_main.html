@@ -74,7 +74,12 @@
 
 
     <a href="{{ url_for('send_info') }}">
-        <button id="choice_button">
+        <button id="basic_clean_button">
+            <span class="select_text">Tap to select</span>
+        </button>
+    </a>
+    <a href="{{ url_for('deep_clean') }}">
+        <button id="deep_clean_button">
             <span class="select_text">Tap to select</span>
         </button>
     </a>
@@ -180,9 +185,18 @@
         });
 
         // TAP TO SELECT BUTTON ANIMATION
-        $('.basic_clean_wrap, .deep_clean_wrap, .moving_in_out_wrap').click(function () {
-            $('#choice_button').fadeIn('fast', function () {
-                $('#choice_button').animate({
+        $('.basic_clean_wrap').click(function () {
+            $('#basic_clean_button').fadeIn('fast', function () {
+                $('#basic_clean_button').animate({
+                    width: '290px'
+                }, function () {
+                    $('.select_text').fadeIn('fast')
+                })
+            })
+        })
+        $('.deep_clean_wrap').click(function () {
+            $('#deep_clean_button').fadeIn('fast', function () {
+                $('#deep_clean_button').animate({
                     width: '290px'
                 }, function () {
                     $('.select_text').fadeIn('fast')

@@ -13,17 +13,17 @@
 
 </head>
 
-<body id="contact_details_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+<body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
     <!--TOP CONTENTS-->
-    <div class="top_contents_wrapper__form">
-        <img src="{{ url_for('static', filename='images/arrowleft.png') }}" alt="" class="back_button">
+    <div class="top_contents_wrapper__basiclean">
         <h1 class="customer_details_title">Customer Request Details</h1>
+        <p class="customer_details_blurb">Please
+            fill out the form below and give a short description of your cleaning needs.</p>
+    
+    
     </div>
-
-    <p class="customer_details_blurb">We'll need a few details before we can send a cleaner to your house. Please
-        fill out the form below and give a short description of your cleaning needs.</p>
 
 
     <span id="text_tag">Basic Clean</span>
@@ -33,7 +33,7 @@
 
     
     <div class="row form_wrap">
-        <form class="col s12" id="user_details_form" method="POST">
+        <form class="col s12" id="basicClean_details_form" method="POST">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="submit_user_form" class="z-depth-3">Request Cleaner</button>
+            <button type="submit" id="submit_basicclean_form" class="z-depth-3">Request Cleaner</button>
         </form>
     </div>
 
@@ -133,7 +133,7 @@
 
     <script>
         $('#user_message').on('blur', function () {
-            $('#submit_user_form').animate({
+            $('#submit_basiclean_form').animate({
                 opacity: '1'
             })
         })

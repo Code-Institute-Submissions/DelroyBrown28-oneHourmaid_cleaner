@@ -55,6 +55,11 @@ def user_chat_page():
     return render_template("user_chat.html")
 
 
+@app.route("/deep_clean")
+def deep_clean():
+    return render_template("deep_clean_details.html")
+
+
 @app.route("/profile_page/<username>", methods=["GET", "POST"])
 def profile_page(username):
     user_details = list(mongo.db.user_details.find())
@@ -136,7 +141,7 @@ def send_info():
         flash("Request sent to cleaner")
         return redirect(url_for("send_info"))
     details = mongo.db.user_details.find().sort("category_name", 1)
-    return render_template("customer_details.html", user_details=details)
+    return render_template("basic_clean_details.html", user_details=details)
 
 
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
