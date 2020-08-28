@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oneHourmaid - Customer Details</title>
+    <title>oneHourmaid - Edit Customer Details</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -19,21 +19,14 @@
     <!--TOP CONTENTS-->
     <div class="top_contents_wrapper__form">
         <img src="{{ url_for('static', filename='images/arrowleft.png') }}" alt="" class="back_button">
-        <h1 class="customer_details_title">Customer Request Details</h1>
+        <h1 class="customer_details_title">Edit Request</h1>
     </div>
-
-    <p class="customer_details_blurb">We'll need a few details before we can send a cleaner to your house. Please
-        fill out the form below and give a short description of your cleaning needs.</p>
-
-
-    <span id="text_tag">Basic Clean</span>
 
 
     <!--CUSTOMER DETAILS AND REQUEST FORM-->
 
-    
     <div class="row form_wrap">
-        <form class="col s12" id="user_details_form" method="POST">
+        <form class="col s12" id="user_details_form" method="POST" action="{{ url_for('edit_request', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
@@ -79,50 +72,11 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="submit_user_form" class="z-depth-3">Request Cleaner</button>
+            <button type="submit" id="submit_user_form" class="z-depth-3">Edit Request</button>
         </form>
     </div>
 
-    <section>
-        <!--Flash messages-->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for messages in messages %}
-        <div class="row flashes request_flash_messagess z-depth-2">
-            <h1 class="center-align flash_text">{{ messages }}</h1>
-            <div class="menu_wrap">
-                <ul class="request_sent_menu">
-                    <a href="{{ url_for('user_chat_page') }}">
-                        <li class="chat_with_cleaner req_menu_item">Chat with cleaner<br>
-                            <img src="{{ url_for('static', filename='images/chat_icon.png') }}" alt=""
-                                class="chat_icon">
-                        </li>
-                    </a>
-                    <a href="{{ url_for('edit_request', request_id=request._id) }}">
-                        <li class="req_menu_item">Edit Request<br>
-                            <img src="{{ url_for('static', filename='images/makeedit_icon.png') }}" alt=""
-                                class="chat_icon">
-                        </li>
-                    </a>
-                    <li class="req_menu_item">Delete Request<br>
-                        <img src="{{ url_for('static', filename='images/delete_icon.png') }}" alt="" class="chat_icon">
-                    </li>
-                </ul>
-                <a href="#"><button class="home_btn">Home</button></a>
-
-            </div>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </section>
-
-
-
-
-
-
-
+   
 
     <!--SCRIPTS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"

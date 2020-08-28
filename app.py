@@ -117,7 +117,7 @@ def signin():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
 
-    return redirect(url_for("profile_page"))
+    return redirect(url_for("signin"))
 
 
 @app.route("/send_info", methods=["GET", "POST"])
@@ -138,6 +138,12 @@ def send_info():
     details = mongo.db.user_details.find().sort("category_name", 1)
     return render_template("customer_details.html", user_details=details)
 
+
+@app.route("/edit_request/<request_id>", methods=["GET", "POST"])
+def edit_request(request_id):
+    request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
+    details = mongo.db.user_details.find().sort("user_details", 1)
+    return render_template("edit_customer_details.html", details=request)
 
 
 @app.route("/signout")
