@@ -1119,9 +1119,71 @@ a:focus {
 
     }
 
+    .job_card {
+        width: 290px;
+        height: 45px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #3B494C;
+        color: #fff;
+
+
+    }
+
+    .pending_jobs_wrap {
+        overflow: auto;
+        height: 220px;
+        margin-bottom: 10px;
+
+
+    }
+
+
+    .request_name_header {
+        color: #fff;
+        text-align: center;
+    }
+
+    .request_info_wrap {
+        /* border: 1px solid red; */
+    }
+
+    .request_info_card {
+        background-color: #3B494C;
+    }
+
+    .request_info {
+        color: #fff;
+        margin: 0;
+        text-align: center;
+    }
+
+    .request_title {
+        font-weight: 600;
+    }
+
+
     .info_headers {
         font-weight: 600;
         /* text-decoration: underline; */
+    }
+
+    .job_card_btn_wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .replyto_btn {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #000;
     }
 
     .respond_to_user {
@@ -1148,14 +1210,6 @@ a:focus {
         background-color: #9c9c84a2;
         border: none;
     }
-
-    .request_info {
-        color: #fff;
-        background-color: #161D1C;
-        text-align: center;
-    }
-
-
 
     .sign_out_btn {
         width: 290px;

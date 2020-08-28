@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.modal').modal();
     $('.collapsible').collapsible();
     $('.tooltipped').tooltip();
     $('select').formSelect();
