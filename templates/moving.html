@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving In/Out</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+    <!--TOP CONTENTS-->
+    <div class="top_contents_wrapper__basiclean">
+        <h1 class="customer_details_title">Moving In/Out</h1>
+        <p class="customer_details_blurb">Please let us know the address of the property you would like us to visit,
+            along with a short description of your cleaning needs</p>
+
+
+    </div>
+
+
+    <span id="text_tag">Moving In/Out</span>
+
+    
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Autocomplete</label>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+
+
+    <!--CUSTOMER DETAILS AND REQUEST FORM-->
+
+
+   
+
+
+
+
+
+
+
+
+    <!--SCRIPTS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+
+    <script>
+        $('#user_message').on('blur', function () {
+            $('#submit_basiclean_form').animate({
+                opacity: '1'
+            })
+        })
+
+        // INITIALIZE DATEPICKER
+
+        $('.datepicker').datepicker({
+            format: "dd mmmm, yyyy",
+            yearRange: 3,
+            showClearBtn: true,
+            i18n: {
+                done: "select"
+            }
+        });
+    </script>
+</body>
+
+</html>

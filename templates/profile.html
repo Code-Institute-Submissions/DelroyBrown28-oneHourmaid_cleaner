@@ -95,13 +95,20 @@
                         Number:</span><br>{{ user_details.user_contact }}</p><br>
                 <p class="request_info"><span class="request_title">Requested
                         Date:</span><br>{{ user_details.user_date }}</p><br>
+                <div class="deep_clean_section">
+                    <p class="request_info" style="color: #000;"><span class="request_title">Deep Clean
+                            for:</span><br>{{ user_details.carpet_clean }}<br>{{ user_details.floor_steam }}<br>
+                        {{ user_details.white_goods }}<br>{{ user_details.window_clean }}
+                    </p>
+                </div><br>
                 <hr style="margin: 0;">
                 <p class="request_info"><span class="request_title">Customer
                         Message:</span><br>{{ user_details.user_message }}</p>
 
             </div>
             <div class="modal-footer job_card_btn_wrap">
-                <a href="{{ url_for('cleaner_chat') }}" class="modal-close replyto_btn">Reply to {{ user_details.user_name }}</a>
+                <a href="{{ url_for('cleaner_chat') }}" class="modal-close replyto_btn">Reply to
+                    {{ user_details.user_name }}</a>
             </div>
         </div>
         {% endfor %}

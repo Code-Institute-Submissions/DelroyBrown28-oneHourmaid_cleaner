@@ -445,7 +445,8 @@ a:focus {
     }
 
     #basic_clean_button,
-    #deep_clean_button {
+    #deep_clean_button,
+    #moving_button {
         position: absolute;
         width: 0px;
         height: 75px;
@@ -553,6 +554,7 @@ a:focus {
     .all_inputs {
         color: #fff;
     }
+
 
     .choice_buttons {
         display: flex;
@@ -1147,7 +1149,7 @@ a:focus {
     }
 
     .request_info_wrap {
-        /* border: 1px solid red; */
+        height: 100% !important;
     }
 
     .request_info_card {
@@ -1164,6 +1166,12 @@ a:focus {
         font-weight: 600;
     }
 
+    .deep_clean_section {
+        width: 100%;
+        background-color: #fff;
+
+      
+    }
 
     .info_headers {
         font-weight: 600;
@@ -1174,6 +1182,7 @@ a:focus {
         display: flex;
         align-items: center;
         justify-content: center;
+        /* height: 15% !important; */
     }
 
     .replyto_btn {

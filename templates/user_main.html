@@ -83,6 +83,11 @@
             <span class="select_text">Tap to select</span>
         </button>
     </a>
+    <a href="{{ url_for('moving_in_out') }}">
+        <button id="moving_button">
+            <span class="select_text">Tap to select</span>
+        </button>
+    </a>
     <!--CENTER CONTENTS (mobile and ipad) //-->
 
     <!--CENTER CONTENTS (desktop)-->
@@ -197,6 +202,15 @@
         $('.deep_clean_wrap').click(function () {
             $('#deep_clean_button').fadeIn('fast', function () {
                 $('#deep_clean_button').animate({
+                    width: '290px'
+                }, function () {
+                    $('.select_text').fadeIn('fast')
+                })
+            })
+        })
+        $('.moving_in_out_wrap').click(function () {
+            $('#moving_button').fadeIn('fast', function () {
+                $('#moving_button').animate({
                     width: '290px'
                 }, function () {
                     $('.select_text').fadeIn('fast')

@@ -60,6 +60,11 @@ def deep_clean():
     return render_template("deep_clean_details.html")
 
 
+@app.route("/moving_in_out")
+def moving_in_out():
+    return render_template("moving.html")
+
+
 @app.route("/profile_page/<username>", methods=["GET", "POST"])
 def profile_page(username):
     user_details = list(mongo.db.user_details.find())
