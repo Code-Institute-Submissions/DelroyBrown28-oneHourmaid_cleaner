@@ -30,20 +30,20 @@
 
 
   <div class="row moving_form_wrap">
-    <form class="col s12 moving_form">
+    <form class="col s12 moving_form" method="POST" action="{{ url_for('moving_info') }}">
       <div class="row">
         <div class="input-field col s6">
           <input type="text" id="street_moving" name="street_moving" class="moving_form_inputs autocomplete">
-          <label for="street_moving">Street name/number</label>
+          <label for="street_moving">Street name/no.</label>
         </div>
         <div class="input-field col s6">
           <input type="text" id="postcode_moving" name="postcode_moving" class="moving_form_inputs autocomplete">
           <label for="postcode_moving">Postcode</label>
         </div>
         <div class="input-field col s12">
-          <input id="movingdate_moving" name="movingdate_moving" minlength="5" maxlength="50" type="text"
+          <input id="date_moving" name="date_moving" minlength="5" maxlength="50" type="text"
             class="datepicker validate">
-          <label for="movingdate_moving">Moving date</label>
+          <label for="date_moving">Moving date</label>
         </div>
         <div class="input-field col s6">
           <input type="text" id="name_moving" name="name_moving" class="moving_form_inputs autocomplete">
@@ -59,7 +59,7 @@
           <div class="moving_in_wrap">
             <span class="moving_text">Moving In?</span>
             <label class="moving_in_check z-depth-2">
-              <input type="checkbox" />
+              <input type="checkbox" name="moving_in" value="Moving In" />
               <span class="icon_checkbox">
                 <img src="/static/images/moving_truck_icon.png" alt="" class="moving_in_icon">
               </span>
@@ -69,7 +69,7 @@
           <div class="moving_out_wrap">
             <span class="moving_text">Moving Out?</span>
             <label class="moving_out_check z-depth-2">
-              <input type="checkbox" />
+              <input type="checkbox" name="moving_out" value="Moving Out"/>
               <span class="icon_checkbox">
                 <img src="/static/images/moving_truck_icon.png" alt="" class="moving_out_icon">
               </span>

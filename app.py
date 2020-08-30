@@ -177,6 +177,25 @@ def deep_clean_info():
     return render_template("deep_clean_details.html", user_details=details)
 
 
+@app.route("/moving_info", methods=["GET", "POST"])
+def moving_info():
+    if request.method == "POST":
+        moving_details = {
+            "street_moving": request.form.get("street_moving"),
+            "postcode_moving": request.form.get("postcode_moving"),
+            "date_moving": request.form.get("date_moving"),
+            "name_moving": request.form.get("name_moving"),
+            "contact_moving": request.form.get("contact_moving"),
+            "moving_in": request.form.get("moving_in"),
+            "moving_out": request.form.get("moving_out")
+        }
+        mongo.db.moving_details.insert_one(moving_details)
+        flash("Request sent to cleaner")
+        return redirect(url_for("moving_info"))
+    details_moving = mongo.db.moving_details.find().sort("moving_details", 1)
+    return render_template("moving_confirmation.html", moving_details=details_moving)
+
+
 # @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
 # def edit_request(request_id):
 #     request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
