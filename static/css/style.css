@@ -512,7 +512,7 @@ a:focus {
         color: #fff;
         font-size: 12px;
         padding: 3px;
-        margin-top: 10px;
+        margin: 20px 0px;
         background-color: #b45f1993;
     }
 
@@ -618,7 +618,6 @@ a:focus {
         font-weight: 300;
         font-size: 18px;
         font-family: 'Lato', sans-serif;
-        opacity: 0.3;
 
     }
 
@@ -732,6 +731,94 @@ a:focus {
     #submit_deepclean_form {
         height: 45px;
     }
+
+    /*-------MOVING IN/OUT PAGE-------*/
+
+    .moving_form_wrap {
+        height: 90%;
+        width: 85%;
+
+    }
+
+    .moving_form {
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .moving_checkbox {
+        width: 100%;
+        height: 120px;
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+
+    .moving_in_wrap,
+    .moving_out_wrap {
+        height: 150px;
+        width: 90px;
+        position: relative;
+        margin-top: 35px;
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+
+    .moving_in_check,
+    .moving_out_check {
+        position: absolute;
+        width: 90px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        align-self: flex-end;
+        border: 1px solid #9c9c847c;
+        overflow: hidden;
+
+
+    }
+
+
+    .moving_text {
+        width: 100%;
+        color: #fff;
+        font-weight: 300;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .moving_in_icon,
+    .moving_out_icon {
+        position: relative;
+        height: 30px;
+    }
+
+    .moving_out_icon {
+        left: -85px;
+
+    }
+
+    #submit_moving_form {
+        position: absolute;
+        bottom: 15%;
+        width: 290px;
+        height: 50px;
+        background-color: transparent;
+        background-color: #3B494C;
+        border: none;
+        color: #fff;
+        font-weight: 300;
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+
+    }
+
+
+
+
 
 
 
@@ -1170,7 +1257,7 @@ a:focus {
         width: 100%;
         background-color: #fff;
 
-      
+
     }
 
     .info_headers {

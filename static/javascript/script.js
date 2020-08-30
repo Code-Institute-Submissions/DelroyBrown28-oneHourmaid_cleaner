@@ -38,11 +38,11 @@ $(document).ready(function () {
 
 
     // Service use text animation (main.html)
-    
-    setTimeout(function() {
+
+    setTimeout(function () {
         $('.serviceUseText_wrap').animate({
             width: '100%'
-        }, function() {
+        }, function () {
             $('.service_use_text').animate({
                 opacity: '1'
             })
@@ -50,6 +50,28 @@ $(document).ready(function () {
 
     }, 1000)
 
+
+    // MOVING IN/OUT ICON ANIMATION
+
+    $('.moving_out_check').click(function () {
+        $('.moving_in_icon').animate({
+            left: '50px'
+        }, 300, function() {
+            $('.moving_out_icon').animate({
+                left: '0px'
+            })
+        })
+    })
+
+    $('.moving_in_check').click(function () {
+        $('.moving_out_icon').animate({
+            left: '-85px'
+        }, 300, function() {
+            $('.moving_in_icon').animate({
+                left: '0px'
+            })
+        })
+    })
 
 
 

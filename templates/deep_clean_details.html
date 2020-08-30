@@ -109,6 +109,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for messages in messages %}
+        {% for user_details in user_details %}
         <div class="row flashes request_flash_messagess z-depth-2">
             <h1 class="center-align flash_text">{{ messages }}</h1>
             <div class="menu_wrap">
@@ -133,6 +134,7 @@
 
             </div>
         </div>
+        {% endfor %}
         {% endfor %}
         {% endif %}
         {% endwith %}

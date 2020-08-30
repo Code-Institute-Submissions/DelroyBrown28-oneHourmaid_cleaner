@@ -2,83 +2,116 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moving In/Out</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving In/Out</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
 </head>
 
 <body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
-    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+  style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
-    <!--TOP CONTENTS-->
-    <div class="top_contents_wrapper__basiclean">
-        <h1 class="customer_details_title">Moving In/Out</h1>
-        <p class="customer_details_blurb">Please let us know the address of the property you would like us to visit,
-            along with a short description of your cleaning needs</p>
-
-
-    </div>
+  <!--TOP CONTENTS-->
+  <div class="top_contents_wrapper__basiclean">
+    <h1 class="customer_details_title">Moving In/Out</h1>
+    <p class="customer_details_blurb">Please let us know the address of the property you would like us to visit,
+      along with a short description of your cleaning needs</p>
 
 
-    <span id="text_tag">Moving In/Out</span>
+  </div>
 
-    
-  <div class="row">
-    <div class="col s12">
+
+  <span id="text_tag">Moving In/Out</span>
+
+
+  <div class="row moving_form_wrap">
+    <form class="col s12 moving_form">
       <div class="row">
+        <div class="input-field col s6">
+          <input type="text" id="street_moving" name="street_moving" class="moving_form_inputs autocomplete">
+          <label for="street_moving">Street name/number</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" id="postcode_moving" name="postcode_moving" class="moving_form_inputs autocomplete">
+          <label for="postcode_moving">Postcode</label>
+        </div>
         <div class="input-field col s12">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Autocomplete</label>
+          <input id="movingdate_moving" name="movingdate_moving" minlength="5" maxlength="50" type="text"
+            class="datepicker validate">
+          <label for="movingdate_moving">Moving date</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" id="name_moving" name="name_moving" class="moving_form_inputs autocomplete">
+          <label for="name_moving">Your name</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" id="contact_moving" name="contact_moving" class="moving_form_inputs autocomplete">
+          <label for="contact_moving">Contact number</label>
+        </div>
+
+        <div class="moving_checkbox">
+
+          <div class="moving_in_wrap">
+            <span class="moving_text">Moving In?</span>
+            <label class="moving_in_check z-depth-2">
+              <input type="checkbox" />
+              <span class="icon_checkbox">
+                <img src="/static/images/moving_truck_icon.png" alt="" class="moving_in_icon">
+              </span>
+            </label>
+          </div>
+
+          <div class="moving_out_wrap">
+            <span class="moving_text">Moving Out?</span>
+            <label class="moving_out_check z-depth-2">
+              <input type="checkbox" />
+              <span class="icon_checkbox">
+                <img src="/static/images/moving_truck_icon.png" alt="" class="moving_out_icon">
+              </span>
+            </label>
+          </div>
+
         </div>
       </div>
-    </div>
+      <button type="submit" id="submit_moving_form" class="z-depth-3">Request Cleaner</button>
+
+    </form>
+
   </div>
-        
-
-
-    <!--CUSTOMER DETAILS AND REQUEST FORM-->
-
-
-   
 
 
 
 
+  <!--SCRIPTS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
 
+  <script>
+    $('#user_message').on('blur', function () {
+      $('#submit_basiclean_form').animate({
+        opacity: '1'
+      })
+    })
 
+    // INITIALIZE DATEPICKER
 
-
-    <!--SCRIPTS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
-
-    <script>
-        $('#user_message').on('blur', function () {
-            $('#submit_basiclean_form').animate({
-                opacity: '1'
-            })
-        })
-
-        // INITIALIZE DATEPICKER
-
-        $('.datepicker').datepicker({
-            format: "dd mmmm, yyyy",
-            yearRange: 3,
-            showClearBtn: true,
-            i18n: {
-                done: "select"
-            }
-        });
-    </script>
+    $('.datepicker').datepicker({
+      format: "dd mmmm, yyyy",
+      yearRange: 3,
+      showClearBtn: true,
+      i18n: {
+        done: "select"
+      }
+    });
+  </script>
 </body>
 
 </html>
