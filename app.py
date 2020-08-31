@@ -20,8 +20,8 @@ socketio = SocketIO(app)
 
 @app.route("/")
 def get_details():
-    user_details = list(mongo.db.user_details.find())
-    return render_template("main.html", user_details=user_details)
+    # user_details = list(mongo.db.user_details.find())
+    return render_template("main.html")
 
 
 @app.route("/user_main")
