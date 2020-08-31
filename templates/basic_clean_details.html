@@ -90,26 +90,19 @@
         {% for messages in messages %}
         <div class="row flashes request_flash_messagess z-depth-2">
             <h1 class="center-align flash_text">{{ messages }}</h1>
-            <div class="menu_wrap">
-                <ul class="request_sent_menu">
-                    <a href="{{ url_for('user_chat_page') }}">
-                        <li class="chat_with_cleaner req_menu_item">Chat with cleaner<br>
-                            <img src="{{ url_for('static', filename='images/chat_icon.png') }}" alt=""
-                                class="chat_icon">
-                        </li>
-                    </a>
-                    <a href="{{ url_for('edit_request', request_id=request._id) }}">
-                        <li class="req_menu_item">Edit Request<br>
-                            <img src="{{ url_for('static', filename='images/makeedit_icon.png') }}" alt=""
-                                class="chat_icon">
-                        </li>
-                    </a>
-                    <li class="req_menu_item">Delete Request<br>
-                        <img src="{{ url_for('static', filename='images/delete_icon.png') }}" alt="" class="chat_icon">
-                    </li>
-                </ul>
-                <a href="#"><button class="home_btn">Home</button></a>
 
+            <div class="flash_request_btns">
+                <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
+                    <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">    
+                        Edit
+                    </button>
+                </a>
+                <button class="flash_btns z-depth-2">
+                    <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt="" class="flash_icons">
+                    Delete</button>
+                <button class="flash_btns z-depth-2">
+                    <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
+                    Exit</button>
             </div>
         </div>
         {% endfor %}

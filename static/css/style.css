@@ -607,6 +607,9 @@ a:focus {
     #submit_basicclean_form,
     #submit_deepclean_form {
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 290px;
         height: 45px;
         bottom: 40px;
@@ -621,15 +624,16 @@ a:focus {
 
     }
 
+
     .request_flash_messagess {
         position: absolute;
         width: 100%;
-        height: 100%;
-        top: 0;
+        height: 25%;
+        bottom: 0;
         left: 0;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         flex-flow: column;
         background-color: #fff;
     }
@@ -637,60 +641,36 @@ a:focus {
     .flash_text {
         color: #000;
         font-size: 22px;
-        font-weight: 500;
-        margin: 10px;
+        font-weight: bolder;
+        
     }
 
-    .menu_wrap {
-        width: 85%;
-        height: 95%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-
-    }
-
-    .request_sent_menu {
-        height: 85%;
+    .flash_request_btns {
         width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .flash_btns {
+        width: 90px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        flex-flow: column;
-
-
-    }
-
-    .req_menu_item {
-        width: 100%;
-        font-weight: 300;
-        font-size: 20px;
-        color: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-        z-index: 12;
-
-    }
-
-    .chat_icon {
-        height: 80px;
-        margin-top: 10px;
-    }
-
-    .home_btn {
-        width: 290px;
-        height: 45px;
+        background-color: #3B494C;
+        border: none;
         color: #fff;
         font-weight: 300;
-        font-size: 20px;
+        font-size: 13px;
         font-family: 'Lato', sans-serif;
 
-        background-color: #3b494c60;
-        border: 1px solid #3B494C;
+
     }
+
+    .flash_icons {
+        height: 20px;
+    }
+
 
 
     /*-------DEEP CLEAN REQUEST PAGE-------*/
