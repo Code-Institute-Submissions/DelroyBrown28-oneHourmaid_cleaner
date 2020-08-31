@@ -4,7 +4,7 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_socketio import SocketIO, emit
+# from flask_socketio import SocketIO, emit
 if os.path.exists("env.py"):
     import env
 
@@ -15,13 +15,13 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-socketio = SocketIO(app)
+# socketio = SocketIO(app)
 
 
-@socketio.on("my event")
-def handle_my_custom_event(json):
-    print("received something: " + str(json))
-    socketio.emit("my response", json)
+# @socketio.on("my event")
+# def handle_my_custom_event(json):
+#     print("received something: " + str(json))
+#     socketio.emit("my response", json)
 
 
 @app.route("/")
@@ -222,7 +222,7 @@ def signout():
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    # socketio.run(app, debug=True)
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)
