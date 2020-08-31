@@ -66,25 +66,30 @@
                 </div>
             </div>
 
-            <p class="deep_clean_text">Please pick a specific Deep Clean. Or, for more specific requests, leave a message in the comment field below</p>
+            <p class="deep_clean_text">Please pick a specific Deep Clean. Or, for more specific requests, leave a
+                message in the comment field below</p>
             <div class="checkbox_wrap">
                 <div class="checkboxes_1">
                     <label>
-                        <input id="indeterminate-checkbox carpet_clean" name="carpet_clean" value="Carpet Clean" type="checkbox" />
+                        <input id="indeterminate-checkbox carpet_clean" name="carpet_clean" value="Carpet Clean"
+                            type="checkbox" />
                         <span>Carpet Clean</span>
                     </label>
                     <label>
-                        <input id="indeterminate-checkbox floor_steam" name="floor_steam" value="Floor Steam" type="checkbox" />
+                        <input id="indeterminate-checkbox floor_steam" name="floor_steam" value="Floor Steam"
+                            type="checkbox" />
                         <span>Floor Steam</span>
                     </label>
                 </div>
                 <div class="checkboxes_2">
                     <label>
-                        <input id="indeterminate-checkbox white_goods" name="white_goods" value="White Goods" type="checkbox" />
+                        <input id="indeterminate-checkbox white_goods" name="white_goods" value="White Goods"
+                            type="checkbox" />
                         <span>White Goods</span>
                     </label>
                     <label>
-                        <input id="indeterminate-checkbox window_clean" name="window_clean" value="Window Clean" type="checkbox" />
+                        <input id="indeterminate-checkbox window_clean" name="window_clean" value="Window Clean"
+                            type="checkbox" />
                         <span>Windows</span>
                     </label>
                 </div>
@@ -109,32 +114,24 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for messages in messages %}
-        {% for user_details in user_details %}
         <div class="row flashes request_flash_messagess z-depth-2">
             <h1 class="center-align flash_text">{{ messages }}</h1>
-            <div class="menu_wrap">
-                <ul class="request_sent_menu">
-                    <a href="{{ url_for('user_chat_page') }}">
-                        <li class="chat_with_cleaner req_menu_item">Chat with cleaner<br>
-                            <img src="{{ url_for('static', filename='images/chat_icon.png') }}" alt=""
-                                class="chat_icon">
-                        </li>
-                    </a>
-                    <a href="{{ url_for('edit_request', request_id=request._id) }}">
-                        <li class="req_menu_item">Edit Request<br>
-                            <img src="{{ url_for('static', filename='images/makeedit_icon.png') }}" alt=""
-                                class="chat_icon">
-                        </li>
-                    </a>
-                    <li class="req_menu_item">Delete Request<br>
-                        <img src="{{ url_for('static', filename='images/delete_icon.png') }}" alt="" class="chat_icon">
-                    </li>
-                </ul>
-                <a href="#"><button class="home_btn">Home</button></a>
 
+            <div class="flash_request_btns">
+                <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
+                        <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
+                        Edit
+                    </button>
+                </a>
+                <button class="flash_btns z-depth-2">
+                    <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
+                        class="flash_icons">
+                    Delete</button>
+                <button class="flash_btns z-depth-2">
+                    <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
+                    Exit</button>
             </div>
         </div>
-        {% endfor %}
         {% endfor %}
         {% endif %}
         {% endwith %}

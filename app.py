@@ -40,9 +40,9 @@ def index():
     return render_template("main.html")
 
 
-@app.route("/cleaner_chat")
-def cleaner_chat():
-    return render_template("chat_page.html")
+# @app.route("/cleaner_chat")
+# def cleaner_chat():
+#     return render_template("chat_page.html")
 
 
 @app.route("/signin_page")
@@ -50,9 +50,9 @@ def signin_page():
     return render_template("signin.html")
 
 
-@app.route("/user_chat_page")
-def user_chat_page():
-    return render_template("user_chat.html")
+# @app.route("/user_chat_page")
+# def user_chat_page():
+#     return render_template("user_chat.html")
 
 
 @app.route("/deep_clean")
@@ -63,11 +63,6 @@ def deep_clean():
 @app.route("/moving_in_out")
 def moving_in_out():
     return render_template("moving.html")
-
-
-@app.route("/edit_request_page")
-def edit_request_page():
-    return render_template("edit_request.html")
 
 
 # @app.errorhandler(404)

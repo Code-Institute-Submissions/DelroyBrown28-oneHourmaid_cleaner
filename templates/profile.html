@@ -36,7 +36,10 @@
 
     </div>
 
-    <!--Pending Jobs-->
+
+               
+
+    <!-- Pending Jobs-->
     <p class="pending_jobs_blurb">Below are your pending jobs.<br>Tap on a task to view more details and respond<br>to
         a request.</p>
 
@@ -44,52 +47,17 @@
         <span id="amount_pend_jobs">4</span>
     </p>
 
-    <!-- <ul class="collapsible popout pending_jobs">
-        {% for user_details in user_details %}
-        <li>
-            <div class="collapsible-header request_item_header">
-                <i class="fas fa-comment-dots"></i>
-                {{ user_details.user_name }} {{ user_details.user_lname }}
-
-            </div>
-
-            <div class="collapsible-body request_info">
-                <div class="row">
-                    <span class="row info_headers">Address:<br>
-                        <span class="light_text info_text" id="customer_address">
-                            {{ user_details.user_street }}</span>
-                    </span><br>
-                    <span class="info_headers">Contact Number:<br>
-                        <span class="light_text info_text" id="customer_contact">{{ user_details.user_contact }}</span>
-                    </span><br>
-                </div>
-                <span class="info_headers row customer_request_style">Customer Request:<br>
-                    <span class="light_text italic_text" id="customer_request">{{ user_details.user_message }}</span>
-                </span><br>
-                <span class="info_headers">Cleaning Date:<br>
-                    <span class="light_text italic_text" id="customer_request">{{ user_details.user_date }}</span>
-                </span><br>
-                <a href="{{ url_for('cleaner_chat') }}"><button class="respond_to_user">Respond to
-                        {{ user_details.user_name }}?</button></a>
-
-                     
-
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-                -->
-
-
-
     <div class="pending_jobs_wrap">
         {% for user_details in user_details %}
         <a class="job_card modal-trigger" href="#modal1"> {{ user_details.user_name }} {{ user_details.user_lname }}</a>
+        {% endfor %}
+        {% for user_details in user_details %}
 
         <div id="modal1" class="modal request_info_wrap">
-            <div class="modal-content request_info_card">
-                <h4 class="request_name_header">{{ user_details.user_name }} {{ user_details.user_lname }}</h4>
 
+            <div class="modal-content request_info_card">
+
+                <h4 class="request_name_header">{{ user_details.user_name }} {{ user_details.user_lname }}</h4>
                 <p class="request_info"><span class="request_title">Request
                         Address:</span><br>{{ user_details.user_street }}<br>{{ user_details.user_postcode }}</p><br>
                 <p class="request_info"><span class="request_title">Contect
@@ -108,11 +76,13 @@
 
             </div>
             <div class="modal-footer job_card_btn_wrap">
-                <a href="{{ url_for('cleaner_chat') }}" class="modal-close replyto_btn">Reply to
+                <a href="#" class="modal-close replyto_btn">Reply to
                     {{ user_details.user_name }}</a>
             </div>
+
         </div>
         {% endfor %}
+
 
     </div>
     <a href="{{ url_for('index') }}"><button class="sign_out_btn">Sign out</button></a>
