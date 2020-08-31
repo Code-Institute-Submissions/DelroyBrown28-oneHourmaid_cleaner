@@ -18,6 +18,12 @@ mongo = PyMongo(app)
 socketio = SocketIO(app)
 
 
+@socketio.on("my event")
+def handle_my_custom_event(json):
+    print("received something: " + str(json))
+    socketio.emit("my response", json)
+
+
 @app.route("/")
 def get_details():
     # user_details = list(mongo.db.user_details.find())
@@ -37,12 +43,6 @@ def index():
 @app.route("/cleaner_chat")
 def cleaner_chat():
     return render_template("chat_page.html")
-
-
-@socketio.on("my event")
-def handle_my_custom_event(json):
-    print("received something: " + str(json))
-    socketio.emit("my response", json)
 
 
 @app.route("/signin_page")
