@@ -56,7 +56,7 @@ $(document).ready(function () {
     $('.moving_out_check').click(function () {
         $('.moving_in_icon').animate({
             left: '50px'
-        }, 300, function() {
+        }, 300, function () {
             $('.moving_out_icon').animate({
                 left: '0px'
             })
@@ -66,13 +66,13 @@ $(document).ready(function () {
     $('.moving_in_check').click(function () {
         $('.moving_out_icon').animate({
             left: '-85px'
-        }, 300, function() {
+        }, 300, function () {
             $('.moving_in_icon').animate({
                 left: '0px'
             })
         })
     })
 
-
+  
 
 });

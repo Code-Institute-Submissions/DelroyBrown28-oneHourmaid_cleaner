@@ -65,9 +65,14 @@ def moving_in_out():
     return render_template("moving.html")
 
 
-@app.errorhandler(404)
-def invalid_page(e):
-    return render_template("404.html")
+@app.route("/edit_request_page")
+def edit_request_page():
+    return render_template("edit_request.html")
+
+
+# @app.errorhandler(404)
+# def invalid_page(e):
+#     return render_template("404.html")
 
 
 @app.route("/profile_page/<username>", methods=["GET", "POST"])
@@ -190,7 +195,6 @@ def moving_info():
             "moving_out": request.form.get("moving_out")
         }
         mongo.db.moving_details.insert_one(moving_details)
-        flash("Request sent to cleaner")
         return redirect(url_for("moving_info"))
     details_moving = mongo.db.moving_details.find().sort("moving_details", 1)
     return render_template("moving_confirmation.html", moving_details=details_moving)
