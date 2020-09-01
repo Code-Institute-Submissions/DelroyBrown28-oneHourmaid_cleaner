@@ -48,11 +48,8 @@
     </p>
 
     <div class="pending_jobs_wrap">
-        {% for user_details in user_details %}
+        {% for user_details in user_details: %}
         <a class="job_card modal-trigger" href="#modal1"> {{ user_details.user_name }} {{ user_details.user_lname }}</a>
-        {% endfor %}
-        {% for user_details in user_details %}
-
         <div id="modal1" class="modal request_info_wrap">
 
             <div class="modal-content request_info_card">
