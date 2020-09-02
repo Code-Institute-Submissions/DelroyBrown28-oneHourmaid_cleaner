@@ -16,12 +16,12 @@
 <body id="user_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
-    <!--Received message box-->
-    <div class="msg_box_wrap">
-        <div class="msg_box">
-            <span class="msg_amount">1</span>
+    <a href="{{ url_for('index') }}">
+        <div class="back_btn" style="z-index: 100;">
+            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon">
         </div>
-    </div>
+    </a>
+
 
 
 

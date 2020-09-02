@@ -670,7 +670,7 @@ a:focus {
         color: #000;
         font-size: 22px;
         font-weight: bolder;
-        
+
     }
 
     .flash_request_btns {
@@ -897,6 +897,39 @@ a:focus {
         align-items: center;
         justify-content: center;
     }
+
+    .back_btn,
+    .back_btn_smaller {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        width: 75px;
+        height: 30px;
+
+        /* border: 1px solid red; */
+
+    }
+
+    .back_btn_smaller  {
+        top: 12px;
+
+    }
+
+    .home_icon_smaller {
+        position: absolute;
+        height: 25px;
+        left: 20%;
+    }
+
+    .home_icon {
+        position: absolute;
+        height: 30px;
+        left: 30%;
+    }
+
 
     .title_blurb {
         color: #fff;

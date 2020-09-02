@@ -193,9 +193,11 @@ def moving_info():
             "moving_out": request.form.get("moving_out")
         }
         mongo.db.moving_details.insert_one(moving_details)
+        flash("Request sent to cleaner")
         return redirect(url_for("moving_info"))
     details_moving = mongo.db.moving_details.find().sort("moving_details", 1)
-    return render_template("moving_confirmation.html", moving_details=details_moving)
+
+    return render_template("moving.html", moving_details=details_moving)
 
 
 # @app.route("/edit_request/<request_id>", methods=["GET", "POST"])

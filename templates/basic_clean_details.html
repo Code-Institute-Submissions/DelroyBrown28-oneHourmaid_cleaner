@@ -11,13 +11,19 @@
 <body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
+
+    <a href="{{ url_for('user_main') }}">
+        <div class="back_btn_smaller" style="z-index: 100;">
+            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon_smaller">
+        </div>
+    </a>
+
+
     <!--TOP CONTENTS-->
     <div class="top_contents_wrapper__basiclean">
         <h1 class="customer_details_title">Customer Request Details</h1>
         <p class="customer_details_blurb">Please
             fill out the form below and give a short description of your cleaning needs.</p>
-
-
     </div>
 
 
@@ -25,7 +31,6 @@
 
 
     <!--CUSTOMER DETAILS AND REQUEST FORM-->
-
 
     <div class="row form_wrap">
         <form class="col s12" id="basicClean_details_form" method="POST">

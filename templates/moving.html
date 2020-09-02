@@ -13,11 +13,18 @@
 <body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
   style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
+
+  <a href="{{ url_for('user_main') }}">
+    <div class="back_btn_smaller" style="z-index: 100;">
+      <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon_smaller">
+    </div>
+  </a>
+
+
   <!--TOP CONTENTS-->
   <div class="top_contents_wrapper__basiclean">
     <h1 class="customer_details_title">Moving In/Out</h1>
-    <p class="customer_details_blurb">Please let us know the address of the property you would like us to visit,
-      along with a short description of your cleaning needs</p>
+    <p class="customer_details_blurb">Please let us know the address of the property you would like us to visit.</p>
 
 
   </div>
@@ -81,6 +88,36 @@
 
   </div>
 
+  <section>
+    <!--Flash messages-->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for messages in messages %}
+    <div class="row flashes request_flash_messagess z-depth-2">
+      <h1 class="center-align flash_text">{{ messages }}</h1>
+
+      <div class="flash_request_btns">
+        <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
+            <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
+            Edit
+          </button>
+        </a>
+        <button class="flash_btns z-depth-2">
+          <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt="" class="flash_icons">
+          Delete</button>
+        <a href="{{ url_for('index') }}">
+          <button class="flash_btns z-depth-2">
+            <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
+            Exit</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </section>
+
+
 
 
 
@@ -105,7 +142,6 @@
         done: "select"
       }
     });
-
   </script>
 </body>
 

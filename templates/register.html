@@ -13,6 +13,13 @@
 <body id="registerBody" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
+    <a href="{{ url_for('index') }}">
+        <div class="back_btn" style="z-index: 100;">
+            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon">
+        </div>
+    </a>
+
+
 
     <div class="main_title">
         <h3 class="title">oneHourmaid</h3>
@@ -105,6 +112,15 @@
 
 
     {% include 'components/scripts.html' %}
+
+    <script>
+        var username_input = document.getElementById("username_reg");
+        if (username_input = "") {
+            document.getElementById("submit_reg_form_btn").disabled = true;
+        } else {
+            document.getElementById("submit_reg_form_btn").disabled = false;
+        }
+    </script>
 
 
 </body>
