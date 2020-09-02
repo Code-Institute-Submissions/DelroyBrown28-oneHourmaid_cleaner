@@ -289,6 +289,34 @@ a:focus {
 
     }
 
+    .msg_box_wrap {
+        width: 70px;
+        height: 70px;
+        display: flex;
+
+    }
+
+    .msg_box {
+        position: relative;
+        width: 75%;
+        height: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom-right-radius: 100px;
+        background-color: #b45f19;
+
+    }
+
+    .msg_amount {
+        position: absolute;
+        left: 15px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+
+    }
+
 
     .userside_title {
         color: #fff;
@@ -841,7 +869,11 @@ a:focus {
         text-align: center;
     }
 
+    /*-------REPLY TO REQUEST PAGE-------*/
 
+    .send_request_text {
+        color: #fff;
+    }
 
 
 
@@ -1209,7 +1241,7 @@ a:focus {
 
     .pending_jobs_text {
         color: #fff;
-        margin: 0;
+        margin: 0 0 10px 0;
         opacity: 0.7;
         font-size: 20px;
         display: flex;

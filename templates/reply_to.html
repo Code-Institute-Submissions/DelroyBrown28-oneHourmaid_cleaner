@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply To Request</title>
+    {% include 'components/head.html' %}
+
+
+</head>
+
+<body id="accountBody" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+
+    <div class="top_contents_account">
+        <h3 class="account_title">OneHourmaid</h3>
+        <span class="cleaner_acc_tag">Reply To Request</span>
+    </div>
+
+
+    <!--User's avatar-->
+    <div class="avatar_wrap">
+        <div class="avatar_border">
+            <img src="/static/images/fake_avatar.png" alt="" class="avatar">
+        </div>
+        <span id="username_display">{{ username }}</span>
+
+    </div>
+
+    <p class="send_request_text">Send a quick confirmation message to Gemma</p>
+
+    <!--MESSAGE BOX-->
+
+    
+
+
+
+    {% include 'components/scripts.html' %}
+
+
+</body>
+
+</html>

@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" href="{{ url_for('static', filename='/images/favicon.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    {% include 'components/head.html' %}
+
 
 </head>
 
@@ -32,7 +29,6 @@
         <p class="moving_detail">{{ moving_details.street_moving }}<br>
             {{ moving_details.postcode_moving }}
         </p>
-        <!-- <hr style="width: 290px; opacity: 0.7;"> -->
         <h5 class="movingInOut">Date needed for clean</h5>
         <p class="moving_detail">{{ moving_details.date_moving }}</p>
         {% endfor %}
@@ -41,11 +37,8 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+    {% include 'components/scripts.html' %}
+
 
 </body>
 

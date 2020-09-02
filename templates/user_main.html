@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>oneHourmaid</title>
-    <link rel="icon" href="{{ url_for('static', filename='/images/favicon.png') }}" type="image/x-icon">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/oHmfavicon.png') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/slick-theme.css') }}" type="text/css">
@@ -17,6 +15,13 @@
 
 <body id="user_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+    <!--Received message box-->
+    <div class="msg_box_wrap">
+        <div class="msg_box">
+            <span class="msg_amount">1</span>
+        </div>
+    </div>
 
 
 
@@ -162,13 +167,26 @@
 
     <!--BOTTOM CONTENTS (desktop)-->
     <div class="bottom_wrap__desktop">Choose a service by clicking the desired card.</div>
-    <!--// BOTTOM CONTENTS (desktop)-->
+
+
+
+    <section>
+        <!--Flash messages-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for messages in messages %}
+        <div class="row flashes request_flash_messagess z-depth-2">
+            <h1 class="center-align flash_text">{{ messages }}</h1>
+
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
 
     <!--SCRIPTS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+    {% include 'components/scripts.html' %}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="{{ url_for('static', filename='javascripts/slick.js') }}"></script>
     <!--// SCRIPTS-->
