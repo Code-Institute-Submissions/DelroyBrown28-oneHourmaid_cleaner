@@ -23,7 +23,7 @@
 
     <!--TOP CONTENTS-->
     <div class="top_contents_wrapper__deepclean">
-        <h1 class="customer_details_title">Deep Clean Request</h1>
+        <h1 class="customer_details_title">{{ title }}</h1>
         <p class="customer_details_blurb">Please give us your Deep Clean details.</p>
 
     </div>
@@ -132,9 +132,11 @@
                     <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
                         class="flash_icons">
                     Delete</button>
-                <button class="flash_btns z-depth-2">
-                    <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
-                    Exit</button>
+                <a href="{{ url_for('index') }}">
+                    <button class="flash_btns z-depth-2">
+                        <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
+                        Exit</button>
+                </a>
             </div>
         </div>
         {% endfor %}

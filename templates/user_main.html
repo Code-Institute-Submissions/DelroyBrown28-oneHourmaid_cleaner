@@ -170,23 +170,9 @@
 
 
 
-    <section>
-        <!--Flash messages-->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for messages in messages %}
-        <div class="row flashes request_flash_messagess z-depth-2">
-            <h1 class="center-align flash_text">{{ messages }}</h1>
-
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </section>
 
     <!--SCRIPTS-->
     {% include 'components/scripts.html' %}
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="{{ url_for('static', filename='javascripts/slick.js') }}"></script>
     <!--// SCRIPTS-->

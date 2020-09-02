@@ -15,19 +15,12 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-# socketio = SocketIO(app)
-
-
-# @socketio.on("my event")
-# def handle_my_custom_event(json):
-#     print("received something: " + str(json))
-#     socketio.emit("my response", json)
 
 
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("main.html")
+    return render_template("main.html", title='oneHourmaid')
 
 
 @app.route("/user_main")
@@ -35,29 +28,19 @@ def user_main():
     return render_template("user_main.html")
 
 
-# @app.route("/cleaner_chat")
-# def cleaner_chat():
-#     return render_template("chat_page.html")
-
-
 @app.route("/signin_page")
 def signin_page():
-    return render_template("signin.html")
-
-
-# @app.route("/user_chat_page")
-# def user_chat_page():
-#     return render_template("user_chat.html")
+    return render_template("signin.html", title='oneHourmaid')
 
 
 @app.route("/deep_clean")
 def deep_clean():
-    return render_template("deep_clean_details.html")
+    return render_template("deep_clean_details.html", title='Deep Clean Request')
 
 
 @app.route("/moving_in_out")
 def moving_in_out():
-    return render_template("moving.html")
+    return render_template("moving.html", title='Moving In/Out')
 
 
 @app.route("/reply_to")
@@ -81,7 +64,8 @@ def profile_page(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", user_details=user_details, moving_details=moving_details, username=username)
+        return render_template("profile.html", title='oneHourmaid', user_details=user_details,
+                               moving_details=moving_details, username=username)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -106,7 +90,7 @@ def register():
         flash("Registration successful")
         return redirect(url_for("signin_page", username=session["user"]))
 
-    return render_template("register.html")
+    return render_template("register.html", title='oneHourmaid')
 
 
 @app.route("/signin", methods=["GET", "POST"])
@@ -154,7 +138,7 @@ def basic_clean_info():
         flash("Request sent to cleaner")
         return redirect(url_for("basic_clean_info"))
     details = mongo.db.user_details.find().sort("user_details", 1)
-    return render_template("basic_clean_details.html", user_details=details)
+    return render_template("basic_clean_details.html", user_details=details, title='Request Details')
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
@@ -177,7 +161,7 @@ def deep_clean_info():
         flash("Request sent to cleaner")
         return redirect(url_for("deep_clean_info"))
     details = mongo.db.user_details.find().sort("user_details", 1)
-    return render_template("deep_clean_details.html", user_detail=details)
+    return render_template("deep_clean_details.html", user_detail=details, title='Deep Clean Request')
 
 
 @app.route("/moving_info", methods=["GET", "POST"])
