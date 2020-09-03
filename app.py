@@ -23,14 +23,19 @@ def index():
     return render_template("main.html", title='oneHourmaid')
 
 
-@app.route("/user_main")
-def user_main():
-    return render_template("user_main.html")
+@app.route("/services")
+def services():
+    return render_template("services.html")
 
 
-@app.route("/signin_page")
-def signin_page():
-    return render_template("signin.html", title='oneHourmaid')
+@app.route("/cleaner_account")
+def cleaner_account():
+    basic_clean_details = list(mongo.db.basic_clean_details.find())
+    deep_clean_details = list(mongo.db.deep_clean_details.find())
+    moving_details = list(mongo.db.moving_details.find())
+
+    return render_template("cleaner_account.html", title='oneHourmaid', basic_clean_details=basic_clean_details,
+                           deep_clean_details=deep_clean_details)
 
 
 @app.route("/deep_clean")
