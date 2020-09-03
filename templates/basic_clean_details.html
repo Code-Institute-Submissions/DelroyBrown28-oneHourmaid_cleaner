@@ -93,16 +93,19 @@
 
             <div class="flash_request_btns">
                 <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
-                    <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">    
+                        <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
                         Edit
                     </button>
                 </a>
                 <button class="flash_btns z-depth-2">
-                    <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt="" class="flash_icons">
+                    <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
+                        class="flash_icons">
                     Delete</button>
-                <button class="flash_btns z-depth-2">
-                    <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
-                    Exit</button>
+                <a href="{{ url_for('user_main') }}">
+                    <button class="flash_btns z-depth-2">
+                        <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
+                        Exit</button>
+                </a>
             </div>
         </div>
         {% endfor %}

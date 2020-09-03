@@ -57,15 +57,16 @@ def reply_to():
 
 @app.route("/profile_page/<username>", methods=["GET", "POST"])
 def profile_page(username):
-    user_details = list(mongo.db.user_details.find())
+    basic_clean_details = list(mongo.db.basic_clean_details.find())
+    deep_clean_details = list(mongo.db.deep_clean_details.find())
     moving_details = list(mongo.db.moving_details.find())
     # Grab the session user's username from DB
     username = mongo.db.registration_details.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", title='oneHourmaid', user_details=user_details,
-                               moving_details=moving_details, username=username)
+        return render_template("profile.html", title='oneHourmaid', basic_clean_details=basic_clean_details,
+                               moving_details=moving_details, username=username, deep_clean_details=deep_clean_details)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -125,7 +126,7 @@ def signin():
 @app.route("/basic_clean_info", methods=["GET", "POST"])
 def basic_clean_info():
     if request.method == "POST":
-        user_details = {
+        basic_clean_details = {
             "user_name": request.form.get("user_name"),
             "user_lname": request.form.get("user_lname"),
             "user_contact": request.form.get("user_contact"),
@@ -134,17 +135,17 @@ def basic_clean_info():
             "user_message": request.form.get("user_message"),
             "user_date": request.form.get("user_date"),
         }
-        mongo.db.user_details.insert_one(user_details)
+        mongo.db.basic_clean_details.insert_one(basic_clean_details)
         flash("Request sent to cleaner")
         return redirect(url_for("basic_clean_info"))
-    details = mongo.db.user_details.find().sort("user_details", 1)
-    return render_template("basic_clean_details.html", user_details=details, title='Request Details')
+    details = mongo.db.basic_clean_details.find().sort("basic_clean_details", 1)
+    return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
 def deep_clean_info():
     if request.method == "POST":
-        user_detail = {
+        deep_clean_details = {
             "user_name": request.form.get("user_name"),
             "user_lname": request.form.get("user_lname"),
             "user_contact": request.form.get("user_contact"),
@@ -157,11 +158,11 @@ def deep_clean_info():
             "white_goods": request.form.get("white_goods"),
             "window_clean": request.form.get("window_clean"),
         }
-        mongo.db.user_details.insert_one(user_detail)
+        mongo.db.deep_clean_details.insert_one(deep_clean_details)
         flash("Request sent to cleaner")
         return redirect(url_for("deep_clean_info"))
-    details = mongo.db.user_details.find().sort("user_details", 1)
-    return render_template("deep_clean_details.html", user_detail=details, title='Deep Clean Request')
+    details = mongo.db.deep_clean_details.find().sort("deep_clean_details", 1)
+    return render_template("deep_clean_details.html", deep_clean_details=details, title='Deep Clean Request')
 
 
 @app.route("/moving_info", methods=["GET", "POST"])

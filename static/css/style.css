@@ -913,7 +913,7 @@ a:focus {
 
     }
 
-    .back_btn_smaller  {
+    .back_btn_smaller {
         top: 12px;
 
     }
@@ -1180,7 +1180,7 @@ a:focus {
         margin: 0 !important;
     }
 
-    /*-------CLEANER ACCOUNT PAGE-------*/
+    /*-------PROFILE PAGE-------*/
 
     #accountBody {
         height: 100vh;
@@ -1283,9 +1283,6 @@ a:focus {
         flex-flow: column;
     }
 
-    #amount_pend_jobs {
-        font-size: 30px;
-    }
 
     .pending_jobs {
         width: 94%;
@@ -1299,6 +1296,7 @@ a:focus {
     }
 
     .job_card {
+        position: relative;
         width: 290px;
         height: 45px;
         margin-bottom: 5px;
@@ -1308,8 +1306,80 @@ a:focus {
         background-color: #3B494C;
         color: #fff;
 
+    }
+
+    .deep_clean_card {
+        position: relative;
+        background-color: #3B494C;
 
     }
+
+    .deep_clean_tag {
+        position: absolute;
+        right: 5px;
+        width: 65px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+        padding: 1px 5px;
+        background-color: #9C9C84;
+
+    }
+
+    .basic_clean_tag {
+        position: absolute;
+        right: 5px;
+        width: 65px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+        padding: 1px 5px;
+        background-color: #b45f19;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     .pending_jobs_wrap {
         overflow: auto;
@@ -1327,10 +1397,13 @@ a:focus {
 
     .request_info_wrap {
         height: 100% !important;
+
     }
 
     .request_info_card {
         background-color: #3B494C;
+        height: 89%;
+
     }
 
     .request_info {
@@ -1356,10 +1429,12 @@ a:focus {
     }
 
     .job_card_btn_wrap {
+        height: 15%;
         display: flex;
         align-items: center;
         justify-content: center;
         /* height: 15% !important; */
+
     }
 
     .replyto_btn {
@@ -1370,23 +1445,9 @@ a:focus {
         justify-content: center;
         font-size: 18px;
         color: #000;
-    }
-
-    .respond_to_user {
-        width: 100%;
-        height: 45px;
-        color: #fff;
-        background-color: #9C9C84;
-        border: none;
-        margin-top: 15px;
-        color: #fff;
-        font-weight: 300;
-        font-size: 20px;
-        font-family: 'Lato', sans-serif;
-
-
 
     }
+
 
     .request_item_header {
         display: flex;
