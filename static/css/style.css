@@ -1530,9 +1530,119 @@ a:focus {
 
 }
 
-/* .service_cards:active {
-    box-shadow: none;
-} */
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slick_wrap {
+        margin-top: 200px;
+    }
+
+    .button_wrap__ipad {
+        margin-bottom: 0;
+    }
+
+
+    /*---TOP CONTENTS---*/
+    .top_contents_wrapper {
+        height: 15%;
+
+    }
+
+
+    /*---//  TOP CONTENTS---*/
+    /*---SERVICE CONTENTS---*/
+
+    .services_wrap__desktop {
+        width: 100%;
+        height: 70%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+
+
+    }
+
+    .basic_clean_wrap__desktop,
+    .deep_clean_wrap__desktop,
+    .moving_in_out_wrap__desktop {
+        width: 33.33%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+        flex-flow: column;
+        cursor: pointer;
+        opacity: 0;
+        border-radius: 0px;
+        background: linear-gradient(145deg, #16242d, #131f26);
+        box-shadow: 5px 5px 10px #142027,
+            -5px -5px 10px #16242d;
+    }
+
+    .basic_clean_title__desktop,
+    .deep_clean_title__desktop,
+    .moving_in_out_title__desktop {
+        color: #fff;
+        text-align: center;
+        font-size: 2em;
+    }
+
+    .basic_clean_blurb__desktop,
+    .deep_clean_blurb__desktop,
+    .moving_in_out_blurb__desktop {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 200;
+        text-align: center;
+        margin: 0;
+    }
+
+    /*---//  SERVICE CONTENTS---*/
+    /*---BOTTOM DESKTOP CONTENTS---*/
+    .bottom_wrap__desktop {
+        width: 100%;
+        height: 15%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        color: #fff;
+        opacity: 0;
+
+    }
+
+    /*---//  BOTTOM DESKTOP CONTENTS---*/
+
+
+}
+
 
 #signin_btn:active,
 #request_btn:active {
