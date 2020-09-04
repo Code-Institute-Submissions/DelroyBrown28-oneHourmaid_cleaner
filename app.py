@@ -141,10 +141,17 @@ def basic_clean_info():
             "user_date": request.form.get("user_date"),
         }
         mongo.db.basic_clean_details.insert_one(basic_clean_details)
-        flash("Request sent to cleaner")
+        # flash("Request sent to cleaner")
         return redirect(url_for("basic_clean_info"))
     details = mongo.db.basic_clean_details.find().sort("basic_clean_details", 1)
     return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
+
+
+@app.route("/edit_request/<request_id>", methods=["GET", "POST"])
+def edit_request(request_id):
+    request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
+    return render_template("edit_request.html", request=request)
+
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
@@ -197,10 +204,10 @@ def moving_info():
 #     return render_template("deep_clean_details.html", request=request, details=details)
 
 
-@app.route("/edit_request/<request_id>", methods=["GET", "POST"])
-def edit_request(request_id):
-    request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
-    return render_template("edit_request.html", request=request)
+# @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
+# def edit_request(request_id):
+#     request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
+#     return render_template("edit_request.html", request=request)
 
 
 @app.route("/signout")

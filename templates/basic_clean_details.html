@@ -33,7 +33,7 @@
     <!--CUSTOMER DETAILS AND REQUEST FORM-->
 
     <div class="row form_wrap">
-        <form class="col s12" id="basicClean_details_form" method="POST">
+        <form class="col s12" id="basicClean_details_form" method="POST" action="{{ url_for('edit_request', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
@@ -83,7 +83,7 @@
         </form>
     </div>
 
-    <section>
+    <section class="flash_wrap">
         <!--Flash messages-->
         {% with messages = get_flashed_messages() %}
         {% if messages %}

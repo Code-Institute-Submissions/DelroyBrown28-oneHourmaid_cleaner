@@ -4,26 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oneHourmaid - Edit Customer Details</title>
+    <title>oneHourmaid - Edit Details</title>
     {% include 'components/head.html' %}
-
-
 </head>
 
-<body id="contact_details_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+<body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
+
+    <a href="{{ url_for('services') }}">
+        <div class="back_btn_smaller" style="z-index: 100;">
+            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon_smaller">
+        </div>
+    </a>
+
+
     <!--TOP CONTENTS-->
-    <div class="top_contents_wrapper__form">
-        <img src="{{ url_for('static', filename='images/arrowleft.png') }}" alt="" class="back_button">
-        <h1 class="customer_details_title">Edit Request</h1>
+    <div class="top_contents_wrapper__basiclean">
+        <h1 class="customer_details_title">{{ title }}</h1>
+        <p class="customer_details_blurb">Please
+            fill out the form below and give a short description of your cleaning needs.</p>
     </div>
+
+
+    <span id="text_tag">Basic Clean</span>
 
 
     <!--CUSTOMER DETAILS AND REQUEST FORM-->
 
     <div class="row form_wrap">
-        <form class="col s12" id="user_details_form" method="POST">
+        <form class="col s12" id="basicClean_details_form" method="GET" action="{{ url_for('edit_request', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
@@ -69,17 +79,50 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="submit_user_form" class="z-depth-3">Edit Request</button>
+            <button type="submit" id="submit_basicclean_form" class="z-depth-3">Edit Request</button>
         </form>
     </div>
 
-   
+    <section class="flash_wrap">
+        <!--Flash messages-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for messages in messages %}
+        <div class="row flashes request_flash_messagess z-depth-2">
+            <h1 class="center-align flash_text">{{ messages }}</h1>
+
+            <div class="flash_request_btns">
+                <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
+                        <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
+                        Edit
+                    </button>
+                </a>
+                <button class="flash_btns z-depth-2">
+                    <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
+                        class="flash_icons">
+                    Delete</button>
+                <a href="{{ url_for('services') }}">
+                    <button class="flash_btns z-depth-2">
+                        <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
+                        Exit</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+
 
     <!--SCRIPTS-->
-    {% include 'components/script.html' %}
-
+    {% include 'components/scripts.html' %}
 
     <script>
+        $('#user_message').on('blur', function () {
+            $('#submit_basiclean_form').animate({
+                opacity: '1'
+            })
+        })
 
         // INITIALIZE DATEPICKER
 
