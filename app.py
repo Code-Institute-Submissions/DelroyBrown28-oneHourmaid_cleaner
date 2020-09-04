@@ -151,7 +151,8 @@ def basic_clean_info():
 def edit_request(request_id):
     if request.method == "POST":
         return redirect(url_for("index"))
-    request_info = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
+    request_info = mongo.db.basic_clean_details.find_one(
+        {"_id": ObjectId(request_id)})
     return render_template("edit_request.html", request=request_info)
 
 
