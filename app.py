@@ -28,6 +28,11 @@ def services():
     return render_template("services.html")
 
 
+@app.route("/basic_clean_page")
+def basic_clean_page():
+    return render_template("basic_clean_details.html")
+
+
 @app.route("/cleaner_account")
 def cleaner_account():
     basic_clean_details = list(mongo.db.basic_clean_details.find())
@@ -74,60 +79,6 @@ def profile_page(username):
                                moving_details=moving_details, username=username, deep_clean_details=deep_clean_details)
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        # check if username from form already exists in DB
-        existing_user = mongo.db.registration_details.find_one(
-            {"username": request.form.get("username_reg").lower()})
-
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("register"))
-
-        register = {
-            "username": request.form.get("username_reg").lower(),
-            "password": generate_password_hash(request.form.get("password_reg"))
-        }
-        mongo.db.registration_details.insert_one(register)
-
-        # put new user in to session cookie
-        session["user"] = request.form.get("username_reg").lower()
-        flash("Registration successful")
-        return redirect(url_for("signin_page", username=session["user"]))
-
-    return render_template("register.html", title='oneHourmaid')
-
-
-@app.route("/signin", methods=["GET", "POST"])
-def signin():
-    if request.method == "POST":
-        # check if username exists in DB
-        existing_user = mongo.db.registration_details.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            # ensure hashed password matches user input
-            if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-
-                return redirect(url_for(
-                    "profile_page", username=session["user"]))
-
-            else:
-                # invalid password match
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("signin"))
-
-        else:
-            # username doesn't exist
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("signin"))
-
-    return redirect(url_for("signin"))
-
-
 @app.route("/basic_clean_info", methods=["GET", "POST"])
 def basic_clean_info():
     if request.method == "POST":
@@ -141,16 +92,40 @@ def basic_clean_info():
             "user_date": request.form.get("user_date"),
         }
         mongo.db.basic_clean_details.insert_one(basic_clean_details)
-        # flash("Request sent to cleaner")
+        flash("Request sent to cleaner")
         return redirect(url_for("basic_clean_info"))
     details = mongo.db.basic_clean_details.find().sort("basic_clean_details", 1)
     return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
 
 
+@app.route("/view_request/<request_id>", methods=["GET"])
+def view_request(request_id):
+    request_info = mongo.db.basic_clean_details.find_one(
+        {"_id": ObjectId(request_id)})
+    basic_clean_details = list(mongo.db.basic_clean_details.find())
+
+    return render_template("view_request.html", basic_clean_details=basic_clean_details,
+                           request_id=request_id, title='View Request')
+
+
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
 def edit_request(request_id):
+
     if request.method == "POST":
-        return redirect(url_for("index"))
+        submit_basic_clean_details = {
+            "user_name": request.form.get("user_name"),
+            "user_lname": request.form.get("user_lname"),
+            "user_contact": request.form.get("user_contact"),
+            "user_street": request.form.get("user_street"),
+            "user_postcode": request.form.get("user_postcode"),
+            "user_message": request.form.get("user_message"),
+            "user_date": request.form.get("user_date"),
+        }
+        mongo.db.basic_clean_details.update(
+            {"_id": ObjectId(request_id)}, submit_basic_clean_details)
+        flash("Request Updated!")
+        return redirect(url_for("basic_clean_info"))
+
     request_info = mongo.db.basic_clean_details.find_one(
         {"_id": ObjectId(request_id)})
     return render_template("edit_request.html", request=request_info)

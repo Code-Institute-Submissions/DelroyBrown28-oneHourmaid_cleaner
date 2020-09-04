@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - View Request</title>
+    {% include 'components/head.html' %}
+
+</head>
+
+<body id="basic_clean_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+    style="background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+
+
+    <!--TOP CONTENTS-->
+    <div class="top_contents_wrapper__basiclean">
+        <h1 class="customer_details_title">{{ title }}</h1>
+        <p class="customer_details_blurb">View the details of request below, hit "Edit" to make any changes.</p>
+
+    </div>
+
+    {% for request_details in basic_clean_details: %}
+    {{ request_details.user_name }}
+    {% endfor %}
+
+
+    <div class="row">
+
+    </div>
+
+
+
+
+    {% include 'components/scripts.html' %}
+
+</body>
+
+</html>

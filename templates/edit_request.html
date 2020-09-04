@@ -22,18 +22,17 @@
     <!--TOP CONTENTS-->
     <div class="top_contents_wrapper__basiclean">
         <h1 class="customer_details_title">{{ title }}</h1>
-        <p class="customer_details_blurb">Please
-            fill out the form below and give a short description of your cleaning needs.</p>
+        <p class="customer_details_blurb">Edit your details below</p>
     </div>
 
 
-    <span id="text_tag">Basic Clean</span>
+    <span id="text_tag">Edit Request</span>
 
 
-    <!--EDIT REQUEST FORM-->
+    <!--CUSTOMER DETAILS AND REQUEST FORM-->
 
     <div class="row form_wrap">
-        <form class="col s12" id="basicClean_details_form" method="GET" action="{{ url_for('edit_request', request_id=request._id) }}">
+        <form class="col s12" id="basicClean_details_form" method="POST" action="{{ url_for('edit_request', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
