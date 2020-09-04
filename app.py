@@ -98,14 +98,14 @@ def basic_clean_info():
     return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
 
 
-@app.route("/view_request/<request_id>", methods=["GET"])
-def view_request(request_id):
-    request_info = mongo.db.basic_clean_details.find_one(
-        {"_id": ObjectId(request_id)})
-    basic_clean_details = list(mongo.db.basic_clean_details.find())
+# @app.route("/view_request/<request_id>", methods=["GET"])
+# def view_request(request_id):
+#     request_info = mongo.db.basic_clean_details.find_one(
+#         {"_id": ObjectId(request_id)})
+#     basic_clean_details = list(mongo.db.basic_clean_details.find())
 
-    return render_template("view_request.html", basic_clean_details=basic_clean_details,
-                           request_id=request_id, title='View Request')
+#     return render_template("view_request.html", basic_clean_details=basic_clean_details,
+#                            request_id=request_id, title='View Request')
 
 
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
