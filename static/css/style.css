@@ -1441,10 +1441,21 @@ a:focus {
 
     #request_btn,
     #signin_btn {
-        height: 600px;
+        height: 648px;
         width: 614.391px;
         justify-content: center;
+        border: none;
+        border-left: 2px solid rgba(255, 255, 255, 0.342);
+        border-right: 2px solid rgba(255, 255, 255, 0.342);
         cursor: pointer;
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.017),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.024),
+            0 12.5px 10px rgba(0, 0, 0, 0.03),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.036),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.043),
+            0 100px 80px rgba(0, 0, 0, 0.06);
+
     }
 
     .service_icons {
@@ -1532,9 +1543,17 @@ a:focus {
         display: flex !important;
         align-items: center;
         justify-content: center;
-        border: 5px solid #3B494C;
+        border-left: 2px solid rgba(255, 255, 255, 0.342);
+        border-right: 2px solid rgba(255, 255, 255, 0.342);
         cursor: pointer;
-
+        border-radius: 0px;
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.017),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.024),
+            0 12.5px 10px rgba(0, 0, 0, 0.03),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.036),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.043),
+            0 100px 80px rgba(0, 0, 0, 0.06);
     }
 
     .basic_clean_wrap__desktop,
@@ -1607,7 +1626,11 @@ a:focus {
 }
 
 
-#signin_btn:active,
-#request_btn:active {
+#signin_btn:hover,
+#request_btn:hover {
+    box-shadow: none;
+}
+
+.service_cards:hover {
     box-shadow: none;
 }
