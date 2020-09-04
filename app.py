@@ -149,9 +149,10 @@ def basic_clean_info():
 
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
 def edit_request(request_id):
-    request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
-    return render_template("edit_request.html", request=request)
-
+    if request.method == "POST":
+        return redirect(url_for("index"))
+    request_info = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
+    return render_template("edit_request.html", request=request_info)
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
