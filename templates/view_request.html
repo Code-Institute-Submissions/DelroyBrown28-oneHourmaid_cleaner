@@ -21,12 +21,11 @@
 
     </div>
 
-    {% for request_details in basic_clean_details: %}
-    {{ request_details.user_name }}
-    {% endfor %}
-
-
-    <div class="row">
+    <div class="requested_info">
+        {% for request_details in basic_clean_details: %}
+        <h5 class="requested_name">{{ request_details.user_name }}</h5>
+        {% endfor %}
+    
 
     </div>
 

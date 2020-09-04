@@ -83,13 +83,25 @@
         </form>
     </div>
 
-    <section class="flash_wrap">
         <!--Flash messages-->
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for messages in messages %}
-        <div class="row flashes request_flash_messagess z-depth-2">
-            <h1 class="center-align flash_text">{{ messages }}</h1>
+        <section class="flash_wrap_request_sent">
+
+        <div class="row flashes request_flash_message z-depth-2">
+            <h1 class="center-align request_flash_text">{{ messages }}</h1>
+
+            <div class="requested_info">
+                {% for request_info in basic_clean_details: %}
+                <p class="requested_name">Name:<br>{{request_info.user_name}} {{request_info.user_lname}}</p>
+                <p class="requested_name">Contact:<br>{{request_info.user_contact}}</p>
+                <p class="requested_name">Address:<br>{{request_info.user_street}}<br>{{request_info.user_postcode}}</p>
+                <p class="requested_name">Cleaning Date:<br>{{request_info.user_date}}</p>
+                
+                {% endfor %}
+                
+            </div>
 
             <div class="flash_request_btns">
                 <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
@@ -108,10 +120,11 @@
                 </a>
             </div>
         </div>
+    </section>
+
         {% endfor %}
         {% endif %}
         {% endwith %}
-    </section>
 
 
     <!--SCRIPTS-->

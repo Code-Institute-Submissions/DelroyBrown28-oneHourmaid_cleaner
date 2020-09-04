@@ -521,16 +521,17 @@ a:focus {
 
     }
 
-    .flash_wrap {
+    .flash_wrap_request_sent {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 15%;
+        height: 85%;
+
         border: 1px solid red;
     }
 
 
-    .request_flash_messagess {
+    .request_flash_message {
         position: relative;
         color: #fff;
         width: 100%;
@@ -544,11 +545,26 @@ a:focus {
         background-color: #fff;
     }
 
-    .flash_text {
+    .request_flash_text {
         color: #000;
         font-size: 22px;
         font-weight: bolder;
 
+    }
+
+    .requested_info {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+        border: 1px solid red;
+    }
+
+    .requested_name {
+        color: #000;
     }
 
     .flash_request_btns {
