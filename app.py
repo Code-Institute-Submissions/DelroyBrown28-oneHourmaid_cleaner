@@ -110,7 +110,6 @@ def basic_clean_info():
 
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
 def edit_request(request_id):
-
     if request.method == "POST":
         submit_basic_clean_details = {
             "user_name": request.form.get("user_name"),
@@ -121,7 +120,7 @@ def edit_request(request_id):
             "user_message": request.form.get("user_message"),
             "user_date": request.form.get("user_date"),
         }
-        mongo.db.basic_clean_details.update(
+        mongo.db.basic_clean_details.update_one(
             {"_id": ObjectId(request_id)}, submit_basic_clean_details)
         flash("Request Updated!")
         return redirect(url_for("basic_clean_info"))
@@ -187,16 +186,8 @@ def moving_info():
 #     return render_template("edit_request.html", request=request)
 
 
-@app.route("/signout")
-def signout():
-    # remove user from session cookies
-    flash("You have been logged out")
-    session.pop("user", ["default"])
-    return redirect(url_for("index"))
-
 
 if __name__ == "__main__":
-    # socketio.run(app, debug=True)
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)

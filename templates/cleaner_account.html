@@ -29,42 +29,83 @@
 
     <div class="pending_jobs_wrap">
 
+        <!--Basic clean jobs-->
+
         <ul class="collapsible pending_jobs">
-            {% for detail in deep_clean_details: %}
+
+            {% for basic_detail in basic_clean_details: %}
             <li>
                 <div class="collapsible-header request_item_header">
-                    <i class="fas fa-comment-dots"></i>
-                    {{ detail.user_name }} {{ detail.user_lname }}
-
+                    {{ basic_detail.user_name }} {{ basic_detail.user_lname }}
+                    <span class="basic_clean_tag">Basic Clean</span>
                 </div>
 
                 <div class="collapsible-body request_info">
+
+                    <div class="row">
+                        <span class="row info_headers">Address:<br>
+                            <span class="light_text info_text" id="customer_address">
+                                {{ basic_detail.user_street }}</span>
+                        </span><br>
+                        <span class="info_headers">Contact Number:<br>
+                            <span class="light_text info_text" id="customer_contact">{{ basic_detail.user_contact }}</span>
+                        </span><br>
+                    </div>
+
+                    <span class="info_headers row customer_request_style">Customer Request:<br>
+                        <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_message }}</span>
+                    </span><br>
+
+                    <span class="info_headers">Cleaning Date:<br>
+                        <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_date }}</span>
+                    </span><br>
+
+                    <a href="#"><button class="respond_to_user">Respond to
+                            {{ basic_detail.user_name }}?</button></a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+        <!--Deep clean jobs-->
+
+        <ul class="collapsible pending_jobs">
+
+            {% for detail in deep_clean_details: %}
+            <li>
+                <div class="collapsible-header request_item_header">
+                    {{ detail.user_name }} {{ detail.user_lname }}
+                    <span class="deep_clean_tag">Deep Clean</span>
+                </div>
+
+                <div class="collapsible-body request_info">
+
                     <div class="row">
                         <span class="row info_headers">Address:<br>
                             <span class="light_text info_text" id="customer_address">
                                 {{ detail.user_street }}</span>
                         </span><br>
                         <span class="info_headers">Contact Number:<br>
-                            <span class="light_text info_text"
-                                id="customer_contact">{{ detail.user_contact }}</span>
+                            <span class="light_text info_text" id="customer_contact">{{ detail.user_contact }}</span>
                         </span><br>
                     </div>
+
                     <span class="info_headers row customer_request_style">Customer Request:<br>
-                        <span class="light_text italic_text"
-                            id="customer_request">{{ detail.user_message }}</span>
+                        <span class="light_text italic_text" id="customer_request">{{ detail.user_message }}</span>
                     </span><br>
+
                     <span class="info_headers">Cleaning Date:<br>
                         <span class="light_text italic_text" id="customer_request">{{ detail.user_date }}</span>
                     </span><br>
+
                     <a href="#"><button class="respond_to_user">Respond to
                             {{ detail.user_name }}?</button></a>
-
-
-
                 </div>
             </li>
             {% endfor %}
         </ul>
+
 
 
 
