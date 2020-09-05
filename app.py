@@ -30,7 +30,7 @@ def services():
 
 @app.route("/basic_clean_page")
 def basic_clean_page():
-    return render_template("basic_clean_details.html")
+    return render_template("basic_clean_details.html", title='Basic Clean Request')
 
 
 @app.route("/cleaner_account")
@@ -98,38 +98,6 @@ def basic_clean_info():
     return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
 
 
-# @app.route("/view_request/<request_id>", methods=["GET"])
-# def view_request(request_id):
-#     request_info = mongo.db.basic_clean_details.find_one(
-#         {"_id": ObjectId(request_id)})
-#     basic_clean_details = list(mongo.db.basic_clean_details.find())
-
-#     return render_template("view_request.html", basic_clean_details=basic_clean_details,
-#                            request_id=request_id, title='View Request')
-
-
-@app.route("/edit_request/<request_id>", methods=["GET", "POST"])
-def edit_request(request_id):
-    if request.method == "POST":
-        submit_basic_clean_details = {
-            "user_name": request.form.get("user_name"),
-            "user_lname": request.form.get("user_lname"),
-            "user_contact": request.form.get("user_contact"),
-            "user_street": request.form.get("user_street"),
-            "user_postcode": request.form.get("user_postcode"),
-            "user_message": request.form.get("user_message"),
-            "user_date": request.form.get("user_date"),
-        }
-        mongo.db.basic_clean_details.update_one(
-            {"_id": ObjectId(request_id)}, submit_basic_clean_details)
-        flash("Request Updated!")
-        return redirect(url_for("basic_clean_info"))
-
-    request_info = mongo.db.basic_clean_details.find_one(
-        {"_id": ObjectId(request_id)})
-    return render_template("edit_request.html", request=request_info)
-
-
 @app.route("/deep_clean_info", methods=["GET", "POST"])
 def deep_clean_info():
     if request.method == "POST":
@@ -169,8 +137,55 @@ def moving_info():
         flash("Request sent to cleaner")
         return redirect(url_for("moving_info"))
     details_moving = mongo.db.moving_details.find().sort("moving_details", 1)
-
     return render_template("moving.html", moving_details=details_moving)
+
+
+@app.route("/edit_request/<request_id>", methods=["GET", "POST"])
+def edit_request(request_id):
+    if request.method == "POST":
+        submit_basic_clean_details = {
+            "user_name": request.form.get("user_name"),
+            "user_lname": request.form.get("user_lname"),
+            "user_contact": request.form.get("user_contact"),
+            "user_street": request.form.get("user_street"),
+            "user_postcode": request.form.get("user_postcode"),
+            "user_message": request.form.get("user_message"),
+            "user_date": request.form.get("user_date"),
+        }
+        mongo.db.basic_clean_details.update(
+            {"_id": ObjectId(request_id)}, submit_basic_clean_details)
+        flash("Request Updated!")
+        return redirect(url_for("basic_clean_info"))
+
+    request_info = mongo.db.basic_clean_details.find_one(
+        {"_id": ObjectId(request_id)})
+    return render_template("edit_request.html", request=request_info)
+
+
+@app.route("/edit_deepclean_request/<deepclean_request_id>", methods=["GET", "POST"])
+def edit_deepclean_request(deepclean_request_id):
+    if request.method == "POST":
+        submit_deep_clean_details = {
+            "user_name": request.form.get("user_name"),
+            "user_lname": request.form.get("user_lname"),
+            "user_contact": request.form.get("user_contact"),
+            "user_street": request.form.get("user_street"),
+            "user_postcode": request.form.get("user_postcode"),
+            "user_message": request.form.get("user_message"),
+            "user_date": request.form.get("user_date"),
+            "carpet_clean": request.form.get("carpet_clean"),
+            "floor_steam": request.form.get("floor_steam"),
+            "white_goods": request.form.get("white_goods"),
+            "window_clean": request.form.get("window_clean"),
+        }
+        mongo.db.deep_clean_details.update(
+            {"_id": ObjectId(deepclean_request_id)}, submit_deep_clean_details)
+        flash("Request Updated!")
+        return redirect(url_for("deep_clean_info"))
+
+    deepclean_request_info = mongo.db.deep_clean_details.find_one(
+        {"_id": ObjectId(deepclean_request_id)})
+    return render_template("edit_deepclean_request.html", request=deepclean_request_info)
 
 
 # @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
@@ -184,9 +199,6 @@ def moving_info():
 # def edit_request(request_id):
 #     request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
 #     return render_template("edit_request.html", request=request)
-
-
-
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),

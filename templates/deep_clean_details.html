@@ -124,12 +124,14 @@
             <h1 class="center-align request_flash_text">{{ messages }}</h1>
 
             <div class="requested_info">
-                {% for request_info in basic_clean_details: %}
+                {% for request_info in deep_clean_details: %}
                 <p class="requested_name">Name:<br>{{request_info.user_name}} {{request_info.user_lname}}</p>
                 <p class="requested_name">Contact:<br>{{request_info.user_contact}}</p>
                 <p class="requested_name">Address:<br>{{request_info.user_street}}<br>{{request_info.user_postcode}}</p>
                 <p class="requested_name">Cleaning Date:<br>{{request_info.user_date}}</p>
-                <hr style="margin: 0;">
+                <p class="requested_name">Deep Clean for:<br>{{request_info.carpet_clean}}<br>
+                    {{request_info.floor_steam}}<br>{{request_info.white_goods}}<br>{{request_info.window_clean}}</p>
+                <hr style="margin: 0;" width="290px">
                 <p class="requested_name">Cleaning Request:<br>{{request_info.user_message}}</p>
 
                 {% endfor %}
@@ -137,7 +139,7 @@
             </div>
 
             <div class="flash_request_btns">
-                <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
+                <a href="{{ url_for('edit_deepclean_request', request_id=request._id, deepclean_request_id=request._id) }}"><button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
                         Edit
                     </button>

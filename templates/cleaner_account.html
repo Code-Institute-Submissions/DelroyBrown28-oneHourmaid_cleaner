@@ -48,17 +48,19 @@
                                 {{ basic_detail.user_street }}</span>
                         </span><br>
                         <span class="info_headers">Contact Number:<br>
-                            <span class="light_text info_text" id="customer_contact">{{ basic_detail.user_contact }}</span>
+                            <span class="light_text info_text"
+                                id="customer_contact">{{ basic_detail.user_contact }}</span>
                         </span><br>
                     </div>
 
                     <span class="info_headers row customer_request_style">Customer Request:<br>
-                        <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_message }}</span>
+                        <span class="light_text italic_text"
+                            id="customer_request">{{ basic_detail.user_message }}</span>
                     </span><br>
 
                     <span class="info_headers">Cleaning Date:<br>
                         <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_date }}</span>
-                    </span><br>
+                    </span><br><br>
 
                     <a href="#"><button class="respond_to_user">Respond to
                             {{ basic_detail.user_name }}?</button></a>
@@ -82,22 +84,34 @@
                 <div class="collapsible-body request_info">
 
                     <div class="row">
+                        <span class="row info_headers">Name:<br>
+                            <span class="light_text info_text" id="customer_address">
+                                {{ detail.user_name }} {{ detail.user_lname }}</span>
+                        </span><br>
                         <span class="row info_headers">Address:<br>
                             <span class="light_text info_text" id="customer_address">
-                                {{ detail.user_street }}</span>
+                                {{ detail.user_street }}<br>{{ detail.user_postcode }}</span>
                         </span><br>
+
                         <span class="info_headers">Contact Number:<br>
                             <span class="light_text info_text" id="customer_contact">{{ detail.user_contact }}</span>
                         </span><br>
                     </div>
 
-                    <span class="info_headers row customer_request_style">Customer Request:<br>
-                        <span class="light_text italic_text" id="customer_request">{{ detail.user_message }}</span>
+                    <span class="info_headers row customer_request_style">Deep Clean Request:<br>
+                        <span class="light_text italic_text" id="customer_request">{{detail.carpet_clean}}<br>
+                            {{detail.floor_steam}}<br>{{detail.white_goods}}<br>{{detail.window_clean}}</span>
                     </span><br>
 
                     <span class="info_headers">Cleaning Date:<br>
                         <span class="light_text italic_text" id="customer_request">{{ detail.user_date }}</span>
                     </span><br>
+                    <hr>
+                    <span class="info_headers">Request message:<br>
+                        <span class="light_text italic_text" id="customer_request">{{ detail.user_message }}</span>
+                    </span><br><br>
+
+                    
 
                     <a href="#"><button class="respond_to_user">Respond to
                             {{ detail.user_name }}?</button></a>

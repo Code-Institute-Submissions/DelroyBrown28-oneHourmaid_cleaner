@@ -88,16 +88,33 @@
 
   </div>
 
-  <section>
-    <!--Flash messages-->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for messages in messages %}
-    <div class="row flashes request_flash_messagess z-depth-2">
-      <h1 class="center-align flash_text">{{ messages }}</h1>
+  <!--Flash messages-->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for messages in messages %}
+  <section class="flash_wrap_request_sent">
+
+    <div class="row flashes request_flash_message z-depth-2">
+      <h1 class="center-align request_flash_text">{{ messages }}</h1>
+
+      <div class="requested_info">
+        {% for requested_info in moving_info: %}
+        <p class="requested_name">Name:<br>{{requested_info.name_moving}}<br>{{requested_info.contact_moving}}</p>
+        <p class="requested_name">I am:<br>{{requested_info.moving_in}} {{requested_info.moving_out}}</p>
+        <p class="requested_name">Address:<br>{{requested_info.street_moving}}<br>{{requested_info.postcode_moving}}</p>
+        <p class="requested_name">Cleaning Date:<br>{{requested_info.date_moving}}</p>
+        <p class="requested_name">Deep Clean for:<br>{{requested_info.carpet_clean}}<br>
+          {{requested_info.floor_steam}}<br>{{requested_info.white_goods}}<br>{{requested_info.window_clean}}</p>
+        <hr style="margin: 0;" width="290px">
+        <p class="requested_name">Cleaning Request:<br>{{requested_info.user_message}}</p>
+
+        {% endfor %}
+
+      </div>
 
       <div class="flash_request_btns">
-        <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
+        <a href="{{ url_for('edit_deepclean_request', request_id=request._id, deepclean_request_id=request._id) }}"><button
+            class="flash_btns z-depth-2">
             <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
             Edit
           </button>
@@ -105,17 +122,18 @@
         <button class="flash_btns z-depth-2">
           <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt="" class="flash_icons">
           Delete</button>
-        <a href="{{ url_for('index') }}">
+        <a href="{{ url_for('services') }}">
           <button class="flash_btns z-depth-2">
             <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">
             Exit</button>
         </a>
       </div>
     </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
   </section>
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
 
 
 

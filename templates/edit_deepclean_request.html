@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oneHourmaid - Customer Details</title>
+    <title>oneHourmaid - Edit Details</title>
     {% include 'components/head.html' %}
 </head>
 
@@ -18,23 +18,27 @@
         </div>
     </a>
 
+    <div class="main_title">
+        <h3 class="title">oneHourmaid</h3>
+        <p class="title_blurb">Edit your request below.</p>
+    </div>
+
+
 
     <!--TOP CONTENTS-->
     <div class="top_contents_wrapper__basiclean">
         <h1 class="customer_details_title">{{ title }}</h1>
-        <p class="customer_details_blurb">Please
-            fill out the form below and give a short description of your cleaning needs.</p>
+        <p class="customer_details_blurb">Edit your request below</p>
     </div>
 
 
-    <span id="text_tag">Basic Clean</span>
+    <span id="text_tag">Edit Request</span>
 
 
     <!--CUSTOMER DETAILS AND REQUEST FORM-->
 
     <div class="row form_wrap">
-        <form class="col s12" id="basicClean_details_form" method="POST"
-            action="{{ url_for('basic_clean_info', request_id=request._id) }}">
+        <form class="col s12" id="deepClean_details_form" method="POST" action="{{ url_for('edit_deepclean_request', deepclean_request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
@@ -66,49 +70,61 @@
                         class="datepicker validate">
                     <label for="user_date">Choose a date</label>
                 </div>
-
             </div>
 
+            <p class="deep_clean_text">Please pick a specific Deep Clean. Or, for more specific requests, leave a
+                message in the comment field below</p>
+            <div class="checkbox_wrap">
+                <div class="checkboxes_1">
+                    <label>
+                        <input id="indeterminate-checkbox carpet_clean" name="carpet_clean" value="Carpet Clean"
+                            type="checkbox" />
+                        <span>Carpet Clean</span>
+                    </label>
+                    <label>
+                        <input id="indeterminate-checkbox floor_steam" name="floor_steam" value="Floor Steam"
+                            type="checkbox" />
+                        <span>Floor Steam</span>
+                    </label>
+                </div>
+                <div class="checkboxes_2">
+                    <label>
+                        <input id="indeterminate-checkbox white_goods" name="white_goods" value="White Goods"
+                            type="checkbox" />
+                        <span>White Goods</span>
+                    </label>
+                    <label>
+                        <input id="indeterminate-checkbox window_clean" name="window_clean" value="Window Clean"
+                            type="checkbox" />
+                        <span>Windows</span>
+                    </label>
+                </div>
+            </div>
             <div class="row">
                 <div class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea id="user_message" name="user_message"
                                 class="all_inputs materialize-textarea"></textarea>
-                            <label for="user_message">Cleaning Request</label>
+                            <label for="user_message">Deep Clean Request</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" id="submit_basicclean_form" class="z-depth-3">Request Cleaner</button>
+            <button id="submit_deepclean_form" type="submit" class="z-depth-3">Edit Request</button>
         </form>
     </div>
 
-    <!--Flash messages-->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for messages in messages %}
-    <section class="flash_wrap_request_sent">
-
-        <div class="row flashes request_flash_message z-depth-2">
-            <h1 class="center-align request_flash_text">{{ messages }}</h1>
-
-            <div class="requested_info">
-                {% for request_info in basic_clean_details: %}
-                <p class="requested_name">Name:<br>{{request_info.user_name}} {{request_info.user_lname}}</p>
-                <p class="requested_name">Contact:<br>{{request_info.user_contact}}</p>
-                <p class="requested_name">Address:<br>{{request_info.user_street}}<br>{{request_info.user_postcode}}</p>
-                <p class="requested_name">Cleaning Date:<br>{{request_info.user_date}}</p>
-                <hr style="margin: 0;">
-                <p class="requested_name">Cleaning Request:<br>{{request_info.user_message}}</p>
-
-                {% endfor %}
-
-            </div>
+    <section class="flash_wrap">
+        <!--Flash messages-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for messages in messages %}
+        <div class="row flashes request_flash_messagess z-depth-2">
+            <h1 class="center-align flash_text">{{ messages }}</h1>
 
             <div class="flash_request_btns">
-                <a href="{{ url_for('edit_request', request_id=request._id) }}">
-                    <button class="flash_btns z-depth-2">
+                <a href="{{ url_for('edit_request', request_id=request._id) }}"><button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
                         Edit
                     </button>
@@ -124,11 +140,10 @@
                 </a>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
     </section>
-
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
 
 
     <!--SCRIPTS-->
