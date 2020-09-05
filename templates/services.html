@@ -36,7 +36,7 @@
 
     <!--CENTER CONTENTS (mobile and ipad)-->
     <div class="slick_wrap">
-        <div class="basic_clean_wrap" data-value="Basic Clean">
+        <a href="{{ url_for('basic_clean_page') }}" class="basic_clean_wrap" data-value="Basic Clean">
             <img class="basic_clean_image" src="{{ url_for('static', filename='images/basiclean_mop.png') }}" alt="">
             <h1 class="basic_clean_title">OneHourmaid's<br>Basic Clean</h1>
             <p class="basic_clean_blurb">
@@ -46,9 +46,9 @@
                 (or specific rooms) mopping of kitchen,<br>
                 wooden or ceramic floors.
             </p>
-        </div>
+        </a>
 
-        <div class="deep_clean_wrap" data-value="Deep Clean">
+        <a href="{{ url_for('deep_clean') }}" class="deep_clean_wrap" data-value="Deep Clean">
             <img class="deep_clean_image" src="{{ url_for('static', filename='images/deepclean_image.png') }}" alt="">
             <h1 class="deep_clean_title">OneHourmaid's<br>Deep Clean</h1>
             <p class="deep_clean_blurb">
@@ -60,9 +60,9 @@
                 deep
                 carpet and oven<br>cleans.
             </p>
-        </div>
+        </a>
 
-        <div class="moving_in_out_wrap" data-value="Moving In/Out">
+        <!-- <div class="moving_in_out_wrap" data-value="Moving In/Out">
             <img class="moving_in_out_image" src="/static/images/movinginout.png" alt="">
             <h1 class="moving_in_out_title">Property<br>Moving In/Out</h1>
             <p class="moving_in_out_blurb">
@@ -75,20 +75,10 @@
                 make sure your new home is beautifully<br>
                 clean and ready for you.
             </p>
-        </div>
+        </div> -->
     </div>
 
 
-    <a href="{{ url_for('basic_clean_page') }}">
-        <button id="basic_clean_button">
-            <span class="select_text">Tap to select</span>
-        </button>
-    </a>
-    <a href="{{ url_for('deep_clean') }}">
-        <button id="deep_clean_button">
-            <span class="select_text">Tap to select</span>
-        </button>
-    </a>
     <a href="{{ url_for('moving_in_out') }}">
         <button id="moving_button">
             <span class="select_text">Tap to select</span>
@@ -119,23 +109,23 @@
             <img src="/static/images/next_arrow.png" alt="" class="next_arrow_icon">
         </div>
     </div>
-   
+
 
     <!--Desktop View-->
 
     <div class="services_wrap">
 
-            <a href="{{ url_for('basic_clean_page') }}" class="service_cards basic_clean">
-                <img src="/static/images/basiclean_mop.png" alt="" class="basic_clean_image__desktop">
-                <h1 class="service_card_title">OneHourmaid's<br>Basic Clean</h1>
-                <p class="service_card_blurb">
-                    Our Basic Clean consists of your general in<br>
-                    home clean, including washing
-                    dishes,<br>vacuuming throughout<br>
-                    (or specific rooms) mopping of kitchen,<br>
-                    wooden or ceramic floors.
-                </p>
-            </a>
+        <a href="{{ url_for('basic_clean_page') }}" class="service_cards basic_clean">
+            <img src="/static/images/basiclean_mop.png" alt="" class="basic_clean_image__desktop">
+            <h1 class="service_card_title">OneHourmaid's<br>Basic Clean</h1>
+            <p class="service_card_blurb">
+                Our Basic Clean consists of your general in<br>
+                home clean, including washing
+                dishes,<br>vacuuming throughout<br>
+                (or specific rooms) mopping of kitchen,<br>
+                wooden or ceramic floors.
+            </p>
+        </a>
 
         <a href="{{ url_for('deep_clean_info') }}" class="service_cards deep_clean">
             <img src="/static/images/deepclean_image.png" alt="" class="deep_clean_image__desktop">
@@ -194,24 +184,7 @@
 
 
         // TAP TO SELECT BUTTON ANIMATION (Mobile View)
-        $('.basic_clean_wrap').click(function () {
-            $('#basic_clean_button').fadeIn('fast', function () {
-                $('#basic_clean_button').animate({
-                    width: '290px'
-                }, function () {
-                    $('.select_text').fadeIn('fast')
-                })
-            })
-        })
-        $('.deep_clean_wrap').click(function () {
-            $('#deep_clean_button').fadeIn('fast', function () {
-                $('#deep_clean_button').animate({
-                    width: '290px'
-                }, function () {
-                    $('.select_text').fadeIn('fast')
-                })
-            })
-        })
+        
         $('.moving_in_out_wrap').click(function () {
             $('#moving_button').fadeIn('fast', function () {
                 $('#moving_button').animate({
