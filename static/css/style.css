@@ -89,7 +89,7 @@ a:focus {
 
     }
 
-    #signin_btn,
+    #account_btn,
     #request_btn {
         position: relative;
         width: 320px;
@@ -107,6 +107,13 @@ a:focus {
         font-family: 'Lato', sans-serif;
 
 
+    }
+
+    .request_blurb {
+        margin: 0;
+        color: #fff;
+        opacity: 0.7;
+        font-weight: 300;
     }
 
     .serviceUseText_wrap {
@@ -140,26 +147,11 @@ a:focus {
     }
 
     .service_icons {
-        height: 100px;
+        height: 75px;
     }
 
 
     /*------CLEANER JOBS PAGE------*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1376,11 +1368,13 @@ a:focus {
         flex-flow: row;
         height: 60%;
 
+
     }
+    
 
     .service_btns {
-        height: 648px;
-        width: 614.391px;
+        height: 600px !important;
+        width: 614.391px !important;
         justify-content: center;
         border: none;
         border-left: 2px solid rgba(255, 255, 255, 0.342);
@@ -1533,7 +1527,7 @@ a:focus {
 }
 
 
-#signin_btn:hover,
+#account_btn:hover,
 #request_btn:hover {
     box-shadow: none;
 }
