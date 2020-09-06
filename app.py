@@ -4,9 +4,12 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-# from flask_socketio import SocketIO, emit
+import smtplib
+import imghdr
+from email.message import EmailMessage
 if os.path.exists("env.py"):
     import env
+
 
 app = Flask(__name__)
 
@@ -162,6 +165,13 @@ def edit_request(request_id):
     return render_template("edit_request.html", request=request_info)
 
 
+@app.route("/delete_request/<request_id>")
+def delete_request(request_id):
+    mongo.db.basic_clean_details.remove({"_id": ObjectId(request_id)})
+    flash("Request Deleted")
+    return redirect(url_for('basic_clean_info'))
+
+
 @app.route("/edit_deepclean_request/<deepclean_request_id>", methods=["GET", "POST"])
 def edit_deepclean_request(deepclean_request_id):
     if request.method == "POST":
@@ -188,17 +198,38 @@ def edit_deepclean_request(deepclean_request_id):
     return render_template("edit_deepclean_request.html", request=deepclean_request_info)
 
 
-# @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
-# def edit_request(request_id):
-#     request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
-#     details = mongo.db.user_details.find().sort("user_details", 1)
-#     return render_template("deep_clean_details.html", request=request, details=details)
+@app.route("/auto_email")
+def auto_email():
+    EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+    EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
+    msg = EmailMessage()
+    msg['Subject'] = 'oneHourmaid, Cleaner Confirmed!'
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = EMAIL_ADDRESS
+
+    msg.set_content('This is a plain test email')
+
+    msg.add_alternative("""\
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Request Accepted! </h1>
+        <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
+            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond to this email</small>
+        </p>
+    </body>
+    </html>
+    """, subtype='html')
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        smtp.send_message(msg)
+        flash("Confirmation sent to customer")
+    return render_template("main.html")
 
 
-# @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
-# def edit_request(request_id):
-#     request = mongo.db.user_details.find_one({"_id": ObjectId(request_id)})
-#     return render_template("edit_request.html", request=request)
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),

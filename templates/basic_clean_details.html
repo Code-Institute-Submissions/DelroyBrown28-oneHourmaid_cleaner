@@ -90,7 +90,7 @@
     {% for messages in messages %}
     <section class="flash_wrap_request_sent">
 
-        <div class="row flashes request_flash_message z-depth-2">
+        <div class="row flashes request_flash_message z-depth-3">
             <h1 class="center-align request_flash_text">{{ messages }}</h1>
 
             <div class="requested_info">
@@ -113,10 +113,12 @@
                         Edit
                     </button>
                 </a>
-                <button class="flash_btns z-depth-2">
-                    <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
-                        class="flash_icons">
-                    Delete</button>
+                <a href="{{ url_for('delete_request', request_id=request._id) }}">
+                    <button class="flash_btns z-depth-2">
+                        <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
+                            class="flash_icons">
+                        Delete</button>
+                </a>
                 <a href="{{ url_for('services') }}">
                     <button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/home_icon.png') }}" alt="" class="flash_icons">

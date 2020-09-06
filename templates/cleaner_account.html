@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - Sign in</title>
+    <title>{{ title }} - Cleaner Account</title>
     {% include 'components/head.html' %}
 
 
@@ -62,7 +62,7 @@
                         <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_date }}</span>
                     </span><br><br>
 
-                    <a href="#"><button class="respond_to_user">Respond to
+                    <a href="{{ url_for('auto_email') }}"><button class="respond_to_user">Send confirmation to
                             {{ basic_detail.user_name }}?</button></a>
                 </div>
             </li>
@@ -111,9 +111,7 @@
                         <span class="light_text italic_text" id="customer_request">{{ detail.user_message }}</span>
                     </span><br><br>
 
-                    
-
-                    <a href="#"><button class="respond_to_user">Respond to
+                    <a href="{{ url_for('auto_email') }}"><button class="respond_to_user">Send confirmation to
                             {{ detail.user_name }}?</button></a>
                 </div>
             </li>
@@ -121,86 +119,7 @@
         </ul>
 
 
-
-
     </div>
-    <!-- Display Deep Clean Requests
-
-    {% for detail in deep_clean_details: %}
-    <a class="job_card modal-trigger deep_clean_card" href="#modal1"> {{ detail.user_name }} {{ detail.user_lname }}
-        <span class="deep_clean_tag">Deep Clean</span>
-    </a>
-    {% endfor %}
-
-
-    <div id="modal1" class="modal request_info_wrap">
-        {% for detail in deep_clean_details: %}
-        <div class="modal-content request_info_card">
-
-            <h4 class="request_name_header">{{ detail.user_name }} {{ detail.user_lname }}</h4>
-            <p class="request_info"><span class="request_title">Request
-                    Address:</span><br>{{ detail.user_street }}<br>{{ detail.user_postcode }}</p><br>
-            <p class="request_info"><span class="request_title">Contact
-                    Number:</span><br>{{ detail.user_contact }}</p><br>
-            <p class="request_info"><span class="request_title">Requested
-                    Date:</span><br>{{ detail.user_date }}</p><br>
-            <div class="deep_clean_section">
-                <p class="request_info" style="color: #000;"><span class="request_title">Deep Clean
-                        for:</span><br>{{ detail.carpet_clean }}<br>{{ detail.floor_steam }}<br>
-                    {{ detail.white_goods }}<br>{{ detail.window_clean }}
-                </p>
-            </div><br>
-            <hr style="margin: 0;">
-            <p class="request_info"><span class="request_title">Customer
-                    Message:</span><br>{{ detail.user_message }}</p>
-
-        </div>
-        <div class="modal-footer job_card_btn_wrap">
-            <a href="{{ url_for('reply_to') }}" class="modal-close replyto_btn">Reply to
-                {{ detail.user_name }}</a>
-        </div>
-        {% endfor %}
-
-    </div> -->
-
-    <!--Display Moving In/Out Requests-->
-
-
-    {% for moving in moving_details: %}
-    <a class="job_card modal-trigger deep_clean_card" href="#modal1"> {{ moving.name_moving }}
-        <span class="deep_clean_tag">Moving</span>
-    </a>
-    {% endfor %}
-
-
-    <div id="modal1" class="modal request_info_wrap">
-        {% for moving in moving_details: %}
-        <div class="modal-content request_info_card">
-
-            <h4 class="request_name_header">{{ moving.name_moving }}</h4>
-            <p class="request_info"><span class="request_title">Moving
-                    Address:</span><br>{{ moving.street_moving }}<br>{{ moving.postcode_moving }}</p><br>
-            <p class="request_info"><span class="request_title">Contact
-                    Number:</span><br>{{ moving.contact_moving }}</p><br>
-            <p class="request_info"><span class="request_title">Requested
-                    Date:</span><br>{{ moving.date_moving }}</p><br>
-            <hr style="margin: 0;">
-            <p class="request_info"><span class="request_title">Customer
-                    Message:</span><br>{{ moving.user_message }}</p>
-
-        </div>
-        <div class="modal-footer job_card_btn_wrap">
-            <a href="{{ url_for('reply_to') }}" class="modal-close replyto_btn">Reply to
-                {{ moving.name_moving }}</a>
-        </div>
-        {% endfor %}
-
-    </div>
-
-
-
-    </div>
-
 
     <section>
         <!--Flash messages-->

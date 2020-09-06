@@ -33,6 +33,21 @@
     </div>
 
 
+
+    <!--Flash messages-->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for messages in messages %}
+    <section class="confirmation_flash z-depth-3">
+            <p style="margin: 0;">Confirmation sent to user.</p>
+    </section>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+
+
     <!--Scripts from components-->
     {% include 'components/scripts.html' %}
 
