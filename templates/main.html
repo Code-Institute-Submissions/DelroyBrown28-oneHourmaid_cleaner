@@ -39,7 +39,7 @@
     {% if messages %}
     {% for messages in messages %}
     <section class="confirmation_flash z-depth-3">
-            <p style="margin: 0;">Confirmation sent to user.</p>
+        <p style="margin: 0;">Confirmation sent to user.</p>
     </section>
 
     {% endfor %}
@@ -50,6 +50,14 @@
 
     <!--Scripts from components-->
     {% include 'components/scripts.html' %}
+
+    <script>
+        // Hide confirmation message
+
+        $('.confirmation_flash').click(function () {
+            $(this).css("display", "none")
+        })
+    </script>
 
 
 </body>

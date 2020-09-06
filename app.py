@@ -207,7 +207,7 @@ def auto_email():
     msg['From'] = EMAIL_ADDRESS
     msg['To'] = EMAIL_ADDRESS
 
-    msg.set_content('This is a plain test email')
+    msg.set_content('This is a plain text email')
 
     msg.add_alternative("""\
     <!DOCTYPE html>
@@ -227,7 +227,7 @@ def auto_email():
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
         flash("Confirmation sent to customer")
-    return render_template("main.html")
+        return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
