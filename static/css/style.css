@@ -69,7 +69,7 @@ a:focus {
     }
 
     .title {
-        margin: 0;
+        margin-bottom: 10px;
         color: #fff;
         font-weight: 400;
         font-family: 'Oswald', sans-serif;
@@ -155,15 +155,22 @@ a:focus {
     }
 
 
-    /*------CLEANER JOBS PAGE------*/
+    /*------CLEANER ACCOUNT PAGE------*/
 
 
     .jobs {
         margin-bottom: 10px;
     }
 
+    .main_title_wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        margin-bottom: auto;
+        
 
-
+    }
 
 
     /*------MAIN USERSIDE PAGE------*/
@@ -791,10 +798,10 @@ a:focus {
     /*-------SIGN IN PAGE-------*/
 
 
-    #siginBody {
+    #cleaner_acc_body {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
     }
 
     .back_btn,
@@ -836,6 +843,7 @@ a:focus {
         font-size: 18px;
         text-align: center;
         opacity: 0.7;
+        margin: 0;
     }
 
     /*---SIGN IN FORM---*/
@@ -1188,14 +1196,14 @@ a:focus {
     }
 
     .pending_jobs_wrap {
-        height: 75%;
+        height: 70%;
         display: flex;
         align-items: center;
         flex-flow: column;
-        /* justify-content: center; */
         width: 86%;
-        margin-bottom: 5px;
+        margin-bottom: auto;
         border: 2px solid #b45f19;
+        overflow: auto;
 
     }
 
@@ -1505,9 +1513,20 @@ a:focus {
     /*------CLEANER ACCOUNT PAGE------*/
 
 
+    #cleaner_acc_body {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+
     .main_title_wrap {
-        width: 100%;
-        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        margin-bottom: auto;
+        /* margin-top: 20px; */
 
     }
 
@@ -1515,6 +1534,7 @@ a:focus {
     .pending_jobs_wrap {
         width: 25%;
         overflow: auto;
+        margin-bottom: auto;
     }
 
     .confirmation_flash {
