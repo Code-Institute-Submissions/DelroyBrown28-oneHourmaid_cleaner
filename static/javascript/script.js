@@ -1,17 +1,20 @@
 $(document).ready(function () {
-    $('.modal').modal();
+    // $('.modal').modal();
     $('.collapsible').collapsible();
-    $('.tooltipped').tooltip();
     $('select').formSelect();
-    $('.datepicker').datepicker({
-        format: "dd mmmm, yyyy",
-        yearRange: 3,
-        showClearBtn: true,
-        i18n: {
-            done: "select"
+    var dateToday = new Date();
+    var dates = $("#user_date").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        minDate: dateToday,
+        onSelect: function (selectedDate) {
+            var option = this.id == "from" ? "minDate" : "maxDate",
+                instance = $(this).data("datepicker"),
+                date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+            dates.not(this).datepicker("option", option, date);
         }
     });
-
 
     // Initialize sign in input
 
@@ -51,29 +54,5 @@ $(document).ready(function () {
     }, 1000)
 
 
-    // MOVING IN/OUT ICON ANIMATION
-
-    $('.moving_out_check').click(function () {
-        $('.moving_in_icon').animate({
-            left: '50px'
-        }, 300, function () {
-            $('.moving_out_icon').animate({
-                left: '0px'
-            })
-        })
-    })
-
-    $('.moving_in_check').click(function () {
-        $('.moving_out_icon').animate({
-            left: '-85px'
-        }, 300, function () {
-            $('.moving_in_icon').animate({
-                left: '0px'
-            })
-        })
-    })
-    
-
-  
 
 });
