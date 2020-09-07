@@ -73,8 +73,8 @@
                 <div class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="user_message" name="user_message"
-                                class="all_inputs materialize-textarea" required></textarea>
+                            <textarea id="user_message" name="user_message" class="all_inputs materialize-textarea"
+                                required></textarea>
                             <label for="user_message">Cleaning Request</label>
                         </div>
                     </div>
@@ -107,12 +107,13 @@
             </div>
 
             <div class="flash_request_btns">
-                {{ url_for('edit_request', request_id=request._id) }}"
+                <a href="{{ url_for('edit_request', request_id=basic_clean_details._id) }}">
                     <button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
                         Edit
                     </button>
-                
+                </a>
+
                 <a href="{{ url_for('delete_request', request_id=request._id) }}">
                     <button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
@@ -147,8 +148,6 @@
                 done: "select"
             }
         });
-
-        
     </script>
 </body>
 
