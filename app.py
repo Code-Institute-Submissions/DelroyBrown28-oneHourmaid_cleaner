@@ -45,23 +45,6 @@ def cleaner_account():
                            deep_clean_details=deep_clean_details)
 
 
-@app.route("/deep_clean")
-def deep_clean():
-    return render_template("deep_clean_details.html", title='Deep Clean Request')
-
-
-@app.route("/moving_in_out")
-def moving_in_out():
-    return render_template("moving.html", title='Moving In/Out')
-
-
-@app.route("/reply_to")
-def reply_to():
-    username = mongo.db.registration_details.find_one(
-        {"username": session["user"]})["username"]
-    return render_template("reply_to.html", username=username)
-
-
 # @app.errorhandler(404)
 # def invalid_page(e):
 #     return render_template("404.html")
@@ -75,7 +58,6 @@ def profile_page(username):
     # Grab the session user's username from DB
     username = mongo.db.registration_details.find_one(
         {"username": session["user"]})["username"]
-
     if session["user"]:
         return render_template("profile.html", title='oneHourmaid', basic_clean_details=basic_clean_details,
                                moving_details=moving_details, username=username, deep_clean_details=deep_clean_details)
@@ -93,11 +75,21 @@ def basic_clean_info():
             "user_message": request.form.get("user_message"),
             "user_date": request.form.get("user_date"),
         }
-        mongo.db.basic_clean_details.insert_one(basic_clean_details)
+        details = mongo.db.basic_clean_details.insert_one(basic_clean_details)
+        print(details.inserted_id)
         flash("Request sent to cleaner")
-        return redirect(url_for("basic_clean_info"))
-    details = mongo.db.basic_clean_details.find().sort("basic_clean_details", 1)
+        return redirect(url_for("basic_clean_info_details", request_id=details.inserted_id))
+    details = list(mongo.db.basic_clean_details.find().sort("basic_clean_details", 1))
+    print(details)
     return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
+
+
+@app.route("/basic_clean_info/<request_id>", methods=["GET", "POST"])
+def basic_clean_info_details(request_id):
+    details = list(mongo.db.basic_clean_details.find({"_id": ObjectId(request_id)}))
+    print(details)
+    return render_template("basic_clean_details.html", basic_clean_details=details[0], title='Request Details')
+
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
@@ -121,25 +113,6 @@ def deep_clean_info():
         return redirect(url_for("deep_clean_info"))
     details = mongo.db.deep_clean_details.find().sort("deep_clean_details", 1)
     return render_template("deep_clean_details.html", deep_clean_details=details, title='Deep Clean Request')
-
-
-@app.route("/moving_info", methods=["GET", "POST"])
-def moving_info():
-    if request.method == "POST":
-        moving_details = {
-            "street_moving": request.form.get("street_moving"),
-            "postcode_moving": request.form.get("postcode_moving"),
-            "date_moving": request.form.get("date_moving"),
-            "name_moving": request.form.get("name_moving"),
-            "contact_moving": request.form.get("contact_moving"),
-            "moving_in": request.form.get("moving_in"),
-            "moving_out": request.form.get("moving_out")
-        }
-        mongo.db.moving_details.insert_one(moving_details)
-        flash("Request sent to cleaner")
-        return redirect(url_for("moving_info"))
-    details_moving = mongo.db.moving_details.find().sort("moving_details", 1)
-    return render_template("moving.html", moving_details=details_moving)
 
 
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
@@ -203,6 +176,8 @@ def edit_deepclean_request(deepclean_request_id):
         {"_id": ObjectId(deepclean_request_id)})
     return render_template("edit_deepclean_request.html", request=deepclean_request_info)
 
+
+# Auto email to send confirmation to user
 
 @app.route("/auto_email")
 def auto_email():

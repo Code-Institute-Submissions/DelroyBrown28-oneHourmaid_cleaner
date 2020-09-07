@@ -48,7 +48,7 @@
             </p>
         </a>
 
-        <a href="{{ url_for('deep_clean') }}" class="deep_clean_wrap" data-value="Deep Clean">
+        <a href="{{ url_for('deep_clean_info') }}" class="deep_clean_wrap" data-value="Deep Clean">
             <img class="deep_clean_image" src="{{ url_for('static', filename='images/deepclean_image.png') }}" alt="">
             <h1 class="deep_clean_title">OneHourmaid's<br>Deep Clean</h1>
             <p class="deep_clean_blurb">
@@ -62,28 +62,9 @@
             </p>
         </a>
 
-        <!-- <div class="moving_in_out_wrap" data-value="Moving In/Out">
-            <img class="moving_in_out_image" src="/static/images/movinginout.png" alt="">
-            <h1 class="moving_in_out_title">Property<br>Moving In/Out</h1>
-            <p class="moving_in_out_blurb">
-                If you’re moving in to a new house<br>
-                and would like to ensure the property is<br>
-                clean tidy and ready for your arrival,<br>
-                OneHourmaid provide
-                moving
-                in service to<br>
-                make sure your new home is beautifully<br>
-                clean and ready for you.
-            </p>
-        </div> -->
     </div>
 
 
-    <a href="{{ url_for('moving_in_out') }}">
-        <button id="moving_button">
-            <span class="select_text">Tap to select</span>
-        </button>
-    </a>
     <!--CENTER CONTENTS (mobile and ipad) //-->
 
 
@@ -137,24 +118,7 @@
             </p>
         </a>
 
-        <!-- <a href="{{ url_for('moving_info') }}" class="service_cards moving_in_out">
-            <img class="moving_in_out_image__desktop" src="/static/images/movinginout.png" alt="">
-            <h1 class="service_card_title">Property<br>Moving In/Out</h1>
-            <p class="service_card_blurb">
-                If you’re moving in to a new house<br>
-                and would like to ensure the property is<br>
-                clean tidy and ready for your arrival,<br>
-                OneHourmaid provide
-                moving
-                in service to<br>
-                make sure your new home is beautifully<br>
-                clean and ready for you on your move in date.
-            </p>
-        </a> -->
-
     </div>
-
-
 
     <!--BOTTOM CONTENTS (desktop)-->
     <div class="bottom_wrap__desktop">Choose a service by clicking the desired card.</div>
@@ -182,18 +146,6 @@
             prevArrow: $('.previous_button'),
         });
 
-
-        // TAP TO SELECT BUTTON ANIMATION (Mobile View)
-        
-        $('.moving_in_out_wrap').click(function () {
-            $('#moving_button').fadeIn('fast', function () {
-                $('#moving_button').animate({
-                    width: '290px'
-                }, function () {
-                    $('.select_text').fadeIn('fast')
-                })
-            })
-        })
     </script>
 
 </body>
