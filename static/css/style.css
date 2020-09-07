@@ -7,6 +7,10 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -1331,7 +1335,7 @@ a:focus {
     }
 
     .customer_details_blurb {
-          font-size: 17px; 
+        font-size: 17px;
     }
 }
 
@@ -1372,7 +1376,7 @@ a:focus {
 
 
     }
-    
+
 
     .service_btns {
         height: 600px !important;
@@ -1500,14 +1504,14 @@ a:focus {
 
     /*------CLEANER ACCOUNT PAGE------*/
 
-    
+
     .main_title_wrap {
         width: 100%;
         margin-bottom: 30px;
 
     }
-    
-    
+
+
     .pending_jobs_wrap {
         width: 25%;
         overflow: auto;
