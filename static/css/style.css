@@ -514,7 +514,7 @@ a:focus {
         justify-content: center;
         width: 290px;
         height: 45px;
-        bottom: 40px;
+        margin: auto;
         align-self: center;
         background-color: #3B494C;
         border: none;

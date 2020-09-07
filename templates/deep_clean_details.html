@@ -13,107 +13,6 @@
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
 
-
-    <a href="{{ url_for('services') }}">
-        <div class="back_btn_smaller" style="z-index: 100;">
-            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon_smaller">
-        </div>
-    </a>
-
-
-    <!--TOP CONTENTS-->
-    <div class="top_contents_wrapper__deepclean">
-        <h1 class="customer_details_title">{{ title }}</h1>
-        <p class="customer_details_blurb">Please give us your Deep Clean details.</p>
-
-    </div>
-
-
-
-    <span id="text_tag">Deep Clean</span>
-
-
-    <!--CUSTOMER DETAILS AND REQUEST FORM-->
-
-
-    <div class="row form_wrap">
-        <form class="col s12" id="deepClean_details_form" method="POST" action="{{ url_for('deep_clean_info') }}">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="user_name" name="user_name" type="text" class="all_inputs validate">
-                    <label for="user_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="user_lname" name="user_lname" type="text" class="all_inputs validate">
-                    <label for="user_lname">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="user_street" name="user_street" type="text" class="all_inputs validate">
-                    <label for="user_street">Street Name/Number</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="user_postcode" name="user_postcode" type="text" class="all_inputs validate">
-                    <label for="user_postcode">Postcode</label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="user_contact" name="user_contact" type="number" class="all_inputs validate">
-                    <label for="user_contact">Contact Number</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="user_date" name="user_date" minlength="5" maxlength="50" type="text"
-                        class="datepicker validate">
-                    <label for="user_date">Click to pick date</label>
-                </div>
-            </div>
-
-            <p class="deep_clean_text">Please pick a specific Deep Clean. Or, for more specific requests, leave a
-                message in the comment field below</p>
-            <div class="checkbox_wrap">
-                <div class="checkboxes_1">
-                    <label>
-                        <input id="indeterminate-checkbox carpet_clean" name="carpet_clean" value="Carpet Clean"
-                            type="checkbox" />
-                        <span>Carpet Clean</span>
-                    </label>
-                    <label>
-                        <input id="indeterminate-checkbox floor_steam" name="floor_steam" value="Floor Steam"
-                            type="checkbox" />
-                        <span>Floor Steam</span>
-                    </label>
-                </div>
-                <div class="checkboxes_2">
-                    <label>
-                        <input id="indeterminate-checkbox white_goods" name="white_goods" value="White Goods"
-                            type="checkbox" />
-                        <span>White Goods</span>
-                    </label>
-                    <label>
-                        <input id="indeterminate-checkbox window_clean" name="window_clean" value="Window Clean"
-                            type="checkbox" />
-                        <span>Windows</span>
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="user_message" name="user_message"
-                                class="all_inputs materialize-textarea"></textarea>
-                            <label for="user_message">Deep Clean Request</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button id="submit_deepclean_form" type="submit" class="z-depth-3">Request Deep Clean</button>
-        </form>
-    </div>
-
     <!--Flash messages-->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -124,29 +23,27 @@
             <h1 class="center-align request_flash_text">{{ messages }}</h1>
 
             <div class="requested_info">
-                {% for request_info in deep_clean_details: %}
-                <p class="requested_name">Name:<br>{{request_info.user_name}} {{request_info.user_lname}}</p>
-                <p class="requested_name">Contact:<br>{{request_info.user_contact}}</p>
-                <p class="requested_name">Address:<br>{{request_info.user_street}}<br>{{request_info.user_postcode}}</p>
-                <p class="requested_name">Cleaning Date:<br>{{request_info.user_date}}</p>
-                <p class="requested_name">Deep Clean for:<br>{{request_info.carpet_clean}}<br>
-                    {{request_info.floor_steam}}<br>{{request_info.white_goods}}<br>{{request_info.window_clean}}</p>
+                <p class="requested_name">Name:<br>{{deep_clean_details.user_name}} {{deep_clean_details.user_lname}}</p>
+                <p class="requested_name">Contact:<br>{{deep_clean_details.user_contact}}</p>
+                <p class="requested_name">Address:<br>{{deep_clean_details.user_street}}<br>{{deep_clean_details.user_postcode}}</p>
+                <p class="requested_name">Cleaning Date:<br>{{deep_clean_details.user_date}}</p>
+                <p class="requested_name">Deep Clean for:<br>{{deep_clean_details.carpet_clean}}<br>
+                    {{deep_clean_details.floor_steam}}<br>{{deep_clean_details.white_goods}}<br>{{deep_clean_details.window_clean}}</p>
                 <hr style="margin: 0;" width="290px">
-                <p class="requested_name">Cleaning Request:<br>{{request_info.user_message}}</p>
+                <p class="requested_name">Cleaning Request:<br>{{deep_clean_details.user_message}}</p>
 
-                {% endfor %}
 
             </div>
 
             <div class="flash_request_btns">
                 <a
-                    href="{{ url_for('edit_deepclean_request', request_id=request._id, deepclean_request_id=request._id) }}"><button
+                    href="{{ url_for('edit_deepclean_request', request_id=deep_clean_details._id) }}"><button
                         class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/edit_icon.png') }}" alt="" class="flash_icons">
                         Edit
                     </button>
                 </a>
-                <a href="{{ url_for('delete_deepclean_request', request_id=request._id) }}">
+                <a href="{{ url_for('delete_request', request_id=deep_clean_details._id) }}">
                     <button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
                             class="flash_icons">
