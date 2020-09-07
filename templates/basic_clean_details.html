@@ -37,33 +37,33 @@
             action="{{ url_for('basic_clean_info', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="user_name" name="user_name" type="text" class="all_inputs validate">
+                    <input id="user_name" name="user_name" type="text" class="all_inputs validate" required>
                     <label for="user_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="user_lname" name="user_lname" type="text" class="all_inputs validate">
+                    <input id="user_lname" name="user_lname" type="text" class="all_inputs validate" required>
                     <label for="user_lname">Last Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="user_street" name="user_street" type="text" class="all_inputs validate">
+                    <input id="user_street" name="user_street" type="text" class="all_inputs validate" required>
                     <label for="user_street">Street Name/Number</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="user_postcode" name="user_postcode" type="text" class="all_inputs validate">
+                    <input id="user_postcode" name="user_postcode" type="text" class="all_inputs validate" required>
                     <label for="user_postcode">Postcode</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="user_contact" name="user_contact" type="number" class="all_inputs validate">
+                    <input id="user_contact" name="user_contact" type="number" class="all_inputs validate" required>
                     <label for="user_contact">Contact Number</label>
                 </div>
                 <div class="input-field col s6">
                     <input id="user_date" name="user_date" minlength="5" maxlength="50" type="text"
-                        class="datepicker validate">
+                        class="datepicker validate" required>
                     <label for="user_date">Click to pick date</label>
                 </div>
 
@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea id="user_message" name="user_message"
-                                class="all_inputs materialize-textarea"></textarea>
+                                class="all_inputs materialize-textarea" required></textarea>
                             <label for="user_message">Cleaning Request</label>
                         </div>
                     </div>
@@ -137,12 +137,6 @@
     {% include 'components/scripts.html' %}
 
     <script>
-        $('#user_message').on('blur', function () {
-            $('#submit_basiclean_form').animate({
-                opacity: '1'
-            })
-        })
-
         // INITIALIZE DATEPICKER
 
         $('.datepicker').datepicker({
@@ -153,6 +147,8 @@
                 done: "select"
             }
         });
+
+        
     </script>
 </body>
 

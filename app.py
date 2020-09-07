@@ -171,6 +171,13 @@ def delete_request(request_id):
     return redirect(url_for('basic_clean_info'))
 
 
+@app.route("/delete_deepclean_request/<request_id>")
+def delete_deepclean_request(request_id):
+    mongo.db.deep_clean_details.remove({"_id": ObjectId(request_id)})
+    flash("Request Deleted")
+    return redirect(url_for('deep_clean_info'))
+
+
 @app.route("/edit_deepclean_request/<deepclean_request_id>", methods=["GET", "POST"])
 def edit_deepclean_request(deepclean_request_id):
     if request.method == "POST":
