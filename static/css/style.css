@@ -551,7 +551,7 @@ a:focus {
     }
 
     .request_flash_text {
-        color: #000;
+        color: #fff;
         font-size: 22px;
         font-weight: bolder;
 
@@ -569,7 +569,7 @@ a:focus {
     }
 
     .requested_name {
-        color: #000;
+        color: #fff;
     }
 
     .flash_request_btns {
@@ -1504,9 +1504,22 @@ a:focus {
         align-self: center;
     }
 
-    .flash_wrap_request_sent {
+    .flash_wrap_request_sent  {
         width: 25%;
-        right: 100px;
+        background-color: transparent !important;
+        border-left: 1px solid #9C9C84;
+        border-right: 1px solid #9C9C84;
+    }
+
+    .request_flash_message  {
+        margin: 0;
+        background-color: transparent;
+        border-left: 1px solid #9C9C84;
+        border-right: 1px solid #9C9C84;
+    }
+
+    .requested_info {
+       height: 80%; 
     }
 
 
@@ -1539,7 +1552,7 @@ a:focus {
 
     .confirmation_flash {
         position: absolute;
-        top: 100px;
+        bottom: 100px;
         color: #fff;
         width: 20%;
         height: 50px;
@@ -1547,11 +1560,16 @@ a:focus {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        opacity: 0;
     }
 
     .confirmation_text {
         width: 100%;
         height: 100%;
+        margin: auto;
+
+        opacity: 0;
 
     }
 

@@ -40,18 +40,17 @@ $(document).ready(function () {
     window.onload = onLoadAnimations;
 
 
-    // Service use text animation (main.html)
-
-    setTimeout(function () {
-        $('.serviceUseText_wrap').animate({
-            width: '100%'
+    function animateConfirmation() {
+        $('.confirmation_flash').animate({
+            opacity: '1'
         }, function () {
-            $('.service_use_text').animate({
+            $('.confirmation_text').animate({
                 opacity: '1'
-            })
+            });
         })
+    }
+    window.onload = animateConfirmation;
 
-    }, 1000)
 
 
 

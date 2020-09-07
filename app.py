@@ -16,6 +16,10 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
+
+
 mongo = PyMongo(app)
 
 
@@ -30,11 +34,6 @@ def services():
     return render_template("services.html")
 
 
-@app.route("/basic_clean_page")
-def basic_clean_page():
-    return render_template("basic_clean_details.html", title='Basic Clean Request')
-
-
 @app.route("/cleaner_account")
 def cleaner_account():
     basic_clean_details = list(mongo.db.basic_clean_details.find())
@@ -43,24 +42,6 @@ def cleaner_account():
 
     return render_template("cleaner_account.html", title='oneHourmaid', basic_clean_details=basic_clean_details,
                            deep_clean_details=deep_clean_details)
-
-
-# @app.errorhandler(404)
-# def invalid_page(e):
-#     return render_template("404.html")
-
-
-@app.route("/profile_page/<username>", methods=["GET", "POST"])
-def profile_page(username):
-    basic_clean_details = list(mongo.db.basic_clean_details.find())
-    deep_clean_details = list(mongo.db.deep_clean_details.find())
-    moving_details = list(mongo.db.moving_details.find())
-    # Grab the session user's username from DB
-    username = mongo.db.registration_details.find_one(
-        {"username": session["user"]})["username"]
-    if session["user"]:
-        return render_template("profile.html", title='oneHourmaid', basic_clean_details=basic_clean_details,
-                               moving_details=moving_details, username=username, deep_clean_details=deep_clean_details)
 
 
 @app.route("/basic_clean_info", methods=["GET", "POST"])
@@ -76,20 +57,17 @@ def basic_clean_info():
             "user_date": request.form.get("user_date"),
         }
         details = mongo.db.basic_clean_details.insert_one(basic_clean_details)
-        print(details.inserted_id)
         flash("Request sent to cleaner")
+        send_email(request.form.get("user_email"))
         return redirect(url_for("basic_clean_info_details", request_id=details.inserted_id))
-    details = list(mongo.db.basic_clean_details.find().sort("basic_clean_details", 1))
-    print(details)
-    return render_template("basic_clean_details.html", basic_clean_details=details, title='Request Details')
+    return render_template("basic_clean_info.html", title='Request Details')
 
 
 @app.route("/basic_clean_info/<request_id>", methods=["GET", "POST"])
 def basic_clean_info_details(request_id):
-    details = list(mongo.db.basic_clean_details.find({"_id": ObjectId(request_id)}))
-    print(details)
+    details = list(mongo.db.basic_clean_details.find(
+        {"_id": ObjectId(request_id)}))
     return render_template("basic_clean_details.html", basic_clean_details=details[0], title='Request Details')
-
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
@@ -144,45 +122,36 @@ def delete_request(request_id):
     return redirect(url_for('basic_clean_info'))
 
 
-@app.route("/delete_deepclean_request/<request_id>")
-def delete_deepclean_request(request_id):
-    mongo.db.deep_clean_details.remove({"_id": ObjectId(request_id)})
-    flash("Request Deleted")
-    return redirect(url_for('deep_clean_info'))
-
-
-@app.route("/edit_deepclean_request/<deepclean_request_id>", methods=["GET", "POST"])
-def edit_deepclean_request(deepclean_request_id):
-    if request.method == "POST":
-        submit_deep_clean_details = {
-            "user_name": request.form.get("user_name"),
-            "user_lname": request.form.get("user_lname"),
-            "user_contact": request.form.get("user_contact"),
-            "user_street": request.form.get("user_street"),
-            "user_postcode": request.form.get("user_postcode"),
-            "user_message": request.form.get("user_message"),
-            "user_date": request.form.get("user_date"),
-            "carpet_clean": request.form.get("carpet_clean"),
-            "floor_steam": request.form.get("floor_steam"),
-            "white_goods": request.form.get("white_goods"),
-            "window_clean": request.form.get("window_clean"),
-        }
-        mongo.db.deep_clean_details.update(
-            {"_id": ObjectId(deepclean_request_id)}, submit_deep_clean_details)
-        flash("Request Updated!")
-        return redirect(url_for("deep_clean_info"))
-
-    deepclean_request_info = mongo.db.deep_clean_details.find_one(
-        {"_id": ObjectId(deepclean_request_id)})
-    return render_template("edit_deepclean_request.html", request=deepclean_request_info)
-
-
 # Auto email to send confirmation to user
+def send_email(user_email):
+    msg = EmailMessage()
+    msg['Subject'] = 'oneHourmaid, Cleaner Confirmed!'
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = user_email
+
+    msg.set_content('This is a plain text email')
+
+    msg.add_alternative("""\
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Request Accepted! </h1>
+        <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
+            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond to this email</small>
+        </p>
+    </body>
+    </html>
+    """, subtype='html')
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        smtp.send_message(msg)
+
 
 @app.route("/auto_email")
 def auto_email():
-    EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
-    EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
     msg = EmailMessage()
     msg['Subject'] = 'oneHourmaid, Cleaner Confirmed!'
     msg['From'] = EMAIL_ADDRESS

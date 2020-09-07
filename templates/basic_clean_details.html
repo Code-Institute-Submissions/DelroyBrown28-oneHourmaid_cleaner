@@ -12,78 +12,7 @@
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
 
-    <a href="{{ url_for('services') }}">
-        <div class="back_btn_smaller" style="z-index: 100;">
-            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon_smaller">
-        </div>
-    </a>
-
-
-    <!--TOP CONTENTS-->
-    <div class="top_contents_wrapper__basiclean">
-        <h1 class="customer_details_title">{{ title }}</h1>
-        <p class="customer_details_blurb">Please
-            fill out the form below and give a short description of your cleaning needs.</p>
-    </div>
-
-
-    <span id="text_tag">Basic Clean</span>
-
-
-    <!--CUSTOMER DETAILS AND REQUEST FORM-->
-
-    <div class="row form_wrap">
-        <form class="col s12" id="basicClean_details_form" method="POST"
-            action="{{ url_for('basic_clean_info', request_id=request._id) }}">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="user_name" name="user_name" type="text" class="all_inputs validate" required>
-                    <label for="user_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="user_lname" name="user_lname" type="text" class="all_inputs validate" required>
-                    <label for="user_lname">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="user_street" name="user_street" type="text" class="all_inputs validate" required>
-                    <label for="user_street">Street Name/Number</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="user_postcode" name="user_postcode" type="text" class="all_inputs validate" required>
-                    <label for="user_postcode">Postcode</label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="user_contact" name="user_contact" type="number" class="all_inputs validate" required>
-                    <label for="user_contact">Contact Number</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="user_date" name="user_date" minlength="5" maxlength="50" type="text"
-                        class="datepicker validate" required>
-                    <label for="user_date">Click to pick date</label>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="user_message" name="user_message" class="all_inputs materialize-textarea"
-                                required></textarea>
-                            <label for="user_message">Cleaning Request</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" id="submit_basicclean_form" class="z-depth-3">Request Cleaner</button>
-        </form>
-    </div>
-
+    
     <!--Flash messages-->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -94,11 +23,11 @@
             <h1 class="center-align request_flash_text">{{ messages }}</h1>
 
             <div class="requested_info">
-                <p class="requested_name">Name:<br>{{basic_clean_details.user_name}} {{basic_clean_details.user_lname}}</p>
-                <p class="requested_name">Contact:<br>{{basic_clean_details.user_contact}}</p>
+                <p class="requested_name">Name:<br><span class="light_text">{{basic_clean_details.user_name}} {{basic_clean_details.user_lname}}</span></p>
+                <p class="requested_name">Contact:<br><span class="light_text">{{basic_clean_details.user_contact}}</span></p>
                 <p class="requested_name">Address:<br>{{basic_clean_details.user_street}}<br>{{basic_clean_details.user_postcode}}</p>
                 <p class="requested_name">Cleaning Date:<br>{{basic_clean_details.user_date}}</p>
-                <hr style="margin: 0;">
+                <hr style="margin: 0; width: 290px;">
                 <p class="requested_name">Cleaning Request:<br>{{basic_clean_details.user_message}}</p>
 
 
@@ -112,7 +41,7 @@
                     </button>
                 </a>
 
-                <a href="{{ url_for('delete_request', request_id=request._id) }}">
+                <a href="{{ url_for('delete_request', request_id=basic_clean_details._id) }}">
                     <button class="flash_btns z-depth-2">
                         <img src="{{ url_for('static', filename='/images/delete_icon_white.png') }}" alt=""
                             class="flash_icons">
