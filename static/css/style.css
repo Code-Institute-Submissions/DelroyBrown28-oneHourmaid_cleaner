@@ -154,7 +154,9 @@ a:focus {
     /*------CLEANER JOBS PAGE------*/
 
 
-
+    .jobs {
+        margin-bottom: 10px;
+    }
 
 
 
@@ -1498,8 +1500,17 @@ a:focus {
 
     /*------CLEANER ACCOUNT PAGE------*/
 
+    
+    .main_title_wrap {
+        width: 100%;
+        margin-bottom: 30px;
+
+    }
+    
+    
     .pending_jobs_wrap {
         width: 25%;
+        overflow: auto;
     }
 
     .confirmation_flash {

@@ -21,7 +21,7 @@
     </a>
 
 
-    <div class="main_title">
+    <div class="main_title_wrap">
         <h3 class="title">oneHourmaid</h3>
         <p class="title_blurb">Below are your pending jobs.<br>Click on a job to view more details.</p>
     </div>
@@ -33,49 +33,10 @@
 
         <ul class="collapsible pending_jobs">
 
-            {% for basic_detail in basic_clean_details: %}
-            <li>
-                <div class="collapsible-header request_item_header">
-                    {{ basic_detail.user_name }} {{ basic_detail.user_lname }}
-                    <span class="basic_clean_tag">Basic Clean</span>
-                </div>
-
-                <div class="collapsible-body request_info">
-
-                    <div class="row">
-                        <span class="row info_headers">Address:<br>
-                            <span class="light_text info_text" id="customer_address">
-                                {{ basic_detail.user_street }}</span>
-                        </span><br>
-                        <span class="info_headers">Contact Number:<br>
-                            <span class="light_text info_text"
-                                id="customer_contact">{{ basic_detail.user_contact }}</span>
-                        </span><br>
-                    </div>
-
-                    <span class="info_headers row customer_request_style">Customer Request:<br>
-                        <span class="light_text italic_text"
-                            id="customer_request">{{ basic_detail.user_message }}</span>
-                    </span><br>
-
-                    <span class="info_headers">Cleaning Date:<br>
-                        <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_date }}</span>
-                    </span><br><br>
-
-                    <a href="{{ url_for('auto_email') }}"><button class="respond_to_user">Send confirmation to
-                            {{ basic_detail.user_name }}?</button></a>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-
-
-        <!--Deep clean jobs-->
-
-        <ul class="collapsible pending_jobs">
+            <!--Deep clean jobs-->
 
             {% for detail in deep_clean_details: %}
-            <li>
+            <li class="jobs">
                 <div class="collapsible-header request_item_header">
                     {{ detail.user_name }} {{ detail.user_lname }}
                     <span class="deep_clean_tag">Deep Clean</span>
@@ -116,6 +77,43 @@
                 </div>
             </li>
             {% endfor %}
+
+
+            {% for basic_detail in basic_clean_details: %}
+            <li class="jobs">
+                <div class="collapsible-header request_item_header">
+                    {{ basic_detail.user_name }} {{ basic_detail.user_lname }}
+                    <span class="basic_clean_tag">Basic Clean</span>
+                </div>
+
+                <div class="collapsible-body request_info">
+
+                    <div class="row">
+                        <span class="row info_headers">Address:<br>
+                            <span class="light_text info_text" id="customer_address">
+                                {{ basic_detail.user_street }}</span>
+                        </span><br>
+                        <span class="info_headers">Contact Number:<br>
+                            <span class="light_text info_text"
+                                id="customer_contact">{{ basic_detail.user_contact }}</span>
+                        </span><br>
+                    </div>
+
+                    <span class="info_headers row customer_request_style">Customer Request:<br>
+                        <span class="light_text italic_text"
+                            id="customer_request">{{ basic_detail.user_message }}</span>
+                    </span><br>
+
+                    <span class="info_headers">Cleaning Date:<br>
+                        <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_date }}</span>
+                    </span><br><br>
+
+                    <a href="{{ url_for('auto_email') }}"><button class="respond_to_user">Send confirmation to
+                            {{ basic_detail.user_name }}?</button></a>
+                </div>
+            </li>
+            {% endfor %}
+
         </ul>
 
 
