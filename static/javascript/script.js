@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 
     function animateConfirmation() {
-        $('.flash_wrap_request_edited').animate({
+        $('.flash_wrap_request_edited, .flash_wrap_request_deleted').animate({
             opacity: '1'
         }, function () {
             $('.request_edited_text').animate({
@@ -50,8 +50,6 @@ $(document).ready(function () {
         })
     }
     window.onload = animateConfirmation;
-
-
 
 
 });

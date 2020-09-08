@@ -82,7 +82,7 @@ def deep_clean_info():
         flash("Request sent to cleaner")
         send_email(request.form.get("user_email"))
         return redirect(url_for("deep_clean_info_details", request_id=details.inserted_id))
-    return render_template("deep_clean_info.html", title='Request Details')
+    return render_template("deep_clean_info.html", title='Deep Clean Request')
 
 
 @app.route("/basic_clean_info/<request_id>", methods=["GET", "POST"])
@@ -139,7 +139,7 @@ def edit_deepclean_request(request_id):
         mongo.db.deep_clean_details.update(
             {"_id": ObjectId(request_id)}, submit_deep_clean_details)
         flash("Request Updated!")
-        return redirect(url_for("deep_clean_info"))
+        return redirect(url_for("deep_clean_info/<request_id>"))
     request_info = mongo.db.deep_clean_details.find_one(
         {"_id": ObjectId(request_id)})
     return render_template("edit_deep_clean_info.html", request=request_info)
@@ -151,9 +151,6 @@ def delete_request(request_id):
     mongo.db.deep_clean_details.remove({"_id": ObjectId(request_id)})
     flash("Request Deleted")
     return redirect(url_for('services'))
-
-
-
 
 
 # Auto email to send confirmation to user

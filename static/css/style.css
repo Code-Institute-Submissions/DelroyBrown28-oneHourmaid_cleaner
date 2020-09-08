@@ -424,6 +424,7 @@ a:focus {
     .form_wrap {
         height: 90%;
         display: flex;
+        
 
     }
 
@@ -434,7 +435,7 @@ a:focus {
         display: flex;
         flex-flow: column;
         justify-content: space-evenly;
-        margin-bottom: 35px;
+        
     }
 
 
@@ -513,7 +514,6 @@ a:focus {
         justify-content: center;
         width: 290px;
         height: 45px;
-        margin: auto;
         align-self: center;
         background-color: #3B494C;
         border: none;
@@ -524,6 +524,10 @@ a:focus {
         font-family: 'Lato', sans-serif;
         cursor: pointer;
 
+    }
+
+    .request_edited_text {
+        text-align: center;
     }
 
     .flash_wrap_request_sent {
@@ -542,9 +546,10 @@ a:focus {
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
-        border: 2px solid #fff;
+        color: #000;
+        background-color: #fff;
         font-weight: 300;
+        z-index: 100;
     }
 
     .requested_name {
@@ -644,10 +649,6 @@ a:focus {
     #deepClean_details_form {
         justify-content: space-evenly;
         height: 100%;
-    }
-
-    #submit_deepclean_form {
-        height: 45px;
     }
 
 
@@ -1171,6 +1172,22 @@ a:focus {
         justify-content: center;
     }
 
+    /*------SERVICES PAGE------*/
+
+    .flash_wrap_request_deleted {
+        position: relative;
+        border: 2px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        width: 290px;
+        margin: auto;
+        bottom: 27px;
+
+        opacity: 0;
+    }
+
 
 
 
@@ -1399,6 +1416,8 @@ a:focus {
 
     .flash_wrap_request_sent {
         width: 25%;
+        height: 75%;
+        padding: 0;
         background-color: transparent !important;
         border-left: 1px solid #9C9C84;
         border-right: 1px solid #9C9C84;
@@ -1421,6 +1440,10 @@ a:focus {
 
     #user_email {
         color: #fff;
+    }
+
+    .flash_request_btns {
+        margin-bottom: 20px;
     }
 
 

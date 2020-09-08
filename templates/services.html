@@ -123,7 +123,21 @@
     <!--BOTTOM CONTENTS (desktop)-->
     <div class="bottom_wrap__desktop">Choose a service by clicking the desired card.</div>
 
- 
+    <!--Flash messages-->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for messages in messages %}
+    <section class="flash_wrap_request_deleted z-depth-2">
+
+        <p class="request_edited_text">Request Deleted</p>
+
+
+    </section>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
 
 
 
@@ -132,14 +146,6 @@
     <!--// SCRIPTS-->
 
     <script>
-        // GRABS CHOSEN SERVICE AND STORES IN LOCALSTORAGE
-
-        $('.basic_clean_wrap, .basic_clean_wrap__desktop, .deep_clean_wrap, .deep_clean_wrap__desktop, .moving_in_out_wrap, .moving_in_out_wrap__desktop')
-            .on('click', function () {
-                var BasicCleanValue = $(this).attr('data-value');
-                localStorage.setItem("basicClean", BasicCleanValue);
-            });
-
         // SLICK CAROUSEL FOR SWIPING THROUGH SERVICES...INDEX.HTML
         $(".slick_wrap").slick({
             infinite: false,
@@ -148,6 +154,11 @@
             prevArrow: $('.previous_button'),
         });
 
+        // Hide confirmation message
+
+        $('.flash_wrap_request_deleted').click(function () {
+            $(this).css("display", "none")
+        })
     </script>
 
 </body>
