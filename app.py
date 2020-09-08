@@ -11,10 +11,9 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-
+app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.secret_key = os.environ.get("SECRET_KEY")
 
 EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
