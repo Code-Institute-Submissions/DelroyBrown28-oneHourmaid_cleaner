@@ -168,7 +168,7 @@ a:focus {
         justify-content: center;
         flex-flow: column;
         margin-bottom: auto;
-        
+
 
     }
 
@@ -418,7 +418,6 @@ a:focus {
         background-color: #b45f1993;
     }
 
-    /*-----//  TOP CONTENTS-----*/
 
     /*-------CUSTOMER DETAILS FORM-------*/
 
@@ -528,11 +527,28 @@ a:focus {
     }
 
     .flash_wrap_request_sent {
-        position: absolute;
-        margin: auto 0;
         width: 100%;
-        height: 85%;
+        margin: auto;
+        padding-bottom: 20px;
+        background-color: transparent !important;
+        border-bottom: 2px solid #9C9C84;
+        border-top: 2px solid #9C9C84;
 
+    }
+
+    .flash_wrap_request_edited {
+        width: 250px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        border: 2px solid #fff;
+        font-weight: 300;
+    }
+
+    .requested_name {
+        color: #fff;
     }
 
 
@@ -547,7 +563,7 @@ a:focus {
         align-items: center;
         justify-content: space-evenly;
         flex-flow: column;
-        background-color: #fff;
+        background-color: transparent;
     }
 
     .request_flash_text {
@@ -568,9 +584,6 @@ a:focus {
 
     }
 
-    .requested_name {
-        color: #fff;
-    }
 
     .flash_request_btns {
         width: 100%;
@@ -637,134 +650,6 @@ a:focus {
         height: 45px;
     }
 
-    /*-------MOVING IN/OUT PAGE-------*/
-
-    /* .moving_form_wrap {
-        height: 90%;
-        width: 85%;
-
-    }
-
-    .moving_form {
-        height: 100%;
-        display: flex;
-        justify-content: space-evenly;
-    }
-
-    .moving_form_inputs {
-        color: #fff;
-    }
-
-    .moving_checkbox {
-        width: 100%;
-        height: 120px;
-        display: flex;
-        justify-content: space-evenly;
-
-    }
-
-    .moving_in_wrap,
-    .moving_out_wrap {
-        height: 150px;
-        width: 90px;
-        position: relative;
-        margin-top: 35px;
-        display: flex;
-        justify-content: space-evenly;
-
-    }
-
-    .moving_in_check,
-    .moving_out_check {
-        position: absolute;
-        width: 90px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        align-self: flex-end;
-        border: 1px solid #9c9c847c;
-        overflow: hidden;
-
-
-    }
-
-
-    .moving_text {
-        width: 100%;
-        color: #fff;
-        font-weight: 300;
-        font-size: 15px;
-        text-align: center;
-    }
-
-    .moving_in_icon,
-    .moving_out_icon {
-        position: relative;
-        height: 30px;
-    }
-
-    .moving_out_icon {
-        left: -85px;
-
-    }
-
-    #submit_moving_form {
-        position: absolute;
-        bottom: 15%;
-        width: 290px;
-        height: 50px;
-        background-color: transparent;
-        background-color: #3B494C;
-        border: none;
-        color: #fff;
-        font-weight: 300;
-        font-size: 18px;
-        font-family: 'Lato', sans-serif;
-
-    } */
-
-    /*-------MOVING CONFIRMATION PAGE-------*/
-
-    /* .moving_confirm_details {
-        width: 85%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-        margin: 0;
-
-    }
-
-    .movingInOut {
-        color: #fff;
-        text-align: center;
-    }
-
-    .moving_detail {
-        color: #fff;
-        margin: 0;
-        font-weight: 300;
-        text-align: center;
-    }
-
-    .request_from {
-        width: 100%;
-        padding: 5px;
-        background-color: #fff;
-    }
-
-    .request_from_name {
-        color: #000;
-        margin: 0;
-        text-transform: uppercase;
-    }
-
-    .moving_user_contact {
-        margin: 0;
-        text-align: center;
-    } */
 
     /*------AUTO EMAIL------*/
 
@@ -774,24 +659,6 @@ a:focus {
         background-color: #3B494C;
         color: #fff;
     }
-
-    /*-------REPLY TO REQUEST PAGE-------*/
-
-    .send_request_text {
-        color: #fff;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -815,7 +682,7 @@ a:focus {
         width: 75px;
         height: 30px;
 
-        /* ; */
+
 
     }
 
@@ -1386,10 +1253,11 @@ a:focus {
     }
 
 
-    .service_btns {
+    #request_btn,
+    #account_btn {
         height: 600px !important;
         width: 614.391px !important;
-        justify-content: center;
+        justify-content: space-evenly;
         border: none;
         border-left: 2px solid rgba(255, 255, 255, 0.342);
         border-right: 2px solid rgba(255, 255, 255, 0.342);
@@ -1415,6 +1283,7 @@ a:focus {
         padding: 5px 15px;
         background-color: #3B494C;
     }
+
 
     /*---SERVICE CONTENTS---*/
 
@@ -1499,19 +1368,43 @@ a:focus {
     /*------BASIC CLEAN PAGE------*/
 
 
+    .flash_wrap_request_edited {
+        width: 20%;
+        height: 50px;
+        bottom: 50px;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 300;
+        border: 1px solid #fff;
+
+        opacity: 0;
+    }
+
+    .request_flash_text {
+        color: #fff;
+    }
+
+    .request_edited_text {
+        opacity: 0;
+    }
+
+
     .request_flash_messagess {
         width: 50%;
         align-self: center;
     }
 
-    .flash_wrap_request_sent  {
+    .flash_wrap_request_sent {
         width: 25%;
         background-color: transparent !important;
         border-left: 1px solid #9C9C84;
         border-right: 1px solid #9C9C84;
     }
 
-    .request_flash_message  {
+    .request_flash_message {
         margin: 0;
         background-color: transparent;
         border-left: 1px solid #9C9C84;
@@ -1519,8 +1412,17 @@ a:focus {
     }
 
     .requested_info {
-       height: 80%; 
+        height: 80%;
     }
+
+    .requested_name {
+        color: #fff;
+    }
+
+    #user_email {
+        color: #fff;
+    }
+
 
 
     /*------CLEANER ACCOUNT PAGE------*/

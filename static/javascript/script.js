@@ -41,10 +41,10 @@ $(document).ready(function () {
 
 
     function animateConfirmation() {
-        $('.confirmation_flash').animate({
+        $('.flash_wrap_request_edited').animate({
             opacity: '1'
         }, function () {
-            $('.confirmation_text').animate({
+            $('.request_edited_text').animate({
                 opacity: '1'
             });
         })

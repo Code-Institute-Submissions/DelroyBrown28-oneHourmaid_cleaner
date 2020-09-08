@@ -56,10 +56,10 @@ def basic_clean_info():
             "user_date": request.form.get("user_date"),
         }
         details = mongo.db.basic_clean_details.insert_one(basic_clean_details)
-        flash("Request sent to cleaner")
         send_email(request.form.get("user_email"))
+        flash("Request sent to cleaner")
         return redirect(url_for("basic_clean_info_details", request_id=details.inserted_id))
-    return render_template("basic_clean_info.html", title='Request Details')
+    return render_template("basic_clean_info.html", title='Basic Clean Request')
 
 
 @app.route("/deep_clean_info", methods=["GET", "POST"])
@@ -150,7 +150,7 @@ def delete_request(request_id):
     mongo.db.basic_clean_details.remove({"_id": ObjectId(request_id)})
     mongo.db.deep_clean_details.remove({"_id": ObjectId(request_id)})
     flash("Request Deleted")
-    return redirect(url_for('index'))
+    return redirect(url_for('services'))
 
 
 

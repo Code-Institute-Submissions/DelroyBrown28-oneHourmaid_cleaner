@@ -37,7 +37,7 @@
 
 
     <div class="row form_wrap">
-        <form class="col s12" id="deepClean_details_form" method="POST" action="{{ url_for(deep_clean_info', request_id=request._id) }}">
+        <form class="col s12" id="deepClean_details_form" method="POST" action="{{ url_for('deep_clean_info', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <button id="submit_deepclean_form" type="submit" class="z-depth-3">Request Deep Clean</button>
+            <button id="submit_deepclean_form" type="submit" class="z-depth-3">Edit Deep Clean</button>
         </form>
     </div>
 
