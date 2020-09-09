@@ -11,20 +11,9 @@ body {
     display: none;
 }
 
-.text-shadow {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-}
 
 .light_text {
     font-weight: 300;
-}
-
-/* .flashes h4 {
-    line-height: 2;
-} */
-
-.no_shadow {
-    box-shadow: none !important;
 }
 
 
@@ -79,7 +68,9 @@ a:focus {
 
     }
 
-    /*---SIGN IN/REGISTER BUTTONS---*/
+    .service_icons {
+        height: 75px;
+    }
 
     .btn_wrap {
         position: relative;
@@ -120,60 +111,10 @@ a:focus {
         font-weight: 300;
     }
 
-    .serviceUseText_wrap {
-        width: 0%;
-        height: 35px;
-        bottom: 29%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        background-color: #37454a9c;
-
-    }
-
-    .service_use_text {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        width: 100%;
-        height: 35px;
-        text-align: center;
-
-        opacity: 0;
-    }
-
-    .signin {
-        width: 100%;
-
-    }
-
-    .service_icons {
-        height: 75px;
-    }
 
 
     /*------CLEANER ACCOUNT PAGE------*/
 
-
-    .jobs {
-        margin-bottom: 10px;
-    }
-
-    .main_title_wrap {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-        margin-bottom: auto;
-
-
-    }
-
-
-    /*------MAIN USERSIDE PAGE------*/
 
     .button_wrap__ipad,
     .services_wrap__desktop,
@@ -182,7 +123,33 @@ a:focus {
         display: none;
     }
 
-    #user_body {
+
+    .jobs {
+        margin-bottom: 10px;
+    }
+
+    .basic_clean_tag {
+        margin: 0;
+        color: #fff;
+        opacity: 0.7;
+        width: 100%;
+        text-align: center;
+
+    }
+
+
+    .main_title_wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        margin-bottom: auto;
+
+    }
+
+
+
+    #services_body {
         overflow: hidden;
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -192,7 +159,7 @@ a:focus {
     }
 
 
-    .userside_title {
+    .services_title {
         color: #fff;
         font-weight: 400;
         font-family: 'Oswald', sans-serif;
@@ -228,8 +195,7 @@ a:focus {
     }
 
     .basic_clean_wrap,
-    .deep_clean_wrap,
-    .moving_in_out_wrap {
+    .deep_clean_wrap {
         width: 100%;
         height: 100%;
         margin-top: 11px;
@@ -253,16 +219,14 @@ a:focus {
     }
 
     .basic_clean_image,
-    .deep_clean_image,
-    .moving_in_out_image {
+    .deep_clean_image {
         position: relative;
         margin: auto;
         height: 120px;
     }
 
     .basic_clean_title,
-    .deep_clean_title,
-    .moving_in_out_title {
+    .deep_clean_title {
         position: relative;
         color: #fff;
         text-align: center;
@@ -271,8 +235,7 @@ a:focus {
     }
 
     .basic_clean_blurb,
-    .deep_clean_blurb,
-    .moving_in_out_blurb {
+    .deep_clean_blurb {
         position: relative;
         color: #fff;
         font-size: 15px;
@@ -346,30 +309,7 @@ a:focus {
         font-size: 0.8em;
     }
 
-    #basic_clean_button,
-    #deep_clean_button,
-    #moving_button {
-        position: absolute;
-        width: 0px;
-        height: 75px;
-        align-self: center;
-        bottom: 19%;
-        border: none;
-        border: 2px solid #EDC681;
-        background-color: #edc58144;
-        color: #fff;
-        font-weight: 300;
-        font-size: 18px;
-        font-family: 'Lato', sans-serif;
-        left: 35px;
 
-        display: none;
-
-    }
-
-    .select_text {
-        display: none;
-    }
 
     /*-------BASIC CLEAN REQUEST PAGE-------*/
 
@@ -402,11 +342,6 @@ a:focus {
 
     }
 
-    .back_button {
-        position: absolute;
-        left: 20px;
-        height: 30px;
-    }
 
     #text_tag {
         text-align: center;
@@ -419,12 +354,12 @@ a:focus {
     }
 
 
-    /*-------CUSTOMER DETAILS FORM-------*/
+    /*-------BASIC REQUEST FORM-------*/
 
     .form_wrap {
         height: 90%;
         display: flex;
-        
+
 
     }
 
@@ -435,7 +370,7 @@ a:focus {
         display: flex;
         flex-flow: column;
         justify-content: space-evenly;
-        
+
     }
 
 
@@ -458,53 +393,11 @@ a:focus {
     }
 
 
-    .choice_buttons {
-        display: flex;
-        margin-bottom: 15px;
-        flex-flow: row;
-        justify-content: space-evenly;
-
-
-    }
-
-    .service_choice_buttons {
-        width: 95px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-        align-self: center;
-        background-color: transparent;
-        border: none;
-        color: #fff;
-        font-weight: 300;
-        font-size: 14px;
-        font-family: 'Lato', sans-serif;
-
-    }
-
-    #deep_clean_choice {
-        margin: 15px 0px;
-    }
 
     .datepicker {
         color: #EDC681;
     }
 
-    .message_box {
-        margin: 0 auto;
-        width: 85%;
-        height: 150px;
-        margin-bottom: 25px;
-        display: flex;
-        background-color: #3b494c4d;
-        color: #fff;
-        text-align: center;
-        overflow: auto;
-
-        border: 1px solid #3B494C;
-    }
 
     #submit_basicclean_form,
     #submit_deepclean_form {
@@ -664,7 +557,7 @@ a:focus {
 
 
 
-    /*-------SIGN IN PAGE-------*/
+    /*-------CLEANER ACCOUNT PAGE-------*/
 
 
     #cleaner_acc_body {
@@ -680,12 +573,63 @@ a:focus {
         left: 0;
         display: flex;
         align-items: center;
-        /* justify-content: center; */
         width: 75px;
         height: 30px;
 
+    }
+
+    .pending_jobs_wrap {
+        height: 70%;
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        width: 86%;
+        margin-bottom: auto;
+        border: 2px solid #b45f19;
+        overflow: auto;
+
+    }
+
+    .pending_jobs {
+        width: 94%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+        border: none;
+        z-index: 5;
+        box-shadow: none !important;
+
+    }
 
 
+    .deep_clean_tag,
+    .basic_clean_tag {
+        position: relative;
+        right: 5px;
+        width: 65px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+        padding: 1px 5px;
+        background-color: #9C9C84;
+
+    }
+
+    .basic_clean_tag {
+        background-color: #b45f19;
+
+    }
+
+    .request_info {
+        color: #fff;
+        margin: 0;
+        background-color: #3B494C;
+        text-align: center;
+        border-top: 1px solid #b45f19;
+    }
+
+    .info_headers {
+        font-weight: 600;
     }
 
     .back_btn_smaller {
@@ -715,100 +659,60 @@ a:focus {
         margin: 0;
     }
 
-    /*---SIGN IN FORM---*/
-
-    .signinform {
-        position: absolute;
-        z-index: 22;
-    }
 
     .input-field {
         width: 100%;
         display: flex;
 
-
     }
 
-
-    .signin_bg {
-        position: relative;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .bg_image {
+    .registered_flash_messages {
         position: absolute;
-        height: 100%;
+        bottom: 15px;
+        left: 0;
         width: 100%;
-        filter: brightness(60%);
-    }
-
-    .signin_form {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        height: 50%;
-    }
-
-    #username,
-    #password {
-        color: #fff;
-        position: relative;
-        margin: 0 auto;
-        display: flex;
-        z-index: 5;
-        border-bottom: 1px solid #9C9C84;
-        width: 100%;
-    }
-
-
-
-    #sign_in_btn,
-    #register_cleaner_btn {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 290px;
         height: 50px;
-        margin: 200px auto 0px;
-        background-color: #3b494c3b;
-        border: none;
-        border-top: 2px solid #9c9c8463;
-        border-bottom: 2px solid #9c9c8463;
-        color: #fff;
-        font-weight: 300;
-        font-size: 20px;
-        font-family: 'Lato', sans-serif;
-
-
-
-    }
-
-    #register_cleaner_btn {
-        margin: 15px auto 0px;
-        background-color: #3b494c3b;
-
-
-    }
-
-
-    /*---PROVIDED CLEANING SERVICE---*/
-
-    .type_of_service {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-flow: column;
+        background-color: #fff;
+        color: red;
     }
 
-    .cards_wrap {
-        padding: 0;
+
+    .flash_text {
+        color: #000;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 2 !important;
+        margin: 0 !important;
     }
+
+    .respond_to_user {
+        width: 85%;
+        height: 40px;
+        color: #fff;
+        background-color: transparent;
+        border: none;
+        border: 1px solid #fff;
+        cursor: pointer;
+    }
+
+
+    .request_item_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 300;
+        background-color: #3B494C;
+        border: none;
+    }
+
+
+    /*---SERVICES PAGE---*/
+
 
     .service_blurb {
         margin: 5px;
@@ -844,336 +748,6 @@ a:focus {
         font-weight: 300;
     }
 
-    .basic_clean_tag {
-        margin: 0;
-        color: #fff;
-        opacity: 0.7;
-        width: 100%;
-        text-align: center;
-
-    }
-
-    #submit_reg_form_btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 290px;
-        height: 50px;
-        margin: 0 auto;
-        background-color: transparent;
-        border: 1px solid #9C9C84;
-        color: #fff;
-        font-weight: 300;
-        font-size: 20px;
-        font-family: 'Lato', sans-serif;
-    }
-
-    .flash_messages_register {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        bottom: 5% !important;
-        width: 100%;
-        height: 50px;
-        left: 0;
-        font-size: 20px;
-        background-color: #3B494C;
-
-    }
-
-    .username_flash_message,
-    .registered_flash_messages {
-        position: absolute;
-        bottom: 15px;
-        left: 0;
-        width: 100%;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        color: red;
-    }
-
-
-    .flash_text {
-        color: #000;
-        font-size: 22px;
-        font-weight: 300;
-        line-height: 2 !important;
-        margin: 0 !important;
-    }
-
-    /*-------PROFILE PAGE-------*/
-
-    #accountBody {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-    }
-
-    .top_contents_account {
-        width: 100%;
-        display: flex;
-        align-self: flex-start;
-        align-items: center;
-        flex-flow: column;
-        margin-top: 25px;
-
-    }
-
-    .account_title {
-        color: #fff;
-        margin: 0;
-        font-weight: 400;
-        font-family: 'Oswald', sans-serif;
-        font-size: 25px;
-        text-align: center;
-
-        opacity: 0;
-
-    }
-
-    .cleaner_acc_tag {
-        text-align: center;
-        width: 98px;
-        color: #fff;
-        font-size: 12px;
-        padding: 3px;
-        margin-top: 10px;
-        background-color: #b45f1993;
-
-        opacity: 0;
-    }
-
-    .avatar_wrap {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-        width: 100%;
-
-    }
-
-    .avatar_border {
-        height: 80px;
-        width: 80px;
-        display: flex;
-        margin-top: 25px;
-
-        border: 2px solid #b45f19;
-    }
-
-    .avatar {
-        height: 70px;
-        width: 70px;
-        margin: auto;
-    }
-
-    #username_display {
-        color: #fff;
-        width: 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-        background-color: #b45f1993;
-        text-transform: capitalize;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    /*---PENDING JOBS---*/
-
-    .pending_jobs_blurb {
-        color: #fff;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 400;
-
-    }
-
-    .pending_jobs_text {
-        color: #fff;
-        margin: 0 0 10px 0;
-        opacity: 0.7;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-    }
-
-
-    .pending_jobs {
-        width: 94%;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-evenly;
-        border: none;
-        z-index: 5;
-        box-shadow: none !important;
-
-
-    }
-
-    .job_card {
-        position: relative;
-        width: 290px;
-        height: 45px;
-        margin-bottom: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #3B494C;
-        color: #fff;
-
-    }
-
-    .deep_clean_card {
-        position: relative;
-        background-color: #3B494C;
-
-    }
-
-    .deep_clean_tag {
-        position: relative;
-        right: 5px;
-        width: 65px;
-        font-size: 10px;
-        text-align: center;
-        color: #fff;
-        padding: 1px 5px;
-        background-color: #9C9C84;
-
-    }
-
-    .basic_clean_tag {
-        position: relative;
-        right: 5px;
-        width: 65px;
-        font-size: 10px;
-        text-align: center;
-        color: #fff;
-        padding: 1px 5px;
-        background-color: #b45f19;
-
-    }
-
-    .pending_jobs_wrap {
-        height: 70%;
-        display: flex;
-        align-items: center;
-        flex-flow: column;
-        width: 86%;
-        margin-bottom: auto;
-        border: 2px solid #b45f19;
-        overflow: auto;
-
-    }
-
-
-    .request_name_header {
-        color: #fff;
-        text-align: center;
-    }
-
-    .request_info_wrap {
-        height: 100% !important;
-
-    }
-
-    .request_info_card {
-        background-color: #3B494C;
-        height: 89%;
-
-    }
-
-    .request_info {
-        color: #fff;
-        margin: 0;
-        background-color: #3B494C;
-        text-align: center;
-        border-top: 1px solid #b45f19;
-    }
-
-    .request_title {
-        font-weight: 600;
-    }
-
-    .deep_clean_section {
-        width: 100%;
-        background-color: #fff;
-
-
-    }
-
-    .info_headers {
-        font-weight: 600;
-        /* text-decoration: underline; */
-    }
-
-    .job_card_btn_wrap {
-        height: 15%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* height: 15% !important; */
-
-    }
-
-    .replyto_btn {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        color: #000;
-
-    }
-
-    .respond_to_user {
-        width: 85%;
-        height: 40px;
-        color: #fff;
-        background-color: transparent;
-        border: none;
-        border: 1px solid #fff;
-        cursor: pointer;
-    }
-
-
-    .request_item_header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 300;
-        background-color: #3B494C;
-        border: none;
-    }
-
-    .confirmation_flash {
-        position: absolute;
-        bottom: 65px;
-        color: #fff;
-        width: 80%;
-        height: 50px;
-        background-color: transparent;
-        border: 1px solid #fff;
-        align-self: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /*------SERVICES PAGE------*/
 
     .flash_wrap_request_deleted {
         position: relative;
@@ -1188,10 +762,6 @@ a:focus {
 
         opacity: 0;
     }
-
-
-
-
 
 }
 
@@ -1267,9 +837,7 @@ a:focus {
         flex-flow: row;
         height: 60%;
 
-
     }
-
 
     #request_btn,
     #account_btn {
@@ -1310,23 +878,6 @@ a:focus {
 
     }
 
-    .services_wrap__desktop {
-        width: 100%;
-        height: 70%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        z-index: 100;
-
-
-    }
-
     .services_wrap {
         width: 100%;
         height: 60%;
@@ -1356,32 +907,6 @@ a:focus {
             0 100px 80px rgba(0, 0, 0, 0.06);
     }
 
-    .basic_clean_wrap__desktop,
-    .deep_clean_wrap__desktop,
-    .moving_in_out_wrap__desktop {
-        width: 33.33%;
-        height: 100%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-        flex-flow: column;
-        cursor: pointer;
-        opacity: 0;
-        z-index: 100;
-        border-radius: 0px;
-        background: linear-gradient(145deg, #16242d, #131f26);
-        box-shadow: 5px 5px 10px #142027,
-            -5px -5px 10px #16242d;
-    }
 
     /*------BASIC CLEAN PAGE------*/
 
@@ -1448,7 +973,6 @@ a:focus {
     }
 
 
-
     /*------CLEANER ACCOUNT PAGE------*/
 
 
@@ -1465,7 +989,6 @@ a:focus {
         justify-content: center;
         flex-flow: column;
         margin-bottom: auto;
-        /* margin-top: 20px; */
 
     }
 
@@ -1475,6 +998,18 @@ a:focus {
         overflow: auto;
         margin-bottom: auto;
     }
+
+    .pending_jobs {
+        width: 94%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+        border: none;
+        z-index: 5;
+        box-shadow: none !important;
+
+    }
+
 
     .confirmation_flash {
         position: absolute;
@@ -1499,10 +1034,6 @@ a:focus {
 
     }
 
-
-
-
-
 }
 
 
@@ -1515,6 +1046,7 @@ a:focus {
     box-shadow: none;
 }
 
-#submit_basicclean_form:active {
+#submit_basicclean_form:active,
+#submit_deepclean_form:active {
     box-shadow: none;
 }

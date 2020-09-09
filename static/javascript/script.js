@@ -16,30 +16,6 @@ $(document).ready(function () {
         }
     });
 
-    // Initialize sign in input
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.autocomplete');
-        var instances = M.Autocomplete.init(elems, options);
-    });
-
-    function onLoadAnimations() {
-        $('.account_title').animate({
-            opacity: '1'
-        }, function () {
-            $('.cleaner_acc_tag').animate({
-                opacity: '1'
-            }, function () {
-                $('#username_display').animate({
-                    width: '100%'
-                })
-            })
-        })
-
-    }
-    window.onload = onLoadAnimations;
-
-
     function animateConfirmation() {
         $('.flash_wrap_request_edited, .flash_wrap_request_deleted').animate({
             opacity: '1'

@@ -13,7 +13,7 @@
 
 </head>
 
-<body id="user_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
+<body id="services_body" background="{{ url_for('static', filename='images/sunset_bg_full.png') }}"
     style="background-repeat: no-repeat; background-position: center; background-size: cover;">
 
     <a href="{{ url_for('index') }}">
@@ -27,7 +27,7 @@
 
     <!--TOP CONTENTS-->
     <div class="top_contents_wrapper">
-        <h3 class="userside_title">oneHourmaid</h3>
+        <h3 class="services_title">oneHourmaid</h3>
         <p class="service_blurb">Select the service that best suits<br>your cleaning needs</p>
 
     </div>
@@ -36,7 +36,7 @@
 
     <!--CENTER CONTENTS (mobile and ipad)-->
     <div class="slick_wrap">
-        <a href="{{ url_for('basic_clean_info') }}" class="basic_clean_wrap" data-value="Basic Clean">
+        <a href="{{ url_for('basic_clean_info') }}" class="basic_clean_wrap">
             <img class="basic_clean_image" src="{{ url_for('static', filename='images/basiclean_mop.png') }}" alt="">
             <h1 class="basic_clean_title">OneHourmaid's<br>Basic Clean</h1>
             <p class="basic_clean_blurb">
@@ -48,7 +48,7 @@
             </p>
         </a>
 
-        <a href="{{ url_for('deep_clean_info') }}" class="deep_clean_wrap" data-value="Deep Clean">
+        <a href="{{ url_for('deep_clean_info') }}" class="deep_clean_wrap">
             <img class="deep_clean_image" src="{{ url_for('static', filename='images/deepclean_image.png') }}" alt="">
             <h1 class="deep_clean_title">OneHourmaid's<br>Deep Clean</h1>
             <p class="deep_clean_blurb">
