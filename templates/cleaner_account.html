@@ -76,8 +76,7 @@
                         <span class="light_text italic_text" id="customer_request">{{ detail.user_message }}</span>
                     </span><br><br>
 
-                    <a href="{{ url_for('auto_email') }}"><button class="respond_to_user">Send confirmation to
-                            {{ detail.user_name }}?</button></a>
+                 
                 </div>
             </li>
             {% endfor %}
@@ -112,8 +111,6 @@
                         <span class="light_text italic_text" id="customer_request">{{ basic_detail.user_date }}</span>
                     </span><br><br>
 
-                    <a href="{{ url_for('auto_email') }}"><button class="respond_to_user">Send confirmation to
-                            {{ basic_detail.user_name }}?</button></a>
                 </div>
             </li>
             {% endfor %}
