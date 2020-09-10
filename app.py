@@ -35,8 +35,8 @@ def services():
 
 @app.route("/cleaner_account")
 def cleaner_account():
-    basic_clean_details = list(mongo.db.basic_clean_details.find({"status": "pending"}))
-    deep_clean_details = list(mongo.db.deep_clean_details.find({"status": "pending"}))
+    basic_clean_details = list(mongo.db.basic_clean_details.find())
+    deep_clean_details = list(mongo.db.deep_clean_details.find())
 
     return render_template("cleaner_account.html", title='oneHourmaid', basic_clean_details=basic_clean_details,
                            deep_clean_details=deep_clean_details)
@@ -53,7 +53,6 @@ def basic_clean_info():
             "user_postcode": request.form.get("user_postcode"),
             "user_message": request.form.get("user_message"),
             "user_date": request.form.get("user_date"),
-            "status": "off"
         }
         details = mongo.db.basic_clean_details.insert_one(basic_clean_details)
         send_email(request.form.get("user_email"))
