@@ -29,24 +29,6 @@
 
     <span id="text_tag">Basic Clean</span>
 
-    <!--Flash messages-->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for messages in messages %}
-    <section class="flash_wrap_request_edited z-depth-2">
-
-        <p class="request_edited_text">Request Edited<br>
-            View request in the <a href="{{ url_for('cleaner_account') }}">Cleaner Account</a> page
-        </p>
-
-
-    </section>
-
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-
-
 
     <!--CUSTOMER DETAILS AND REQUEST FORM-->
 

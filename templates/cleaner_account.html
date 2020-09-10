@@ -76,7 +76,7 @@
                         <span class="light_text italic_text" id="customer_request">{{ detail.user_message }}</span>
                     </span><br><br>
 
-                 
+
                 </div>
             </li>
             {% endfor %}
@@ -87,6 +87,13 @@
                 <div class="collapsible-header request_item_header">
                     {{ basic_detail.user_name }} {{ basic_detail.user_lname }}
                     <span class="basic_clean_tag">Basic Clean</span>
+                    <div class="switch">
+                        <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Complete
+                        </label>
+                    </div>
                 </div>
 
                 <div class="collapsible-body request_info">
