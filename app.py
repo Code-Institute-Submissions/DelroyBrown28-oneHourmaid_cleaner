@@ -54,7 +54,9 @@ def basic_clean_info():
             "user_message": request.form.get("user_message"),
             "user_date": request.form.get("user_date"),
         }
+        print(basic_clean_details)
         details = mongo.db.basic_clean_details.insert_one(basic_clean_details)
+        print(details.inserted_id)
         send_email(request.form.get("user_email"))
         flash("Request sent to cleaner")
         return redirect(url_for("basic_clean_info_details", request_id=details.inserted_id))
@@ -84,7 +86,7 @@ def deep_clean_info():
     return render_template("deep_clean_info.html", title='Deep Clean Request')
 
 
-@app.route("/basic_clean_info/<request_id>", methods=["GET", "POST"])
+@app.route("/basic_clean_info/<request_id>", methods=["GET"])
 def basic_clean_info_details(request_id):
     details = list(mongo.db.basic_clean_details.find(
         {"_id": ObjectId(request_id)}))
