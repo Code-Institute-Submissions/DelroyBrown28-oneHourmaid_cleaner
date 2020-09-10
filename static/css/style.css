@@ -137,6 +137,34 @@ a:focus {
 
     }
 
+    #pending_switch {
+        color: #fff;
+    }
+
+    .switch {
+        width: 20%;
+        max-height: 100%;
+
+    }
+
+    .switch label input[type=checkbox]:checked+.lever {
+        background-color: #b45f19;
+    }
+
+    .switch label input[type=checkbox]:checked+.lever:after {
+        background-color: #9c9c84;
+    }
+
+    [type="checkbox"]+span:not(.lever):before, [type="checkbox"]:not(.filled-in)+span:not(.lever):after {
+        border: 2px solid #b45f19;
+    }
+
+    [type="checkbox"]:checked+span:not(.lever):before {
+        border-right: 2px solid #b45f19;
+        border-bottom: 2px solid #b45f19;
+
+    }
+
 
     .main_title_wrap {
         display: flex;

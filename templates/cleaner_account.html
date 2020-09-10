@@ -44,6 +44,11 @@
                 <div class="collapsible-header request_item_header">
                     {{ detail.user_name }} {{ detail.user_lname }}
                     <span class="deep_clean_tag">Deep Clean</span>
+                    <label>
+                        <input type="checkbox" id="status" name="status" />
+                        <span></span>
+                    </label>
+
                 </div>
 
                 <div class="collapsible-body request_info">
@@ -86,14 +91,11 @@
             <li class="jobs">
                 <div class="collapsible-header request_item_header">
                     {{ basic_detail.user_name }} {{ basic_detail.user_lname }}
-                    <span class="basic_clean_tag">Basic Clean</span>
-                    <div class="switch">
-                        <label>
-                            <input type="checkbox">
-                            <span class="lever"></span>
-                            Complete
-                        </label>
-                    </div>
+                    <span id="basic_clean_tag" class="basic_clean_tag">Basic Clean</span>
+                    <label>
+                        <input type="checkbox" id="status" name="status" />
+                        <span></span>
+                    </label>
                 </div>
 
                 <div class="collapsible-body request_info">
@@ -142,6 +144,22 @@
 
 
     {% include 'components/scripts.html' %}
+
+    <script>
+        // Delete post
+
+        document.getElementById("status").onclick = function () {
+            if (this.checked) {
+                $('.basic_clean_tag').animate({
+                    width: '90px'
+                }, function () {
+                    $('.basic_clean_tag').text("Job Complete")
+                })
+            } else {
+                return false;
+            }
+        }
+    </script>
 
 
 </body>
