@@ -52,7 +52,7 @@
 
     <div class="row form_wrap">
         <form class="col s12" id="basicClean_details_form" method="POST"
-            action="{{ url_for('basic_clean_info') }}">
+            action="{{ url_for('basic_clean_info', request_id=request._id) }}">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="user_name" name="user_name" type="text" class="all_inputs validate" required>
