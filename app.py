@@ -9,12 +9,13 @@ from email.message import EmailMessage
 if os.path.exists("env.py"):
     import env
 
-
+# init Flask
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
+# variables for auto email
 EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 
@@ -33,6 +34,7 @@ def services():
     return render_template("services.html")
 
 
+# Cleaner account to view all pending jobs
 @app.route("/cleaner_account")
 def cleaner_account():
     basic_clean_details = list(mongo.db.basic_clean_details.find())
@@ -42,6 +44,7 @@ def cleaner_account():
                            deep_clean_details=deep_clean_details)
 
 
+# sends Basic Clean info to MongoDB
 @app.route("/basic_clean_info", methods=["GET", "POST"])
 def basic_clean_info():
     if request.method == "POST":
@@ -61,6 +64,7 @@ def basic_clean_info():
     return render_template("basic_clean_info.html", title='Basic Clean Request')
 
 
+# sends Deep Clean info to MongoDB
 @app.route("/deep_clean_info", methods=["GET", "POST"])
 def deep_clean_info():
     if request.method == "POST":
@@ -98,6 +102,7 @@ def deep_clean_info_details(request_id):
     return render_template("deep_clean_details.html", deep_clean_details=details[0], title='Request Details')
 
 
+# Edits basic clean posts
 @app.route("/edit_request/<request_id>", methods=["GET", "POST"])
 def edit_request(request_id):
     if request.method == "POST":
@@ -119,6 +124,7 @@ def edit_request(request_id):
     return render_template("edit_request.html", request=request_info)
 
 
+# Edits deep clean posts
 @app.route("/edit_deepclean_request/<request_id>", methods=["GET", "POST"])
 def edit_deepclean_request(request_id):
     if request.method == "POST":
@@ -144,6 +150,7 @@ def edit_deepclean_request(request_id):
     return render_template("edit_deep_clean_info.html", request=request_info)
 
 
+# Deleted request
 @app.route("/delete_request/<request_id>")
 def delete_request(request_id):
     mongo.db.basic_clean_details.remove({"_id": ObjectId(request_id)})
@@ -181,36 +188,6 @@ def send_email(user_email):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
-
-
-@app.route("/auto_email")
-def auto_email():
-    msg = EmailMessage()
-    msg['Subject'] = 'oneHourmaid, Cleaner Confirmed!'
-    msg['From'] = EMAIL_ADDRESS
-    msg['To'] = EMAIL_ADDRESS
-
-    msg.set_content('This is a plain text email')
-
-    msg.add_alternative("""\
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    </head>
-    <body>
-        <h1 style="text-align: center;">Request Accepted! </h1>
-        <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
-            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond to this email</small>
-        </p>
-    </body>
-    </html>
-    """, subtype='html')
-
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        smtp.send_message(msg)
-        flash("Confirmation sent to customer")
-        return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
