@@ -876,8 +876,7 @@ a:focus {
         width: 614.391px !important;
         justify-content: space-evenly;
         border: none;
-        border-left: 2px solid rgba(255, 255, 255, 0.342);
-        border-right: 2px solid rgba(255, 255, 255, 0.342);
+        border: 2px solid rgba(255, 255, 255, 0.342);
         cursor: pointer;
         box-shadow:
             0 2.8px 2.2px rgba(0, 0, 0, 0.017),
@@ -925,8 +924,7 @@ a:focus {
         display: flex !important;
         align-items: center;
         justify-content: center;
-        border-left: 2px solid rgba(255, 255, 255, 0.342);
-        border-right: 2px solid rgba(255, 255, 255, 0.342);
+        border: 2px solid rgba(255, 255, 255, 0.342);
         cursor: pointer;
         border-radius: 0px;
         box-shadow:
