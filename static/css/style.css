@@ -16,6 +16,9 @@ body {
     font-weight: 300;
 }
 
+.job_complete {
+    opacity: 0.5 !important;
+}
 
 a {
     text-decoration: none;
@@ -148,7 +151,7 @@ a:focus {
     }
 
     .switch label input[type=checkbox]:checked+.lever {
-        background-color: #b45f19;
+        background-color: #fff;
     }
 
     .switch label input[type=checkbox]:checked+.lever:after {
@@ -156,7 +159,7 @@ a:focus {
     }
 
     [type="checkbox"]+span:not(.lever):before, [type="checkbox"]:not(.filled-in)+span:not(.lever):after {
-        border: 2px solid #b45f19;
+        border: 2px solid #fff;
     }
 
     [type="checkbox"]:checked+span:not(.lever):before {

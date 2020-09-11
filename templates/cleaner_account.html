@@ -148,17 +148,13 @@
     <script>
         // Delete post
 
-        document.getElementById("status").onclick = function () {
-            if (this.checked) {
-                $('.basic_clean_tag').animate({
-                    width: '90px'
-                }, function () {
-                    $('.basic_clean_tag').text("Job Complete")
-                })
-            } else {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                alert("Job Complete")
+            } else if ($(this).prop("checked") == false) {
                 return false;
             }
-        }
+        });
     </script>
 
 
