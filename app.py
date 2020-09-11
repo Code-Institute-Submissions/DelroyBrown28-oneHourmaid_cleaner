@@ -166,10 +166,13 @@ def send_email(user_email):
     <html lang="en">
     <head>
     </head>
-    <body>
-        <h1 style="text-align: center;">Request Accepted! </h1>
+    <body style="font-family: 'Lato', sans-serif;">
+        <h1 style="text-align: center;">Request Posted! </h1>
         <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
-            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond to this email</small>
+            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond
+                to this email</small><br><br>
+            <a style="color: #d16c19; font-weight: 600; font-size: 18px; text-decoration: none;"
+                href="https://onehourmaid-project.herokuapp.com/cleaner_account" target="_blank">VIEW YOUR REQUEST HERE</a>
         </p>
     </body>
     </html>
@@ -214,4 +217,3 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=False)
-
