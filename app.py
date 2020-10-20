@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import smtplib
+import ssl
 from email.message import EmailMessage
 if os.path.exists("env.py"):
     import env
@@ -159,38 +160,58 @@ def delete_request(request_id):
     return redirect(url_for('services'))
 
 
-# Auto email to send confirmation to user
 def send_email(user_email):
-    msg = EmailMessage()
-    msg['Subject'] = 'oneHourmaid, Cleaner Confirmed!'
-    msg['From'] = EMAIL_ADDRESS
-    msg['To'] = user_email
+    EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+    EMAIL_PASS = os.environ.get('EMAIL_PASS')
 
-    msg.set_content('This is a plain text email')
+    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
 
-    msg.add_alternative("""\
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    </head>
-    <body style="font-family: 'Lato', sans-serif;">
-        <h1 style="text-align: center;">Request Posted! </h1>
-        <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
-            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond
-                to this email</small><br><br>
-            <a style="color: #d16c19; font-weight: 600; font-size: 18px; text-decoration: none;"
-                href="https://onehourmaid-project.herokuapp.com/cleaner_account" target="_blank">VIEW YOUR REQUEST HERE</a>
-        </p>
-    </body>
-    </html>
-    """, subtype='html')
+        smtp.login(EMAIL_ADDRESS, EMAIL_PASS)
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        smtp.send_message(msg)
+        subject = 'Cleaner Confirmed'
+        body = "Oh thanks for confirming!"
+
+        msg = f'subject: {subject}\n\n{body}'
+
+        smtp.sendmail(EMAIL_ADDRESS, user_email, msg)
 
 
+# Auto email to send confirmation to user
+# def send_email(user_email):
+#     msg = EmailMessage()
+#     msg['Subject'] = 'oneHourmaid, Cleaner Confirmed!'
+#     msg['From'] = os.environ.get('EMAIL_ADDRESS')
+#     msg['To'] = 'user_email'
+
+#     msg.set_content('This is a plain text email')
+
+#     msg.add_alternative("""\
+#     <!DOCTYPE html>
+#     <html lang="en">
+#     <head>
+#     </head>
+#     <body style="font-family: 'Lato', sans-serif;">
+#         <h1 style="text-align: center;">Request Posted! </h1>
+#         <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
+#             <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond
+#                 to this email</small><br><br>
+#             <a style="color: #d16c19; font-weight: 600; font-size: 18px; text-decoration: none;"
+#                 href="https://onehourmaid-project.herokuapp.com/cleaner_account" target="_blank">VIEW YOUR REQUEST HERE</a>
+#         </p>
+#     </body>
+#     </html>
+#     """, subtype='html')
+
+
+#     sender_email = os.environ.get("EMAIL_ADDRESS")
+
+#     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+#         smtp.login = sender_email
+#         smtp.send_message(msg)
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
-            debug=False)
+            debug=True)
