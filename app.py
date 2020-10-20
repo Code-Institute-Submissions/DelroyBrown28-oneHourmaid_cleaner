@@ -4,6 +4,7 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import imghdr
 import smtplib
 import ssl
 from email.message import EmailMessage
@@ -164,19 +165,33 @@ def send_email(user_email):
     EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
     EMAIL_PASS = os.environ.get('EMAIL_PASS')
 
-    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-        smtp.ehlo()
-        smtp.starttls()
-        smtp.ehlo()
+    msg = EmailMessage()
+    msg['subject'] = "Cleaner Confirmed"
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = user_email
+    msg.set_content('This is a plain text email')
 
+    msg.add_alternative("""\
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    </head>
+    <body style="font-family: 'Lato', sans-serif;">
+        <h1 style="text-align: center;">Request Accepted! </h1>
+        <p style="text-align: center;">Your cleaner will be with you on your requested date!<br><br>
+            <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond
+                to this email</small><br><br>
+            <a style="color: #d16c19; font-weight: 600; font-size: 18px; text-decoration: none;"
+                href="{{ url_for('cleaner_account') }}" target="_blank">VIEW YOUR REQUEST HERE</a>
+        </p>
+    </body>
+    </html>
+    
+    """, subtype='html')
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASS)
-
-        subject = 'Cleaner Confirmed'
-        body = "Oh thanks for confirming!"
-
-        msg = f'subject: {subject}\n\n{body}'
-
-        smtp.sendmail(EMAIL_ADDRESS, user_email, msg)
+        smtp.send_message(msg)
 
 
 # Auto email to send confirmation to user
