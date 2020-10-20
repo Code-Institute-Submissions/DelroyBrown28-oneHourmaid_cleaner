@@ -182,7 +182,7 @@ def send_email(user_email):
             <small style="text-align: center; text-decoration: underline;">If you have any questions, feel free to respond
                 to this email</small><br><br>
             <a style="color: #d16c19; font-weight: 600; font-size: 18px; text-decoration: none;"
-                href="{{ url_for('cleaner_account') }}" target="_blank">VIEW YOUR REQUEST HERE</a>
+                href="https://onehourmaid-project.herokuapp.com/cleaner_account" target="_blank">VIEW YOUR REQUEST HERE</a>
         </p>
     </body>
     </html>
