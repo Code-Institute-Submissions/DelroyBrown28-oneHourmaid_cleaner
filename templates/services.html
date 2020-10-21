@@ -18,7 +18,7 @@
 
     <a href="{{ url_for('index') }}">
         <div class="back_btn" style="z-index: 100;">
-            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="" class="home_icon">
+            <img src="{{ url_for('static', filename='/images/back_icon.png') }}" alt="Home" class="home_icon">
         </div>
     </a>
 
@@ -37,7 +37,7 @@
     <!--CENTER CONTENTS (mobile and ipad)-->
     <div class="slick_wrap">
         <a href="{{ url_for('basic_clean_info') }}" class="basic_clean_wrap">
-            <img class="basic_clean_image" src="{{ url_for('static', filename='images/basiclean_mop.png') }}" alt="">
+            <img class="basic_clean_image" src="{{ url_for('static', filename='images/basiclean_mop.png') }}" alt="Basic Clean">
             <h1 class="basic_clean_title">OneHourmaid's<br>Basic Clean</h1>
             <p class="basic_clean_blurb">
                 Our Basic Clean consists of your general in<br>
@@ -49,7 +49,7 @@
         </a>
 
         <a href="{{ url_for('deep_clean_info') }}" class="deep_clean_wrap">
-            <img class="deep_clean_image" src="{{ url_for('static', filename='images/deepclean_image.png') }}" alt="">
+            <img class="deep_clean_image" src="{{ url_for('static', filename='images/deepclean_image.png') }}" alt="Deep Clean">
             <h1 class="deep_clean_title">OneHourmaid's<br>Deep Clean</h1>
             <p class="deep_clean_blurb">
                 Our Deep Clean consists of pulling out and<br>
@@ -71,11 +71,11 @@
     <!--NEXT/PREV BUTTONS-->
     <div class="button_wrap">
         <div class="previous_button">
-            <img src="/static/images/previous_arrow.png" alt="" class="previous_arrow_icon">
+            <img src="/static/images/previous_arrow.png" alt="Previous" class="previous_arrow_icon">
         </div>
         <p class="to_select_service_text">Tap arrow or swipe for services</p>
         <div class="next_button">
-            <img src="/static/images/next_arrow.png" alt="" class="next_arrow_icon">
+            <img src="/static/images/next_arrow.png" alt="Next" class="next_arrow_icon">
         </div>
     </div>
 
@@ -83,11 +83,11 @@
     <!--NEXT/PREV BUTTONS (IPAD)-->
     <div class="button_wrap__ipad">
         <div class="previous_button">
-            <img src="/static/images/previous_arrow.png" alt="" class="previous_arrow_icon">
+            <img src="/static/images/previous_arrow.png" alt="Previous" class="previous_arrow_icon">
         </div>
         <p class="to_select_service_text__ipad">Tap arrow or swipe for services</p>
         <div class="next_button">
-            <img src="/static/images/next_arrow.png" alt="" class="next_arrow_icon">
+            <img src="/static/images/next_arrow.png" alt="Next" class="next_arrow_icon">
         </div>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="services_wrap">
 
         <a href="{{ url_for('basic_clean_info') }}" class="service_cards basic_clean">
-            <img src="/static/images/basiclean_mop.png" alt="" class="basic_clean_image__desktop">
+            <img src="/static/images/basiclean_mop.png" alt="Basic Clean" class="basic_clean_image__desktop">
             <h1 class="service_card_title">OneHourmaid's<br>Basic Clean</h1>
             <p class="service_card_blurb">
                 Our Basic Clean consists of your general in<br>
@@ -109,7 +109,7 @@
         </a>
 
         <a href="{{ url_for('deep_clean_info') }}" class="service_cards deep_clean">
-            <img src="/static/images/deepclean_image.png" alt="" class="deep_clean_image__desktop">
+            <img src="/static/images/deepclean_image.png" alt="Deep Clean" class="deep_clean_image__desktop">
             <h1 class="service_card_title">OneHourmaid's<br>Deep Clean</h1>
             <p class="service_card_blurb">
                 A Deep Clean includes cleaning behind<br>“white goods”<br>i.e
